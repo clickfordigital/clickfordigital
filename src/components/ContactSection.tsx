@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Mail, Phone, Globe, Send, CheckCircle, AlertTriangle, ArrowRight, Table, ExternalLink, Inbox, MessageSquare } from "lucide-react";
+import { Mail, Phone, Globe, Send, CheckCircle, AlertTriangle, ArrowRight, Table, ExternalLink, Inbox, MessageSquare, MessageCircle } from "lucide-react";
 import { motion, AnimatePresence } from "motion/react";
 
 interface Lead {
@@ -85,8 +85,8 @@ export default function ContactSection() {
   };
 
   // Pre-compiled Whatsapp template url
-  const whatsappTemplateUrl = "https://wa.me/919999999999?text=" + encodeURIComponent(
-    "Hello Mohan, I visited click clickfordigital and I'd like to book an expert SEO Consultation for my website. Can we talk?"
+  const whatsappTemplateUrl = "https://wa.me/918585974338?text=" + encodeURIComponent(
+    "Hello Mohan, I want to book a consultation regarding SEO and digital growth for my business."
   );
 
   return (
@@ -144,24 +144,28 @@ export default function ContactSection() {
               <a
                 href={whatsappTemplateUrl}
                 target="_blank"
-                rel="noreferrer"
-                className="flex items-center gap-4 p-4 rounded-2xl border border-teal-200/50 dark:border-teal-950 bg-teal-500/5 hover:bg-teal-500/10 transition-all duration-300"
+                rel="noopener noreferrer"
+                className="flex items-center gap-4 p-5 rounded-2xl border-2 border-[#25D366]/40 dark:border-[#25D366]/30 bg-gradient-to-br from-[#25D366]/10 to-[#25D366]/5 dark:from-[#25D366]/5 dark:to-transparent hover:from-[#25D366]/20 hover:to-[#25D366]/10 transition-all duration-300 shadow-md hover:shadow-lg hover:border-[#25D366] group"
               >
-                <div className="w-10 h-10 rounded-xl bg-teal-500 flex items-center justify-center text-white shrink-0">
-                  <MessageSquare className="w-4.5 h-4.5 font-bold" />
+                <div className="w-12 h-12 rounded-full bg-[#25D366] flex items-center justify-center text-white shrink-0 shadow-md group-hover:scale-110 transition-transform duration-300">
+                  <MessageCircle className="w-6 h-6 fill-white stroke-[#25D366]" style={{ strokeWidth: 1.5 }} />
                 </div>
-                <div>
-                  <div className="flex items-center gap-1.5 flex-wrap">
-                    <span className="text-[9.5px] font-mono font-bold tracking-wider text-teal-600 dark:text-teal-400 uppercase">
-                      Instant WHATSAPP CHAT
+                <div className="flex-1">
+                  <div className="flex items-center gap-2 flex-wrap">
+                    <span className="text-[10px] font-mono font-black tracking-widest text-[#25D366] uppercase">
+                      Instant Chat
                     </span>
-                    <span className="text-[9px] bg-teal-500 text-white font-mono font-bold uppercase tracking-wider px-1.5 rounded">
-                      FASTEST
+                    <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[9px] font-bold font-mono bg-[#25D366] text-white">
+                      <span className="w-1.5 h-1.5 rounded-full bg-white block animate-ping"></span>
+                      Book on WhatsApp
                     </span>
                   </div>
-                  <span className="text-xs sm:text-sm font-sans font-extrabold text-zinc-800 dark:text-zinc-300 block mt-0.5">
-                    Live Chat with Mohan
-                  </span>
+                  <h4 className="text-sm sm:text-base font-sans font-extrabold text-zinc-900 dark:text-zinc-100 mt-1 flex items-center gap-2">
+                    Chat on WhatsApp <ExternalLink className="w-3.5 h-3.5 text-zinc-400 group-hover:text-zinc-600 transition-colors" />
+                  </h4>
+                  <p className="text-xs font-sans font-medium text-zinc-500 dark:text-zinc-400 mt-0.5 leading-normal">
+                    Click to message +91 8585974338 directly. Get answers within minutes!
+                  </p>
                 </div>
               </a>
             </div>

@@ -49,7 +49,7 @@ export default function Navbar({ darkMode, setDarkMode }: NavbarProps) {
       return;
     }
     
-    console.log(`[Navbar] Target element found:`, target);
+    console.log(`[Navbar] Target element found: <${target.tagName.toLowerCase()} id="${target.id}">`);
     
     // Calculate static, absolute top position relative to the entire document.
     // This provides a stable, invariant offset that is 100% immune to scroll momentum,

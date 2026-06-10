@@ -80,10 +80,12 @@ export default function About() {
   return (
     <section id="about" className="py-20 bg-white dark:bg-zinc-950 scroll-mt-12">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 sm:gap-16 items-center">
+        
+        {/* Top Segment: Bio Story without Portrait Image */}
+        <div className="max-w-3xl mx-auto flex flex-col">
           
-          {/* Left Column: Visual Bio & Pitch */}
-          <div className="lg:col-span-5 flex flex-col">
+          {/* Visual Bio & Pitch */}
+          <div className="flex flex-col">
             <span className="text-xs font-mono font-bold tracking-wider text-teal-600 dark:text-teal-400 uppercase">
               MEET THE STRATEGIST
             </span>
@@ -122,8 +124,11 @@ export default function About() {
             </div>
           </div>
 
-          {/* Right Column: Interactive Skills Tab showcase */}
-          <div className="lg:col-span-7 flex flex-col" id="skills-tabs">
+        </div>
+
+        {/* Bottom Segment: Interactive Skills Tab showcase */}
+        <div className="mt-16 sm:mt-20 border-t border-zinc-100 dark:border-zinc-900/40 pt-16 font-sans" id="skills-tabs">
+          <div className="max-w-4xl mx-auto">
             <div className="bg-zinc-50/50 dark:bg-zinc-900/40 rounded-2xl border border-zinc-100 dark:border-zinc-900 p-6 sm:p-8 shadow-sm">
               <span className="text-[11px] font-mono font-bold tracking-widest text-zinc-400 dark:text-zinc-500 uppercase block mb-4">
                 CORE WORK DOMAINS
@@ -198,8 +203,8 @@ export default function About() {
               </AnimatePresence>
             </div>
           </div>
-
         </div>
+
       </div>
     </section>
   );
