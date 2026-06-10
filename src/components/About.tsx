@@ -91,10 +91,13 @@ export default function About() {
               I am Mohan, Founder of ClickForDigital.
             </h2>
             <p className="mt-6 text-zinc-600 dark:text-zinc-400 text-sm sm:text-base leading-relaxed">
-              With over 8 years of hand-on technical experience, I manage custom organic search frameworks that consistently turn static pages into dynamic organic traffic pipelines. Our specialized boutique agency, <strong>ClickForDigital</strong>, operates on one clear standard: <em>No vanity stats. Just real ranks, more clients, and verifiable ROI.</em>
+              With 1.5+ years of hands-on experience in SEO and digital marketing, I help businesses improve their online visibility and generate sustainable organic growth. I have worked on SEO and digital growth initiatives for brands such as <strong>Acharya Ganesh</strong> and <strong>Hanish Bagga</strong>, gaining practical experience in technical SEO, keyword research, content optimization, and search performance improvement.
             </p>
             <p className="mt-4 text-zinc-600 dark:text-zinc-400 text-sm leading-relaxed">
-              We decode the complex algorithms of Google using direct historical data. Whether you require an immediate speed repair, a semantic content gap restoration, or a localized geographic dominance campaign, we craft search growth engines designed to last.
+              At <strong>ClickForDigital</strong>, my focus is on delivering measurable results through data-driven SEO strategies, transparent communication, and continuous optimization. I believe in building long-term growth rather than relying on vanity metrics.
+            </p>
+            <p className="mt-4 text-zinc-600 dark:text-zinc-400 text-sm leading-relaxed">
+              Whether you're looking to improve rankings, increase organic traffic, or strengthen your online presence, I work closely with businesses to create strategies tailored to their goals.
             </p>
 
             {/* Micro Credibility badges */}

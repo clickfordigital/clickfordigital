@@ -153,7 +153,7 @@ export default function ResultsProof() {
   };
 
   return (
-    <section id="results" className="py-24 bg-white dark:bg-zinc-950 scroll-mt-12">
+    <section id="seo-results" className="py-24 bg-white dark:bg-zinc-950 scroll-mt-12">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Section Header */}

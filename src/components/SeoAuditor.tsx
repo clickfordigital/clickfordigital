@@ -7,7 +7,7 @@ import { ResponsiveContainer, AreaChart, Area, XAxis, YAxis, Tooltip } from "rec
 export default function SeoAuditor() {
   const [url, setUrl] = useState("");
   const [keywords, setKeywords] = useState("");
-  const [industry, setIndustry] = useState("SaaS & Growth Technology");
+  const [industry, setIndustry] = useState("SaaS & Custom Technology");
   const [loading, setLoading] = useState(false);
   const [result, setResult] = useState<AuditResult | null>(null);
   const [errorObj, setErrorObj] = useState<string | null>(null);
@@ -119,7 +119,7 @@ export default function SeoAuditor() {
                   value={industry}
                   onChange={(e) => setIndustry(e.target.value)}
                   disabled={loading}
-                  className="w-full px-3/5 py-3 rounded-xl border border-zinc-200 dark:border-zinc-850 bg-white dark:bg-zinc-905 text-xs sm:text-sm text-zinc-950 dark:text-white focus:outline-none focus:ring-2 focus:ring-teal-500/50 disabled:opacity-50 cursor-pointer"
+                  className="w-full px-3.5 py-3 rounded-xl border border-zinc-200 dark:border-zinc-850 bg-white dark:bg-zinc-905 text-xs sm:text-sm text-zinc-950 dark:text-white focus:outline-none focus:ring-2 focus:ring-teal-500/50 disabled:opacity-50 cursor-pointer"
                 >
                   <option value="SaaS & Custom Technology">SaaS & Custom Technology</option>
                   <option value="Legal & Advisory Services">Legal & Advisory Services</option>
