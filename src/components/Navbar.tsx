@@ -39,37 +39,57 @@ export default function Navbar({ darkMode, setDarkMode }: NavbarProps) {
     href: string
   ) => {
     e.preventDefault();
-    console.log(`[Navbar] Tap/Click detected for href: "${href}"`);
+    console.log(`[Navbar] Navigation click/tap event detected. Target: "${href}"`);
     
     const isMobile = window.innerWidth < 1024;
-    const target = document.querySelector(href);
+    const target = document.querySelector(href) as HTMLElement | null;
     
     if (!target) {
-      console.warn(`[Navbar] Target element with ID "${href}" not found in current DOM!`);
+      console.error(`[Navbar] Target section with reference "${href}" was not found!`);
       return;
     }
     
-    console.log(`[Navbar] Found target element "${href}". Measuring position...`);
+    console.log(`[Navbar] Target element found:`, target);
+    
+    // Calculate static, absolute top position relative to the entire document.
+    // This provides a stable, invariant offset that is 100% immune to scroll momentum,
+    // active scrolling speeds, viewport zoom, or page transitions.
+    const getAbsoluteTop = (element: HTMLElement): number => {
+      let top = 0;
+      let curr: HTMLElement | null = element;
+      while (curr) {
+        top += curr.offsetTop;
+        curr = curr.offsetParent as HTMLElement | null;
+      }
+      return top;
+    };
+    
+    const targetTop = getAbsoluteTop(target);
     const headerOffset = isMobile ? 70 : 85;
-    const elementPosition = target.getBoundingClientRect().top;
-    const offsetPosition = elementPosition + window.scrollY - headerOffset;
+    const offsetPosition = targetTop - headerOffset;
     
-    console.log(`[Navbar] Calculated offset position: ${offsetPosition}px (top: ${elementPosition}, scrollY: ${window.scrollY})`);
-    
-    // Execute smooth scrolling instantly when clicked
-    window.scrollTo({
-      top: offsetPosition,
-      behavior: "smooth"
-    });
-    console.log(`[Navbar] Smooth scroll execution command triggered to ${offsetPosition}px`);
+    console.log(`[Navbar] Absolute target coordinate is: ${targetTop}px. Scroll offset top will be: ${offsetPosition}px.`);
     
     if (isMobile) {
-      // Delay closing the mobile menu slightly (200ms) to allow the click completion 
-      // without instant layout change, ensuring mobile browsers (WebKit/Chrome) do not cancel scroll.
+      // Close mobile drawer instantly to prevent exit layout recalculations from cancelling
+      // the smooth scroll behavior in mobile browsers (WebKit/iOS Safari and Android Chrome).
+      setIsOpen(false);
+      console.log(`[Navbar] Mobile menu toggled closed.`);
+      
+      // Delay scrolling by a tiny margin to let the click touch action finish cleanly in the event loop.
       setTimeout(() => {
-        setIsOpen(false);
-        console.log(`[Navbar] Mobile drawer toggled closed key frame.`);
-      }, 200);
+        window.scrollTo({
+          top: offsetPosition,
+          behavior: "smooth"
+        });
+        console.log(`[Navbar] Mobile scroll execution completed to target height: ${offsetPosition}px`);
+      }, 50);
+    } else {
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: "smooth"
+      });
+      console.log(`[Navbar] Desktop scroll execution completed to target height: ${offsetPosition}px`);
     }
   };
 
