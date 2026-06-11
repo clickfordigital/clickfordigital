@@ -4,22 +4,21 @@
  */
 
 import React, { useState, useEffect } from "react";
+import { RouterProvider, useRouter } from "./components/Router";
 import Navbar from "./components/Navbar";
-import Hero from "./components/Hero";
-import Stats from "./components/Stats";
-import About from "./components/About";
-import CaseStudies from "./components/CaseStudies";
-import ResultsProof from "./components/ResultsProof";
-import Services from "./components/Services";
-import Workflow from "./components/Workflow";
-import Testimonials from "./components/Testimonials";
-import SeoAuditor from "./components/SeoAuditor";
-import Blog from "./components/Blog";
-import FaqSection from "./components/FaqSection";
-import ContactSection from "./components/ContactSection";
 import Footer from "./components/Footer";
 
-export default function App() {
+// Import Page Wrappers
+import HomePage from "./pages/HomePage";
+import AboutPage from "./pages/AboutPage";
+import ServicesPage from "./pages/ServicesPage";
+import CaseStudiesPage from "./pages/CaseStudiesPage";
+import SeoResultsPage from "./pages/SeoResultsPage";
+import BlogPage from "./pages/BlogPage";
+import FaqPage from "./pages/FaqPage";
+import ContactPage from "./pages/ContactPage";
+
+function MainAppContent() {
   const [darkMode, setDarkMode] = useState<boolean>(() => {
     // Check if user has theme choice cached or system theme setup
     if (typeof window !== "undefined") {
@@ -32,6 +31,8 @@ export default function App() {
     return false;
   });
 
+  const { path } = useRouter();
+
   useEffect(() => {
     const root = window.document.documentElement;
     if (darkMode) {
@@ -43,101 +44,75 @@ export default function App() {
     }
   }, [darkMode]);
 
-  // Inject Open Graph, Twitter Cards, Sitemap specifications, and Robots context dynamically on mount
-  useEffect(() => {
-    const injectSeoMetadata = () => {
-      // Modify Title
-      document.title = "Mohan — Founder @ ClickForDigital | B2B SEO Growth Consultant";
-
-      // Dynamically add schema markup (BreadcrumbList)
-      const srvSchemaId = "seo-breadcrumb-jsonld";
-      let script = document.getElementById(srvSchemaId) as HTMLScriptElement;
-      if (!script) {
-        script = document.createElement("script");
-        script.id = srvSchemaId;
-        script.type = "application/ld+json";
-        document.head.appendChild(script);
-      }
-
-      const breadcrumbSchema = {
-        "@context": "https://schema.org",
-        "@type": "BreadcrumbList",
-        "itemListElement": [
-          {
-            "@type": "ListItem",
-            "position": 1,
-            "name": "Home",
-            "item": "https://clickfordigital.com"
-          },
-          {
-            "@type": "ListItem",
-            "position": 2,
-            "name": "Case Studies",
-            "item": "https://clickfordigital.com#case-studies"
-          },
-          {
-            "@type": "ListItem",
-            "position": 3,
-            "name": "AI SEO Auditor Tool",
-            "item": "https://clickfordigital.com#audit"
-          }
-        ]
-      };
-
-      script.textContent = JSON.stringify(breadcrumbSchema);
-    };
-
-    injectSeoMetadata();
-  }, []);
+  // Route router switcher rendering block
+  const renderPage = () => {
+    switch (path) {
+      case "/":
+        return <HomePage />;
+      case "/about":
+        return <AboutPage />;
+      case "/services":
+        return <ServicesPage />;
+      case "/case-studies":
+        return <CaseStudiesPage />;
+      case "/seo-results":
+        return <SeoResultsPage />;
+      case "/blog":
+        return <BlogPage />;
+      case "/faq":
+        return <FaqPage />;
+      case "/contact":
+        return <ContactPage />;
+      default:
+        return (
+          <div className="pt-36 pb-24 text-center min-h-[70vh] flex flex-col items-center justify-center bg-zinc-50 dark:bg-zinc-950 select-none animate-fade-in" id="404-routing-fallback">
+            <div className="w-16 h-16 rounded-2xl bg-red-500/10 text-red-500 flex items-center justify-center text-2xl font-black mb-6">
+              !
+            </div>
+            <h1 className="font-sans font-extrabold text-3xl text-zinc-900 dark:text-white tracking-tight">
+              404 - Node Not Indexed
+            </h1>
+            <p className="mt-3 text-xs sm:text-sm text-zinc-500 dark:text-zinc-400 max-w-sm leading-relaxed font-sans font-medium mb-8">
+              The page you requested is outside our registered organic site architecture. It could have been migrated or re-purposed.
+            </p>
+            <a
+              href="/"
+              onClick={(e) => {
+                e.preventDefault();
+                window.history.pushState(null, "", "/");
+                window.dispatchEvent(new Event("popstate"));
+              }}
+              className="inline-flex items-center gap-2 bg-gradient-to-tr from-teal-500 to-indigo-600 hover:from-teal-600 hover:to-indigo-700 text-white font-bold text-xs px-6 py-3.5 rounded-xl shadow-md cursor-pointer transition-all active:scale-[0.99]"
+            >
+              Back to Home page
+            </a>
+          </div>
+        );
+    }
+  };
 
   return (
     <div className="min-h-screen bg-slate-50 text-zinc-900 dark:bg-zinc-950 dark:text-zinc-100 transition-colors duration-300 antialiased font-sans flex flex-col justify-between">
       
-      {/* Sticky Header */}
+      {/* Sticky Navigation Menu */}
       <Navbar darkMode={darkMode} setDarkMode={setDarkMode} />
 
       {/* Main Page Layout modules */}
-      <main className="flex-grow w-full">
-        {/* HERO SECTION */}
-        <Hero />
-
-        {/* TRUSTSTATS SECTION */}
-        <Stats />
-
-        {/* INTERACTIVE AI AUDITOR TOOL */}
-        <SeoAuditor />
-
-        {/* BIOGRAPHICAL ABOUT SECTION */}
-        <About />
-
-        {/* SERVICES OFFERED CARDS */}
-        <Services />
-
-        {/* ACCORDION CASE STUDIES */}
-        <CaseStudies />
-
-        {/* TECHNICAL WORKFLOW */}
-        <Workflow />
-
-        {/* RESULTS PROOF WITH PHOTO LOADERS */}
-        <ResultsProof />
-
-        {/* TESTIMONIAL CAROUSEL */}
-        <Testimonials />
-
-        {/* UPDATED DYNAMIC BLOG HUB */}
-        <Blog />
-
-        {/* FAQ ACCORDION AND FAQ SCHEMA */}
-        <FaqSection />
-
-        {/* SECURED LEAD CAPTURE FORM CONTROLS */}
-        <ContactSection />
+      <main className="flex-grow w-full relative">
+        {renderPage()}
       </main>
 
       {/* DETAILED ROOT FOOTER */}
       <Footer />
       
     </div>
+  );
+}
+
+export default function App() {
+  return (
+    <RouterProvider>
+      <MainAppContent />
+    </RouterProvider>
   );
 }

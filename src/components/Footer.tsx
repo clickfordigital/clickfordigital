@@ -1,21 +1,14 @@
 import React from "react";
 import { Globe, Heart, Shield, ArrowUp } from "lucide-react";
+import { Link } from "./Router";
 
 export default function Footer() {
   const handleScrollToTop = () => {
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
-  const handleScrollTo = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
-    e.preventDefault();
-    const target = document.querySelector(href);
-    if (target) {
-      target.scrollIntoView({ behavior: "smooth", block: "start" });
-    }
-  };
-
   return (
-    <footer className="bg-zinc-950 text-zinc-400 border-t border-zinc-900 py-16 scroll-mt-2 overflow-hidden select-none">
+    <footer className="bg-zinc-950 text-zinc-400 border-t border-zinc-900 py-16 scroll-mt-2 overflow-hidden select-none animate-fade-in">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         <div className="grid grid-cols-1 md:grid-cols-12 gap-10 md:gap-8 items-start mb-12">
@@ -42,71 +35,71 @@ export default function Footer() {
           </div>
 
           {/* Quick links col */}
-          <div className="md:col-span-2.5">
-            <h4 className="text-[11.5px] font-mono tracking-widest font-extrabold text-white uppercase mb-4">
+          <div className="md:col-span-3">
+            <h4 className="text-[11px] font-mono tracking-widest font-extrabold text-white uppercase mb-4">
               SITE MAPS
             </h4>
             <ul className="space-y-2.5 text-xs">
               <li>
-                <a href="#home" onClick={(e) => handleScrollTo(e, "#home")} className="hover:text-teal-400 transition-colors">
+                <Link to="/" className="hover:text-teal-400 transition-colors">
                   Top Home
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="#about" onClick={(e) => handleScrollTo(e, "#about")} className="hover:text-teal-400 transition-colors">
+                <Link to="/about" className="hover:text-teal-400 transition-colors">
                   About Consultant
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="#case-studies" onClick={(e) => handleScrollTo(e, "#case-studies")} className="hover:text-teal-400 transition-colors">
+                <Link to="/case-studies" className="hover:text-teal-400 transition-colors">
                   Growth Cases
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="#audit" onClick={(e) => handleScrollTo(e, "#audit")} className="hover:text-teal-400 transition-colors">
-                  AI SEO Auditor
-                </a>
+                <Link to="/seo-results" className="hover:text-teal-400 transition-colors">
+                  SEO results Log
+                </Link>
               </li>
               <li>
-                <a href="#blog" onClick={(e) => handleScrollTo(e, "#blog")} className="hover:text-teal-400 transition-colors">
-                  Insights blog
-                </a>
+                <Link to="/blog" className="hover:text-teal-400 transition-colors">
+                  Insights Blog
+                </Link>
               </li>
             </ul>
           </div>
 
           {/* Core Services col */}
-          <div className="md:col-span-2.5">
-            <h4 className="text-[11.5px] font-mono tracking-widest font-extrabold text-white uppercase mb-4">
+          <div className="md:col-span-2">
+            <h4 className="text-[11px] font-mono tracking-widest font-extrabold text-white uppercase mb-4">
               SEO DELIVERABLES
             </h4>
             <ul className="space-y-2.5 text-xs">
               <li>
-                <a href="#services" onClick={(e) => handleScrollTo(e, "#services")} className="hover:text-teal-400 transition-colors">
+                <Link to="/services" className="hover:text-teal-400 transition-colors">
                   Technical Auditing
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="#services" onClick={(e) => handleScrollTo(e, "#services")} className="hover:text-teal-400 transition-colors">
+                <Link to="/services" className="hover:text-teal-400 transition-colors">
                   On-Page Semantic Relevance
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="#services" onClick={(e) => handleScrollTo(e, "#services")} className="hover:text-teal-400 transition-colors">
+                <Link to="/services" className="hover:text-teal-400 transition-colors">
                   E-E-A-T Content Clustering
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="#services" onClick={(e) => handleScrollTo(e, "#services")} className="hover:text-teal-400 transition-colors">
-                  Hyper-Local Search Optimization
-                </a>
+                <Link to="/services" className="hover:text-teal-400 transition-colors">
+                  Hyper-Local SEO Optimization
+                </Link>
               </li>
             </ul>
           </div>
 
           {/* Contact Col */}
           <div className="md:col-span-2 space-y-4">
-            <h4 className="text-[11.5px] font-mono tracking-widest font-extrabold text-white uppercase mb-4">
+            <h4 className="text-[11px] font-mono tracking-widest font-extrabold text-white uppercase mb-4">
               CONTACT INFO
             </h4>
             <p className="text-xs text-zinc-500 leading-normal font-mono select-all">
@@ -115,7 +108,7 @@ export default function Footer() {
             
             <button
               onClick={handleScrollToTop}
-              className="inline-flex items-center gap-1.5 text-xs text-teal-400 hover:text-white transition font-bold"
+              className="inline-flex items-center gap-1.5 text-xs text-teal-400 hover:text-white transition font-bold cursor-pointer"
             >
               Back to peak
               <ArrowUp className="w-3.5 h-3.5" />
@@ -125,7 +118,7 @@ export default function Footer() {
         </div>
 
         {/* Bottom copyright block with compliance specs */}
-        <div className="border-t border-zinc-900 pt-8 mt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-[10px] font-mono text-zinc-600">
+        <div className="border-t border-zinc-900 pt-8 mt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-[10px] font-mono text-zinc-650">
           <span>
             ClickForDigital © 2026. Mohan portfolio website. All Rights Reserved.
           </span>
@@ -137,7 +130,7 @@ export default function Footer() {
             <span className="flex items-center gap-0.5">
               Crafted with
               <Heart className="w-3 h-3 text-red-500 fill-red-500" />
-              by click ClickForDigital
+              by ClickForDigital
             </span>
           </div>
         </div>
