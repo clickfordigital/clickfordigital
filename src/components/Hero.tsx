@@ -1,20 +1,20 @@
 import React, { useState, useEffect } from "react";
-import { ArrowUpRight, Search, TrendingUp, CheckCircle, Smartphone, BarChart3, ArrowRight, Zap } from "lucide-react";
+import { ArrowUpRight, Search, TrendingUp, CheckCircle, Smartphone, BarChart3, ArrowRight, Zap, Percent } from "lucide-react";
 import { motion } from "motion/react";
 import { ResponsiveContainer, AreaChart, Area, XAxis, YAxis, Tooltip, CartesianGrid } from "recharts";
 
 const performanceData = [
-  { month: "Jan", clicks: 12000, impressions: 85000, position: 24 },
-  { month: "Feb", clicks: 15400, impressions: 110000, position: 19 },
-  { month: "Mar", clicks: 23000, impressions: 180000, position: 14 },
-  { month: "Apr", clicks: 38200, impressions: 290000, position: 8.5 },
-  { month: "May", clicks: 54100, impressions: 430050, position: 4.2 },
-  { month: "Jun", clicks: 76800, impressions: 640000, position: 2.1 },
+  { month: "Jan", clicks: 110000, impressions: 850000, position: 14.5, ctr: 8.2 },
+  { month: "Feb", clicks: 125000, impressions: 1100000, position: 13.1, ctr: 8.8 },
+  { month: "Mar", clicks: 140000, impressions: 1300000, position: 12.2, ctr: 9.5 },
+  { month: "Apr", clicks: 160000, impressions: 1450000, position: 11.0, ctr: 10.1 },
+  { month: "May", clicks: 185000, impressions: 1650000, position: 10.3, ctr: 10.6 },
+  { month: "Jun", clicks: 210000, impressions: 1850000, position: 9.8, ctr: 11.1 },
 ];
 
 export default function Hero() {
-  const [activeMetric, setActiveMetric] = useState<"clicks" | "impressions" | "position">("clicks");
-  const [liveCounter, setLiveCounter] = useState(76842);
+  const [activeMetric, setActiveMetric] = useState<"clicks" | "impressions" | "ctr" | "position">("clicks");
+  const [liveCounter, setLiveCounter] = useState(879142);
 
   // Simulate real-time click tracking on Mohan's portfolio to show dynamic energy
   useEffect(() => {
@@ -131,7 +131,7 @@ export default function Hero() {
               transition={{ duration: 0.8, delay: 0.2 }}
               className="bg-white dark:bg-zinc-900 rounded-2xl border border-zinc-100 dark:border-zinc-800/80 shadow-2xl overflow-hidden"
             >
-              {/* Browser Window Chrome */}
+               {/* Browser Window Chrome */}
               <div className="bg-zinc-50 dark:bg-zinc-900/90 px-4 py-3 border-b border-zinc-100 dark:border-zinc-800/50 flex items-center justify-between">
                 <div className="flex items-center gap-1.5">
                   <div className="w-3" />
@@ -141,7 +141,7 @@ export default function Hero() {
                 </div>
                 <div className="bg-zinc-200/40 dark:bg-zinc-800/50 text-zinc-400 dark:text-zinc-500 text-[10px] font-mono py-1 px-8 rounded-md select-none tracking-wider flex items-center gap-1.5">
                   <Search className="w-3.5 h-3.5" />
-                  <span>clickfordigital.com/gsc-dashboard</span>
+                  <span>hanishbagga.com</span>
                 </div>
                 <div className="flex items-center gap-1">
                   <span className="w-1.5 h-1.5 rounded-full bg-teal-500 animate-ping"></span>
@@ -167,67 +167,88 @@ export default function Hero() {
                 </div>
 
                 {/* Metrics tab selector */}
-                <div className="grid grid-cols-3 gap-2.5">
+                <div className="grid grid-cols-2 md:grid-cols-4 gap-2.5">
                   <button
                     onClick={() => setActiveMetric("clicks")}
                     id="tab-metric-clicks"
-                    className={`p-3.5 rounded-xl text-left border transition-all cursor-pointer focus:outline-none ${
+                    className={`p-3 rounded-xl text-left border transition-all cursor-pointer focus:outline-none ${
                       activeMetric === "clicks"
                         ? "border-teal-500 ring-2 ring-teal-500/15 bg-teal-500/5"
                         : "border-zinc-100 dark:border-zinc-800/80 hover:bg-zinc-50 dark:hover:bg-zinc-800/30"
                     }`}
                   >
                     <div className="flex items-center justify-between">
-                      <span className="text-xs text-zinc-500 dark:text-zinc-400 font-medium">Total Clicks</span>
+                      <span className="text-[10px] sm:text-xs text-zinc-500 dark:text-zinc-400 font-medium">Total Clicks</span>
                       <TrendingUp className="w-3.5 h-3.5 text-teal-500" />
                     </div>
-                    <div className="mt-1 font-mono font-extrabold text-xl sm:text-2xl text-zinc-950 dark:text-white">
+                    <div className="mt-1 font-mono font-extrabold text-base sm:text-lg text-zinc-950 dark:text-white">
                       {liveCounter.toLocaleString()}
                     </div>
-                    <div className="text-[10px] font-mono text-teal-600 dark:text-teal-400 font-semibold mt-1 flex items-center gap-0.5">
-                      +142% vs previous period
+                    <div className="text-[9px] font-mono text-teal-600 dark:text-teal-400 font-semibold mt-1 flex items-center gap-0.5 whitespace-nowrap overflow-hidden">
+                      +142% vs group
                     </div>
                   </button>
 
                   <button
                     onClick={() => setActiveMetric("impressions")}
                     id="tab-metric-impressions"
-                    className={`p-3.5 rounded-xl text-left border transition-all cursor-pointer focus:outline-none ${
+                    className={`p-3 rounded-xl text-left border transition-all cursor-pointer focus:outline-none ${
                       activeMetric === "impressions"
                         ? "border-indigo-500 ring-2 ring-indigo-500/15 bg-indigo-500/5"
                         : "border-zinc-100 dark:border-zinc-800/80 hover:bg-zinc-50 dark:hover:bg-zinc-800/30"
                     }`}
                   >
                     <div className="flex items-center justify-between">
-                      <span className="text-xs text-zinc-500 dark:text-zinc-400 font-medium">Impressions</span>
+                      <span className="text-[10px] sm:text-xs text-zinc-500 dark:text-zinc-400 font-medium">Impressions</span>
                       <BarChart3 className="w-3.5 h-3.5 text-indigo-500" />
                     </div>
-                    <div className="mt-1 font-mono font-extrabold text-xl sm:text-2xl text-zinc-950 dark:text-white">
-                      (2.45M)
+                    <div className="mt-1 font-mono font-extrabold text-base sm:text-lg text-zinc-950 dark:text-white">
+                      7.9M
                     </div>
-                    <div className="text-[10px] font-mono text-indigo-600 dark:text-indigo-400 font-semibold mt-1">
-                      +310% search impressions
+                    <div className="text-[9px] font-mono text-indigo-600 dark:text-indigo-400 font-semibold mt-1 whitespace-nowrap overflow-hidden">
+                      +310% search
+                    </div>
+                  </button>
+
+                  <button
+                    onClick={() => setActiveMetric("ctr")}
+                    id="tab-metric-ctr"
+                    className={`p-3 rounded-xl text-left border transition-all cursor-pointer focus:outline-none ${
+                      activeMetric === "ctr"
+                        ? "border-violet-500 ring-2 ring-violet-500/15 bg-violet-500/5"
+                        : "border-zinc-100 dark:border-zinc-800/80 hover:bg-zinc-50 dark:hover:bg-zinc-800/30"
+                    }`}
+                  >
+                    <div className="flex items-center justify-between">
+                      <span className="text-[10px] sm:text-xs text-zinc-500 dark:text-zinc-400 font-medium">Avg. CTR</span>
+                      <Percent className="w-3.5 h-3.5 text-violet-500" />
+                    </div>
+                    <div className="mt-1 font-mono font-extrabold text-base sm:text-lg text-zinc-950 dark:text-white">
+                      11.1%
+                    </div>
+                    <div className="text-[9px] font-mono text-violet-600 dark:text-violet-400 font-semibold mt-1 whitespace-nowrap overflow-hidden">
+                      +18.4% rates
                     </div>
                   </button>
 
                   <button
                     onClick={() => setActiveMetric("position")}
                     id="tab-metric-position"
-                    className={`p-3.5 rounded-xl text-left border transition-all cursor-pointer focus:outline-none ${
+                    className={`p-3 rounded-xl text-left border transition-all cursor-pointer focus:outline-none ${
                       activeMetric === "position"
                         ? "border-amber-500 ring-2 ring-amber-500/15 bg-amber-500/5"
                         : "border-zinc-100 dark:border-zinc-800/80 hover:bg-zinc-50 dark:hover:bg-zinc-800/30"
                     }`}
                   >
                     <div className="flex items-center justify-between">
-                      <span className="text-xs text-zinc-500 dark:text-zinc-400 font-medium">Avg. Position</span>
+                      <span className="text-[10px] sm:text-xs text-zinc-500 dark:text-zinc-400 font-medium">Avg. Position</span>
                       <Smartphone className="w-3.5 h-3.5 text-amber-500" />
                     </div>
-                    <div className="mt-1 font-mono font-extrabold text-xl sm:text-2xl text-zinc-950 dark:text-white">
-                      2.1
+                    <div className="mt-1 font-mono font-extrabold text-base sm:text-lg text-zinc-950 dark:text-white">
+                      9.8
                     </div>
-                    <div className="text-[10px] font-mono text-amber-600 dark:text-amber-400 font-semibold mt-1">
-                      Top #3 Organic Coverage
+                    <div className="text-[9px] font-mono text-amber-600 dark:text-amber-400 font-semibold mt-1 whitespace-nowrap overflow-hidden">
+                      Top #10 Organic
                     </div>
                   </button>
                 </div>
@@ -245,6 +266,10 @@ export default function Hero() {
                       <linearGradient id="colorImpressions" x1="0" y1="0" x2="0" y2="1">
                         <stop offset="5%" stopColor="#6366f1" stopOpacity={0.25} />
                         <stop offset="95%" stopColor="#6366f1" stopOpacity={0.0} />
+                      </linearGradient>
+                      <linearGradient id="colorCtr" x1="0" y1="0" x2="0" y2="1">
+                        <stop offset="5%" stopColor="#8b5cf6" stopOpacity={0.25} />
+                        <stop offset="95%" stopColor="#8b5cf6" stopOpacity={0.0} />
                       </linearGradient>
                       <linearGradient id="colorPosition" x1="0" y1="0" x2="0" y2="1">
                         <stop offset="5%" stopColor="#f59e0b" stopOpacity={0.25} />
@@ -300,6 +325,17 @@ export default function Hero() {
                         strokeWidth={3}
                         fillOpacity={1}
                         fill="url(#colorImpressions)"
+                      />
+                    )}
+
+                    {activeMetric === "ctr" && (
+                      <Area
+                        type="monotone"
+                        dataKey="ctr"
+                        stroke="#8b5cf6"
+                        strokeWidth={3}
+                        fillOpacity={1}
+                        fill="url(#colorCtr)"
                       />
                     )}
 
