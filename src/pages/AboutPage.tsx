@@ -222,7 +222,7 @@ export default function AboutPage() {
                 <div className="shrink-0 relative">
                   <div className="w-28 h-28 sm:w-32 sm:h-32 rounded-full overflow-hidden border-4 border-teal-500/20 dark:border-teal-500/30 shadow-lg bg-zinc-100 dark:bg-zinc-800 flex items-center justify-center">
                     <img 
-                      src="/mohan.png" 
+                      src="/src/assets/images/regenerated_image_1781170156857.jpg" 
                       alt="Mohan - Founder & SEO/SMO Specialist" 
                       className="w-full h-full object-cover"
                       referrerPolicy="no-referrer"
