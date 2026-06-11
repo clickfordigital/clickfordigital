@@ -1,5 +1,5 @@
-# robots.txt ready for clickfordigital.com
+# robots.txt ready for clickfordigital.vercel.app
 User-agent: *
 Allow: /
 
-Sitemap: https://clickfordigital.com/sitemap.xml
+Sitemap: https://clickfordigital.vercel.app/sitemap.xml

@@ -44,6 +44,21 @@ function MainAppContent() {
     }
   }, [darkMode]);
 
+  // Dynamically update Canonical URL for SEO on page route changes
+  useEffect(() => {
+    if (typeof window !== "undefined" && typeof document !== "undefined") {
+      let canonicalLink = document.querySelector('link[rel="canonical"]');
+      if (!canonicalLink) {
+        canonicalLink = document.createElement("link");
+        canonicalLink.setAttribute("rel", "canonical");
+        document.head.appendChild(canonicalLink);
+      }
+      const baseUrl = "https://clickfordigital.vercel.app";
+      const pathSuffix = path === "/" ? "" : path;
+      canonicalLink.setAttribute("href", `${baseUrl}${pathSuffix}`);
+    }
+  }, [path]);
+
   // Route router switcher rendering block
   const renderPage = () => {
     switch (path) {
