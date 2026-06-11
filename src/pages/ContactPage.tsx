@@ -47,7 +47,7 @@ export default function ContactPage() {
             </p>
           </div>
           <Link
-            to="/case-studies"
+            to="/"
             id="contact-cta-to-case-studies"
             className="inline-flex items-center gap-1 text-xs font-bold text-teal-600 dark:text-teal-400 hover:text-teal-700 dark:hover:text-teal-300 transition duration-200"
           >

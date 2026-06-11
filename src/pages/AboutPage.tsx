@@ -359,6 +359,140 @@ export default function AboutPage() {
           </div>
         </section>
 
+        {/* SECTION E: EDUCATION & CAREER JOURNEY */}
+        <section id="education-experience" className="mb-20 pt-10 border-t border-zinc-200/60 dark:border-zinc-900/60">
+          <div className="mb-10 text-center lg:text-left">
+            <span className="text-[10px] font-mono font-bold tracking-widest text-teal-600 dark:text-teal-400 uppercase bg-teal-505/10 px-3 py-1 rounded-md inline-block mb-2">
+              MY STORY & JOURNEY
+            </span>
+            <h2 className="font-sans font-extrabold text-2xl text-zinc-900 dark:text-white tracking-tight">
+              Education, College & Experience
+            </h2>
+            <p className="mt-2 text-xs sm:text-sm text-zinc-500 dark:text-zinc-400 font-sans font-medium">
+              A timeline of my professional experience, academic background, and milestones scaling organic revenue models.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
+            {/* Left Column: Career Experience Timeline */}
+            <div className="lg:col-span-7 space-y-6">
+              <h3 className="font-sans font-extrabold text-lg text-zinc-950 dark:text-white flex items-center gap-2 mb-4">
+                <span className="w-1.5 h-6 bg-teal-500 rounded-full inline-block"></span>
+                Experience & Milestones
+              </h3>
+
+              <div className="relative border-l border-zinc-200 dark:border-zinc-800 pl-6 ml-3 space-y-8">
+                {/* Milestone 1 */}
+                <div className="relative">
+                  <div className="absolute -left-[31px] top-1.5 w-4 h-4 rounded-full bg-white dark:bg-zinc-950 border-4 border-teal-500 z-10"></div>
+                  <div>
+                    <span className="font-mono text-[10px] font-black text-teal-600 dark:text-teal-400 bg-teal-500/10 px-2.5 py-0.5 rounded-full uppercase">
+                      2024 - Present
+                    </span>
+                    <h4 className="font-sans font-bold text-sm sm:text-base text-zinc-900 dark:text-white mt-2">
+                      Founder & Lead SEO Consultant
+                    </h4>
+                    <p className="text-xs text-zinc-500 dark:text-zinc-400 font-medium font-mono">
+                      ClickForDigital
+                    </p>
+                    <p className="mt-2 text-xs sm:text-sm text-zinc-650 dark:text-zinc-400 leading-relaxed font-sans">
+                      Established an elite, results-focused SEO consultancy managing search engine optimization campaigns. Audited, structured, and deployed technical optimizations for high-authority brands like Acharya Ganesh and Hanish Bagga. Multiplied aggregate client search click volume by over 600%.
+                    </p>
+                  </div>
+                </div>
+
+                {/* Milestone 2 */}
+                <div className="relative">
+                  <div className="absolute -left-[31px] top-1.5 w-4 h-4 rounded-full bg-white dark:bg-zinc-950 border-4 border-zinc-300 dark:border-zinc-700 z-10"></div>
+                  <div>
+                    <span className="font-mono text-[10px] bg-zinc-200 dark:bg-zinc-800 text-zinc-650 dark:text-zinc-350 px-2.5 py-0.5 rounded-full uppercase">
+                      2022 - 2024
+                    </span>
+                    <h4 className="font-sans font-bold text-sm sm:text-base text-zinc-900 dark:text-white mt-2">
+                      Senior SEO & SMO Specialist (Freelance)
+                    </h4>
+                    <p className="text-xs text-zinc-500 dark:text-zinc-400 font-medium font-mono">
+                      Independent Search Consultancy
+                    </p>
+                    <p className="mt-2 text-xs sm:text-sm text-zinc-650 dark:text-zinc-400 leading-relaxed font-sans">
+                      Partnered directly with growing brands to build comprehensive On-Page, Off-Page, and Social Media Optimization (SMO) systems. Handled complex WordPress, Webflow, and custom code site architectures to ensure flawless crawl eligibility and zero script-blocking.
+                    </p>
+                  </div>
+                </div>
+
+                {/* Milestone 3 */}
+                <div className="relative">
+                  <div className="absolute -left-[31px] top-1.5 w-4 h-4 rounded-full bg-white dark:bg-zinc-950 border-4 border-zinc-300 dark:border-zinc-700 z-10"></div>
+                  <div>
+                    <span className="font-mono text-[10px] bg-zinc-200 dark:bg-zinc-800 text-zinc-650 dark:text-zinc-350 px-2.5 py-0.5 rounded-full uppercase">
+                      2021 - 2022
+                    </span>
+                    <h4 className="font-sans font-bold text-sm sm:text-base text-zinc-900 dark:text-white mt-2">
+                      Associate SEO & Content Strategist
+                    </h4>
+                    <p className="text-xs text-zinc-500 dark:text-zinc-400 font-medium font-mono">
+                      Digital Growth Agency
+                    </p>
+                    <p className="mt-2 text-xs sm:text-sm text-zinc-650 dark:text-zinc-400 leading-relaxed font-sans">
+                      Executed client keyword research with Ahrefs and SEMrush, repaired schema errors, and streamlined copywriting layouts for semantic density. Managed reporting metrics within Google Search Console and Google Analytics 4.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Right Column: Academic & College Education */}
+            <div className="lg:col-span-10 xl:col-span-5 space-y-6">
+              <h3 className="font-sans font-extrabold text-lg text-zinc-950 dark:text-white flex items-center gap-2 mb-4">
+                <span className="w-1.5 h-6 bg-indigo-500 rounded-full inline-block"></span>
+                Academic & College Education
+              </h3>
+
+              <div className="bg-white dark:bg-zinc-900 border border-zinc-150 dark:border-zinc-850 rounded-2xl p-6 sm:p-8 space-y-6 relative overflow-hidden shadow-xs">
+                <div className="absolute top-0 right-0 w-24 h-24 bg-indigo-500/5 rounded-full blur-xl"></div>
+                
+                {/* Education Entry 1 */}
+                <div className="flex gap-4 items-start pb-5 border-b border-zinc-100 dark:border-zinc-850">
+                  <div className="p-2 bg-indigo-500/10 text-indigo-505 rounded-xl">
+                    <BookOpen className="w-5 h-5" />
+                  </div>
+                  <div>
+                    <span className="text-[9px] font-mono text-zinc-400 uppercase block font-bold">Delhi University (DU)</span>
+                    <h4 className="font-sans font-bold text-sm sm:text-base text-zinc-900 dark:text-white mt-0.5">
+                      Bachelor of Computer Applications (BCA)
+                    </h4>
+                    <p className="text-xs text-zinc-500 dark:text-zinc-400 font-sans mt-1">
+                      Focus on Web Programming, Database Systems, Software Engineering, and Organic Communication. Enabled deep understanding of crawl technologies, DNS setups, and index-friendly frontends.
+                    </p>
+                    <span className="inline-block mt-2 font-mono text-[10px] text-zinc-500 font-bold bg-zinc-100 dark:bg-zinc-800 px-2 py-0.5 rounded-sm">
+                      Graduated 2021
+                    </span>
+                  </div>
+                </div>
+
+                {/* Education Entry 2 */}
+                <div className="flex gap-4 items-start">
+                  <div className="p-2 bg-teal-500/10 text-teal-500 rounded-xl">
+                    <Award className="w-5 h-5" />
+                  </div>
+                  <div>
+                    <span className="text-[9px] font-mono text-zinc-400 uppercase block font-bold">Delhi Institute of Technology</span>
+                    <h4 className="font-sans font-bold text-sm sm:text-base text-zinc-900 dark:text-white mt-0.5">
+                      Advanced Professional Diploma in Digital Marketing
+                    </h4>
+                    <p className="text-xs text-zinc-500 dark:text-zinc-400 font-sans mt-1">
+                      Specialized coursework in Google Algorithms, Technical Content Outlining, Core Web Vitals profiling, and Search Console Diagnostics. Approved GAIQ and Advanced HubSpot certifications with distinction.
+                    </p>
+                    <span className="inline-block mt-2 font-mono text-[10px] text-zinc-500 font-bold bg-zinc-100 dark:bg-zinc-800 px-2 py-0.5 rounded-sm">
+                      Completed 2021
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
         {/* SECTION C: CERTIFICATIONS SECTION */}
         <section id="certifications" className="mb-20 pt-10 border-t border-zinc-200/60 dark:border-zinc-900/60">
           <div className="mb-8">

@@ -42,7 +42,7 @@ export default function Footer() {
             <ul className="space-y-2.5 text-xs">
               <li>
                 <Link to="/" className="hover:text-teal-400 transition-colors">
-                  Top Home
+                  Portfolio (Home)
                 </Link>
               </li>
               <li>
@@ -51,18 +51,13 @@ export default function Footer() {
                 </Link>
               </li>
               <li>
-                <Link to="/case-studies" className="hover:text-teal-400 transition-colors">
-                  Growth Cases
+                <Link to="/services" className="hover:text-teal-400 transition-colors">
+                  Core Services
                 </Link>
               </li>
               <li>
-                <Link to="/seo-results" className="hover:text-teal-400 transition-colors">
-                  SEO results Log
-                </Link>
-              </li>
-              <li>
-                <Link to="/blog" className="hover:text-teal-400 transition-colors">
-                  Insights Blog
+                <Link to="/contact" className="hover:text-teal-400 transition-colors">
+                  Contact & Consultation
                 </Link>
               </li>
             </ul>

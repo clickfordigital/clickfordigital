@@ -22,13 +22,9 @@ export default function Navbar({ darkMode, setDarkMode }: NavbarProps) {
   }, []);
 
   const navLinks = useMemo(() => [
-    { name: "Home", href: "/" },
+    { name: "Portfolio", href: "/" },
     { name: "About", href: "/about" },
-    { name: "Case Studies", href: "/case-studies" },
     { name: "Services", href: "/services" },
-    { name: "SEO Results", href: "/seo-results" },
-    { name: "Blog", href: "/blog" },
-    { name: "FAQ", href: "/faq" },
     { name: "Contact", href: "/contact" },
   ], []);
 

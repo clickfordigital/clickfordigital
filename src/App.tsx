@@ -12,10 +12,6 @@ import Footer from "./components/Footer";
 import HomePage from "./pages/HomePage";
 import AboutPage from "./pages/AboutPage";
 import ServicesPage from "./pages/ServicesPage";
-import CaseStudiesPage from "./pages/CaseStudiesPage";
-import SeoResultsPage from "./pages/SeoResultsPage";
-import BlogPage from "./pages/BlogPage";
-import FaqPage from "./pages/FaqPage";
 import ContactPage from "./pages/ContactPage";
 
 function MainAppContent() {
@@ -68,14 +64,6 @@ function MainAppContent() {
         return <AboutPage />;
       case "/services":
         return <ServicesPage />;
-      case "/case-studies":
-        return <CaseStudiesPage />;
-      case "/seo-results":
-        return <SeoResultsPage />;
-      case "/blog":
-        return <BlogPage />;
-      case "/faq":
-        return <FaqPage />;
       case "/contact":
         return <ContactPage />;
       default:

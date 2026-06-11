@@ -47,11 +47,11 @@ export default function BlogPage() {
             </p>
           </div>
           <Link
-            to="/faq"
-            id="blog-cta-to-faq"
+            to="/contact"
+            id="blog-cta-to-contact"
             className="inline-flex items-center gap-1 text-xs font-bold text-orange-600 dark:text-orange-400 hover:text-orange-700 dark:hover:text-orange-300 transition duration-200"
           >
-            Read Our FAQ Section
+            Contact Mohan Directly
             <ArrowRight className="w-4 h-4" />
           </Link>
         </div>
