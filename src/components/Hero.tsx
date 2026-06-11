@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from "react";
-import { ArrowUpRight, Search, TrendingUp, CheckCircle, Smartphone, BarChart3, ArrowRight, Zap, Percent } from "lucide-react";
+import { ArrowUpRight, Search, TrendingUp, CheckCircle, Smartphone, BarChart3, ArrowRight, Zap, Percent, ShieldCheck, Globe, Cog } from "lucide-react";
 import { motion } from "motion/react";
 import { ResponsiveContainer, AreaChart, Area, XAxis, YAxis, Tooltip, CartesianGrid } from "recharts";
+import { Link } from "./Router";
 
 const performanceData = [
   { month: "Jan", clicks: 110000, impressions: 850000, position: 14.5, ctr: 8.2 },
@@ -50,7 +51,7 @@ export default function Hero() {
               transition={{ duration: 0.5 }}
               className="inline-flex items-center gap-2 bg-teal-50 dark:bg-teal-950/40 border border-teal-200/50 dark:border-teal-900/40 text-teal-700 dark:text-teal-300 px-3 py-1.5 rounded-full text-xs font-semibold tracking-wide w-fit mx-auto lg:mx-0 mb-6"
             >
-              <Zap className="w-3.5 h-3.5 fill-teal-600 dark:fill-teal-400" />
+              <Zap className="w-3.5 h-3.5 fill-teal-600 dark:fill-teal-400 animate-pulse" />
               <span>Rank #1. Drive Revenue. Scale Trust.</span>
             </motion.div>
 
@@ -59,7 +60,7 @@ export default function Hero() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.1 }}
               id="hero-headline"
-              className="font-sans font-extrabold text-4xl sm:text-5xl lg:text-5xl tracking-tight leading-[1.1] text-zinc-900 dark:text-white"
+              className="font-sans font-extrabold text-4xl sm:text-5xl lg:text-4xl xl:text-5xl tracking-tight leading-[1.1] text-zinc-900 dark:text-white"
             >
               Helping Businesses Grow Through <span className="text-transparent bg-clip-text bg-gradient-to-r from-teal-500 to-indigo-600">Data-Driven SEO</span>
             </motion.h1>
@@ -69,35 +70,78 @@ export default function Hero() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.2 }}
               id="hero-subheadline"
-              className="mt-6 text-base sm:text-lg text-zinc-600 dark:text-zinc-400 font-medium leading-relaxed"
+              className="mt-5 text-sm sm:text-base text-zinc-600 dark:text-zinc-400 font-medium leading-relaxed"
             >
-              I help websites increase organic traffic, rankings, leads, and revenue using proven, white-hat SEO strategies and proprietary Core Web Vitals optimization.
+              I am <strong className="text-zinc-900 dark:text-white">Mohan</strong>, a professional <strong className="text-teal-600 dark:text-teal-400">SEO & SMO Specialist</strong> and founder of <strong className="text-zinc-950 dark:text-white">ClickForDigital</strong>. I help websites increase organic traffic, rankings, leads, and revenue using proven, white-hat SEO strategies and proprietary Core Web Vitals optimization.
             </motion.p>
+
+            {/* Experience Highlights */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.25 }}
+              className="mt-4 p-3 rounded-xl bg-zinc-100/50 dark:bg-zinc-900/40 border border-zinc-200/30 dark:border-zinc-850/50 text-xs text-zinc-650 dark:text-zinc-400 text-left"
+            >
+              <span className="font-bold text-teal-600 dark:text-teal-400 block uppercase tracking-wider text-[10px] mb-1 font-mono">
+                Experience Highlights:
+              </span>
+              Proven organic performance consultancy and search campaigns managed for clients such as <strong className="text-zinc-900 dark:text-white">Acharya Ganesh</strong> and <strong className="text-zinc-900 dark:text-white">Hanish Bagga</strong>.
+            </motion.div>
+
+            {/* Tools Showcase */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.28 }}
+              className="mt-4 text-left"
+            >
+              <span className="font-bold text-zinc-400 dark:text-zinc-500 block uppercase tracking-wider text-[10px] mb-2 font-mono">
+                SEO Tools Showcase:
+              </span>
+              <div className="flex flex-wrap gap-1.5">
+                {[
+                  "Google Search Console",
+                  "Ahrefs",
+                  "SEMrush",
+                  "Screaming Frog",
+                  "PageSpeed Insights",
+                  "Yoast",
+                  "RankMath"
+                ].map((tool) => (
+                  <span
+                    key={tool}
+                    className="px-2 py-1 bg-white dark:bg-zinc-900 border border-zinc-200/50 dark:border-zinc-800 text-[10px] font-mono font-medium text-zinc-600 dark:text-zinc-350 rounded-md"
+                  >
+                    {tool}
+                  </span>
+                ))}
+              </div>
+            </motion.div>
 
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.3 }}
-              className="mt-8 flex flex-col sm:flex-row gap-4 justify-center lg:justify-start"
+              className="mt-6 flex flex-col sm:flex-row gap-3 justify-center lg:justify-start"
               id="hero-ctas"
             >
-              <button
-                onClick={() => handleScrollTo("#case-studies")}
+              <Link
+                to="/case-studies"
                 id="btn-hero-case-studies"
-                className="bg-gradient-to-r from-teal-500 to-teal-600 text-white rounded-xl px-6 py-3.5 text-sm font-semibold tracking-normal shadow-md hover:shadow-lg shadow-teal-500/10 hover:shadow-teal-500/20 hover:scale-[1.02] active:scale-[0.98] transition-all flex items-center justify-center gap-2 cursor-pointer focus:outline-none"
+                className="bg-gradient-to-r from-teal-500 to-teal-600 text-white rounded-xl px-6 py-3 text-xs sm:text-sm font-semibold tracking-normal shadow-md hover:shadow-lg shadow-teal-500/10 hover:shadow-teal-500/20 hover:scale-[1.01] active:scale-[0.99] transition-all flex items-center justify-center gap-1.5 cursor-pointer focus:outline-none"
               >
-                View Case Studies
+                View Portfolio
                 <ArrowRight className="w-4 h-4" />
-              </button>
+              </Link>
 
-              <button
-                onClick={() => handleScrollTo("#contact")}
+              <Link
+                to="/contact"
                 id="btn-hero-consultation"
-                className="border border-zinc-200 dark:border-zinc-800 text-zinc-900 dark:text-zinc-100 bg-white dark:bg-zinc-900/60 rounded-xl px-6 py-3.5 text-sm font-semibold tracking-normal shadow-sm hover:bg-zinc-50 dark:hover:bg-zinc-800/80 hover:scale-[1.02] active:scale-[0.98] transition-all flex items-center justify-center gap-2 cursor-pointer focus:outline-none"
+                className="border border-zinc-200 dark:border-zinc-800 text-zinc-900 dark:text-zinc-100 bg-white dark:bg-zinc-900/60 rounded-xl px-6 py-3 text-xs sm:text-sm font-semibold tracking-normal shadow-sm hover:bg-zinc-50 dark:hover:bg-zinc-800/80 hover:scale-[1.01] active:scale-[0.99] transition-all flex items-center justify-center gap-1.5 cursor-pointer focus:outline-none"
               >
-                Book SEO Consultation
+                Contact Me
                 <ArrowUpRight className="w-4 h-4 text-zinc-500" />
-              </button>
+              </Link>
             </motion.div>
 
             {/* Micro proof badges */}
@@ -105,20 +149,20 @@ export default function Hero() {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ duration: 0.8, delay: 0.5 }}
-              className="mt-10 pt-8 border-t border-zinc-200/60 dark:border-zinc-900/60 flex flex-wrap gap-x-6 gap-y-3 justify-center lg:justify-start text-xs text-zinc-500 dark:text-zinc-400 font-sans"
+              className="mt-8 pt-6 border-t border-zinc-200/60 dark:border-zinc-900/60 flex flex-wrap gap-x-5 gap-y-2.5 justify-center lg:justify-start text-[11px] text-zinc-550 dark:text-zinc-400 font-sans"
               id="hero-micro-proof"
             >
               <div className="flex items-center gap-1.5">
-                <CheckCircle className="w-4 h-4 text-teal-500" />
-                <span>100% Google Safe (White-Hat)</span>
+                <CheckCircle className="w-3.5 h-3.5 text-teal-500" />
+                <span>100% Google Safe White-Hat</span>
               </div>
               <div className="flex items-center gap-1.5">
-                <CheckCircle className="w-4 h-4 text-indigo-500" />
-                <span>10x Growth Case Studies</span>
+                <CheckCircle className="w-3.5 h-3.5 text-[#0ea5e9]" />
+                <span>Organic Rank Spikes Proven</span>
               </div>
               <div className="flex items-center gap-1.5">
-                <CheckCircle className="w-4 h-4 text-teal-600" />
-                <span>E-E-A-T SEO Framework</span>
+                <CheckCircle className="w-3.5 h-3.5 text-indigo-500" />
+                <span>SMO Optimization Synergies</span>
               </div>
             </motion.div>
           </div>

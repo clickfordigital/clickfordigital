@@ -47,38 +47,34 @@ function Counter({ value, suffix }: { value: number; suffix: string }) {
 }
 
 export default function Stats() {
-  const statsList: StatItem[] = [
+  const statsList = [
     {
-      id: "stat-keywords",
-      label: "First Page Keywords",
-      value: 12500,
-      suffix: "+",
-      icon: <TrendingUp className="w-6 h-6 text-teal-600 dark:text-teal-400" />,
-      color: "from-teal-500/10 to-teal-500/20",
+      id: "stat-companies",
+      label: "Companies Worked With",
+      value: 2,
+      suffix: "",
+      icon: <Users className="w-6 h-6 text-teal-600 dark:text-teal-400" />,
     },
     {
-      id: "stat-traffic",
-      label: "Organic Traffic Driven",
-      value: 14,
-      suffix: "M+",
-      icon: <Users className="w-6 h-6 text-indigo-600 dark:text-indigo-400" />,
-      color: "from-indigo-500/10 to-indigo-500/15",
+      id: "stat-websites",
+      label: "Websites Managed",
+      value: 3,
+      suffix: "",
+      icon: <TrendingUp className="w-6 h-6 text-indigo-600 dark:text-indigo-400" />,
+    },
+    {
+      id: "stat-[#0ea5e9]",
+      label: "SEO & SMO Specialist",
+      value: 100,
+      suffix: "%",
+      icon: <Award className="w-6 h-6 text-[#0ea5e9]" />,
     },
     {
       id: "stat-projects",
-      label: "Ranked Projects Done",
-      value: 180,
+      label: "SEO Projects Completed",
+      value: 10,
       suffix: "+",
-      icon: <Award className="w-6 h-6 text-amber-600 dark:text-amber-400" />,
-      color: "from-amber-500/10 to-amber-500/15",
-    },
-    {
-      id: "stat-years",
-      label: "Years of Expert Trial",
-      value: 8,
-      suffix: "+",
-      icon: <Calendar className="w-6 h-6 text-rose-600 dark:text-rose-400" />,
-      color: "from-rose-500/10 to-rose-500/15",
+      icon: <Calendar className="w-6 h-6 text-rose-605 dark:text-rose-405" />,
     },
   ];
 

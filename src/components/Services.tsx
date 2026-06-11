@@ -1,5 +1,5 @@
 import React from "react";
-import { Cpu, Search, Key, Compass, PenTool, MapPin, Link, Gauge, ArrowUpRight } from "lucide-react";
+import { Cpu, Search, Key, Compass, PenTool, MapPin, Link, Gauge, ArrowUpRight, Share2, Layers, Users, Sparkles, Eye } from "lucide-react";
 import { motion } from "motion/react";
 
 interface ServiceItem {
@@ -14,97 +14,104 @@ interface ServiceItem {
 export default function Services() {
   const servicesList: ServiceItem[] = [
     {
+      id: "srv-onpage",
+      name: "On Page SEO",
+      icon: <PenTool className="w-5 h-5 text-blue-600 dark:text-blue-400" />,
+      desc: "Fine-tuning headings, titles, image metadata, and semantic frequency arrays to rank your primary page nodes for target transactional queries.",
+      processTime: "Every page",
+      deliverables: ["Meta tags mapping & deployment", "Semantic density matching & NLP alignment", "Heading structures (H1-H4) audit"]
+    },
+    {
+      id: "srv-offpage",
+      name: "Off Page SEO",
+      icon: <Share2 className="w-5 h-5 text-indigo-600 dark:text-indigo-400" />,
+      desc: "Securing high-tier editorial links and citations from authoritative, industry-approved business platforms to boost target domain rating trust indexes.",
+      processTime: "Monthly syncs",
+      deliverables: ["High-authority guest outreach", "Contextual backlink asset distribution", "Toxic links audit & disavow mapping"]
+    },
+    {
       id: "srv-technical",
       name: "Technical SEO",
       icon: <Cpu className="w-5 h-5 text-teal-600 dark:text-teal-400" />,
-      desc: "Repairing hidden crawlability and indexation structural problems that block search engines from parsing your primary domains correctly.",
+      desc: "Assuring zero structural indexation leaks or slow performance benchmarks to satisfy standard search algorithms and Core Web Vitals targets.",
       processTime: "Continuous",
-      deliverables: ["Core Web Vitals Audit", "Crawl Budget Mapping", "HTTPS & SSL Repairs"]
+      deliverables: ["Core Web Vitals layout shift fixes", "Sitemap hierarchy & Robots.txt checks", "Structured Schema mapping (JSON-LD)"]
+    },
+    {
+      id: "srv-local",
+      name: "Local SEO",
+      icon: <MapPin className="w-5 h-5 text-emerald-600 dark:text-emerald-400" />,
+      desc: "Optimizing Google Business Profile listings and localized regional search citations to lock down top ranks in city and regional search boxes.",
+      processTime: "Weekly review",
+      deliverables: ["Google Business Profile verification", "Geographic NAP synchronization", "Local map pack rankings defense"]
     },
     {
       id: "srv-audit",
-      name: "Comprehensive SEO Audit",
-      icon: <Search className="w-5 h-5 text-indigo-600 dark:text-indigo-400" />,
-      desc: "A thorough evaluation of your entire organic footprint, benchmarked against competitors to reveal quick-wins.",
-      processTime: "7-14 Days",
-      deliverables: ["Actionable Roadmap", "Competitor Matrix Analysis", "Error Backlog Mapping"]
+      name: "SEO Audit",
+      icon: <Search className="w-5 h-5 text-teal-700 dark:text-teal-400" />,
+      desc: "A surgical inspection of your entire domain architecture and legacy index configurations to pinpoint and dismantle growth bottlenecks.",
+      processTime: "Immediate",
+      deliverables: ["Technical index block diagnostics", "Crawl-budget depletion report", "Site structure optimization schema"]
     },
     {
       id: "srv-keyword",
       name: "Keyword Research",
       icon: <Key className="w-5 h-5 text-amber-600 dark:text-amber-400" />,
-      desc: "Locating high-volume, low-competition, transaction-oriented commercial phrases that represent immediate sales revenue channels.",
-      processTime: "5-10 Days",
-      deliverables: ["Transactional Map Grid", "Search Intent Auditing", "SERP Friction Scores"]
+      desc: "Unearthing high-intent, low-difficulty phrases representing active customer search pipelines that translate directly into inbound revenue.",
+      processTime: "5 Days",
+      deliverables: ["Commercial intent indexing maps", "Competitor keyword gap matrices", "Search volume-difficulty ratios"]
     },
     {
-      id: "srv-content",
-      name: "Content Strategy & Hubs",
-      icon: <Compass className="w-5 h-5 text-rose-600 dark:text-rose-450" />,
-      desc: "Structuring top-tier, E-E-A-T compliant topical clusters designed to convert raw informational queries into direct customer inquiries.",
-      processTime: "Monthly cycles",
-      deliverables: ["Topical Cluster Blueprint", "E-E-A-T Content Calendars", "Keyword Gap Auditing"]
+      id: "srv-competitor",
+      name: "Competitor Analysis",
+      icon: <Eye className="w-5 h-5 text-rose-600 dark:text-rose-400" />,
+      desc: "Reverse-engineering your competitors' leading organic templates, backlink portfolios, and traffic-generation pillars to overtake them.",
+      processTime: "Specialized",
+      deliverables: ["Organic market-share breakdowns", "Source backlink profiling", "Competitor content gap diagnostics"]
     },
     {
-      id: "srv-onpage",
-      name: "On-Page SEO Relevance",
-      icon: <PenTool className="w-5 h-5 text-blue-600 dark:text-blue-400" />,
-      desc: "Optimizing headers, meta text, image markers, and page titles to align perfectly with target keywords.",
-      processTime: "Continuous",
-      deliverables: ["Snippet REST optimization", "Heading Structure Audits", "Internal Link Mesh Networks"]
+      id: "srv-wordpress",
+      name: "WordPress SEO",
+      icon: <Layers className="w-5 h-5 text-violet-600 dark:text-violet-400" />,
+      desc: "Calibrating WordPress platforms with RankMath or Yoast, speeding up render times, and setting up perfect internal link grids.",
+      processTime: "On-demand",
+      deliverables: ["RankMath / Yoast master setup", "Theme asset light-weight tuning", "Permalinks and taxonomy diagnostics"]
     },
     {
-      id: "srv-local",
-      name: "Local SEO & Citations",
-      icon: <MapPin className="w-5 h-5 text-emerald-600 dark:text-emerald-400" />,
-      desc: "Dominating local territory and search channels by aligning maps, citations, and regional schemas.",
-      processTime: "Weekly syncs",
-      deliverables: ["Google Business Alignment", "Citation NAP Consistency Profiles", "Geographic Suburb Blog Guides"]
+      id: "srv-smo",
+      name: "Social Media Optimization (SMO)",
+      icon: <Users className="w-5 h-5 text-pink-600 dark:text-pink-400" />,
+      desc: "Amplifying organic digital brand awareness and content distribution across social channels to drive auxiliary referral traffic layers.",
+      processTime: "Weekly plans",
+      deliverables: ["Platform bio & visual optimization", "Shareable content loop blueprints", "Referral traffic monitoring logs"]
     },
     {
-      id: "srv-link",
-      name: "Authority Link Building",
-      icon: <Link className="w-5 h-5 text-purple-600 dark:text-purple-400" />,
-      desc: "Acquiring high-authority, contextual editorial links from certified domains to raise overall search score confidence.",
-      processTime: "Monthly pipeline",
-      deliverables: ["Digital PR Outreaches", "Broken Link Restoration", "Niche Mentions Reclaims"]
-    },
-    {
-      id: "srv-speed",
-      name: "Website Optimization & UX",
-      icon: <Gauge className="w-5 h-5 text-cyan-600 dark:text-cyan-400" />,
-      desc: "Supercharging mobile render times and layout stability (CLS) to guarantee that incoming organic leads convert into paid buyers.",
-      processTime: "7 Days Audit",
-      deliverables: ["Mobile Accessibility Fixes", "Asset Compress Matrices", "Form Conversion Audits"]
+      id: "srv-content-opt",
+      name: "Content Optimization",
+      icon: <Sparkles className="w-5 h-5 text-cyan-600 dark:text-cyan-400" />,
+      desc: "Polishing existing articles and sales pages using search-intent mapping to expand thematic footprint and boost CTR scores.",
+      processTime: "Ongoing",
+      deliverables: ["Topical relevance gap patching", "Click-through title tuning", "Structured readable callouts"]
     }
   ];
 
-  const handleScrollTo = (id: string) => {
-    const target = document.querySelector(id);
+  const handleScrollToContact = () => {
+    // Multi-page friendly, fallback scroll or route to contact
+    const target = document.querySelector("#contact");
     if (target) {
       target.scrollIntoView({ behavior: "smooth", block: "start" });
+    } else {
+      window.history.pushState(null, "", "/contact");
+      window.dispatchEvent(new Event("popstate"));
     }
   };
 
   return (
-    <section id="services" className="py-24 bg-slate-50/50 dark:bg-zinc-950/40 scroll-mt-12">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="services" className="py-12 bg-transparent scroll-mt-12">
+      <div className="max-w-7xl mx-auto">
         
-        {/* Section Header */}
-        <div className="text-center max-w-3xl mx-auto mb-16">
-          <span className="text-xs font-mono font-bold tracking-widest text-teal-600 dark:text-teal-400 uppercase block">
-            Core SEO Services
-          </span>
-          <h2 className="mt-2 font-sans font-extrabold text-3xl sm:text-4xl text-zinc-900 dark:text-white tracking-tight">
-            Comprehensive Growth Solutions
-          </h2>
-          <p className="mt-4 text-zinc-500 dark:text-zinc-400 text-sm sm:text-base font-sans font-medium">
-            Strategic deliverables and optimization routines engineered to drive scalable Google search conversions.
-          </p>
-        </div>
-
-        {/* Services Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8" id="services-grid">
+        {/* Services Grid (Optimized 3-Column rhythmic layout for 10 items) */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8" id="services-grid">
           {servicesList.map((srv, idx) => (
             <motion.div
               key={srv.id}
@@ -113,15 +120,15 @@ export default function Services() {
               viewport={{ once: true }}
               transition={{ duration: 0.4, delay: idx * 0.05 }}
               id={srv.id}
-              className="bg-white dark:bg-zinc-900 rounded-2xl border border-zinc-150/80 dark:border-zinc-900 p-6 flex flex-col justify-between shadow-sm hover:shadow-md hover:border-teal-500/30 dark:hover:border-teal-500/20 hover:scale-[1.01] transition-all duration-300 group"
+              className="bg-white dark:bg-zinc-950 rounded-2xl border border-zinc-150/80 dark:border-zinc-900 p-6 flex flex-col justify-between shadow-xs hover:shadow-md hover:border-teal-500/30 dark:hover:border-teal-500/20 hover:scale-[1.01] transition-all duration-300 group"
             >
               <div>
                 {/* Header elements */}
                 <div className="flex items-center justify-between">
-                  <div className="w-10 h-10 rounded-xl bg-zinc-50 dark:bg-zinc-950 border border-zinc-100 dark:border-zinc-800 flex items-center justify-center group-hover:scale-105 group-hover:border-teal-500/20 transition-all duration-300">
+                  <div className="w-10 h-10 rounded-xl bg-zinc-50 dark:bg-zinc-900 border border-zinc-105 dark:border-zinc-800 flex items-center justify-center group-hover:scale-105 group-hover:border-teal-500/20 transition-all duration-300">
                     {srv.icon}
                   </div>
-                  <span className="font-mono text-[9px] font-bold text-zinc-400 uppercase">
+                  <span className="font-mono text-[9px] font-semibold text-zinc-400 dark:text-zinc-500 uppercase">
                     Cycle: {srv.processTime}
                   </span>
                 </div>
@@ -130,7 +137,7 @@ export default function Services() {
                   {srv.name}
                 </h3>
 
-                <p className="mt-2.5 text-xs text-zinc-550 dark:text-zinc-400 leading-relaxed font-sans font-medium">
+                <p className="mt-2.5 text-xs text-zinc-500 dark:text-zinc-400 leading-relaxed font-sans font-medium">
                   {srv.desc}
                 </p>
               </div>
@@ -140,20 +147,20 @@ export default function Services() {
                 <span className="text-[9px] font-mono tracking-wider font-extrabold text-zinc-400 dark:text-zinc-550 uppercase block mb-2">
                   KEY ACTION ITEMS:
                 </span>
-                <ul className="space-y-1.5 mb-5 select-none">
+                <ul className="space-y-1.5 mb-5 select-none text-left">
                   {srv.deliverables.map((del, dIdx) => (
-                    <li key={dIdx} className="text-[10px] sm:text-xs font-sans text-zinc-600 dark:text-zinc-400 flex items-center gap-1.5">
-                      <span className="w-1 h-1 rounded-full bg-teal-500 shrink-0" />
-                      <span className="font-medium leading-none">{del}</span>
+                    <li key={dIdx} className="text-[11px] font-sans text-zinc-650 dark:text-zinc-450 flex items-start gap-1.5">
+                      <span className="w-1.5 h-1.5 rounded-full bg-teal-500 shrink-0 mt-1.5 animate-pulse" />
+                      <span className="font-medium leading-tight">{del}</span>
                     </li>
                   ))}
                 </ul>
 
                 <button
-                  onClick={() => handleScrollTo("#contact")}
-                  className="w-full text-center bg-zinc-50 hover:bg-teal-600 hover:text-white dark:bg-zinc-950 dark:hover:bg-teal-500/20 dark:hover:text-teal-400 py-2.5 rounded-xl border border-zinc-100 dark:border-zinc-900 text-xs font-bold text-zinc-800 dark:text-zinc-300 flex items-center justify-center gap-1.5 transition-all focus:outline-none"
+                  onClick={handleScrollToContact}
+                  className="w-full text-center bg-zinc-50 hover:bg-teal-600 hover:text-white dark:bg-zinc-900 dark:hover:bg-teal-500/20 dark:hover:text-teal-400 py-2.5 rounded-xl border border-zinc-100 dark:border-zinc-850 text-xs font-bold text-zinc-850 dark:text-zinc-300 flex items-center justify-center gap-1.5 transition-all focus:outline-none cursor-pointer"
                 >
-                  Order Strategy
+                  Order Strategy Block
                   <ArrowUpRight className="w-3.5 h-3.5" />
                 </button>
               </div>
