@@ -217,12 +217,31 @@ export default function AboutPage() {
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
             
             <div className="lg:col-span-7 space-y-6">
-              <span className="text-[10px] font-mono font-bold tracking-widest text-teal-600 dark:text-teal-400 uppercase bg-teal-500/10 px-3 py-1 rounded-md">
-                PROFESSIONAL STATEMENT
-              </span>
-              <h1 className="font-sans font-extrabold text-3xl sm:text-4xl text-zinc-900 dark:text-white tracking-tight leading-tight">
-                Hi, I am Mohan, professional <span className="text-transparent bg-clip-text bg-gradient-to-r from-teal-500 to-indigo-600">SEO & SMO Specialist</span> & Founder of ClickForDigital
-              </h1>
+              <div className="flex flex-col sm:flex-row gap-6 items-center sm:items-start text-center sm:text-left">
+                {/* Round Shape Founder Image */}
+                <div className="shrink-0 relative">
+                  <div className="w-28 h-28 sm:w-32 sm:h-32 rounded-full overflow-hidden border-4 border-teal-500/20 dark:border-teal-500/30 shadow-lg bg-zinc-100 dark:bg-zinc-800 flex items-center justify-center">
+                    <img 
+                      src="/mohan.png" 
+                      alt="Mohan - Founder & SEO/SMO Specialist" 
+                      className="w-full h-full object-cover"
+                      referrerPolicy="no-referrer"
+                    />
+                  </div>
+                  <div className="absolute bottom-0 right-1 bg-teal-500 text-white rounded-full p-1.5 shadow-md border-2 border-white dark:border-zinc-900">
+                    <Sparkles className="w-3.5 h-3.5" />
+                  </div>
+                </div>
+                
+                <div className="space-y-4 flex-1">
+                  <span className="text-[10px] font-mono font-bold tracking-widest text-teal-600 dark:text-teal-400 uppercase bg-teal-500/10 px-3 py-1 rounded-md inline-block">
+                    PROFESSIONAL STATEMENT
+                  </span>
+                  <h1 className="font-sans font-extrabold text-3xl sm:text-4xl text-zinc-900 dark:text-white tracking-tight leading-tight">
+                    Hi, I am Mohan, professional <span className="text-transparent bg-clip-text bg-gradient-to-r from-teal-500 to-indigo-600">SEO & SMO Specialist</span> & Founder of ClickForDigital
+                  </h1>
+                </div>
+              </div>
               
               <div className="text-zinc-650 dark:text-zinc-400 text-sm sm:text-base space-y-4 leading-relaxed font-sans font-medium">
                 <p>
