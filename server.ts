@@ -51,6 +51,114 @@ app.get("/api/leads", (req, res) => {
   res.json({ success: true, leads });
 });
 
+// 1b. API: Fetch and parse Blogger feed
+app.get("/api/blog-posts", async (req, res) => {
+  const fallbackArticles = [
+    {
+      id: "blog-1",
+      title: "The Core Web Vitals Checklist for 2026",
+      excerpt: "Google's algorithmic systems are increasingly prioritizing layout stability (CLS) and input latency. Discover exactly how to optimize your JavaScript execution bundles to secure rankings.",
+      category: "Technical SEO",
+      date: "Jun 02, 2026",
+      readTime: "6 Min Read",
+      featuredImage: "https://picsum.photos/seed/vital/800/500",
+      url: "https://mohaninsight.blogspot.com"
+    },
+    {
+      id: "blog-2",
+      title: "Topical Authority & Semantic Content Clusters",
+      excerpt: "Targeting random standalone keywords is no longer effective. Learn how ClickForDigital designs structured internal networks that prove industry-level expertise to search spiders.",
+      category: "Content Strategy",
+      date: "May 24, 2026",
+      readTime: "8 Min Read",
+      featuredImage: "https://picsum.photos/seed/semantic/800/500",
+      url: "https://mohaninsight.blogspot.com"
+    },
+    {
+      id: "blog-3",
+      title: "Local Map Packs: Driving 400% More Calls",
+      excerpt: "Discover the precise Local Coordinate Schema and NAP sync configurations Mohan utilizes to elevate click-through volumes on Google Search Maps relative to suburbs.",
+      category: "Local SEO",
+      date: "May 18, 2026",
+      readTime: "5 Min Read",
+      featuredImage: "https://picsum.photos/seed/map/800/500",
+      url: "https://mohaninsight.blogspot.com"
+    }
+  ];
+
+  try {
+    const bloggerUrl = "https://mohaninsight.blogspot.com/feeds/posts/default?alt=json";
+    const response = await fetch(bloggerUrl, {
+      headers: { 'Accept': 'application/json' },
+      signal: AbortSignal.timeout(4000)
+    });
+
+    if (response.ok) {
+      const data = await response.json();
+      const entries = data.feed?.entry || [];
+      
+      if (entries.length > 0) {
+        const articles = entries.map((entry: any, index: number) => {
+          const alternateLink = entry.link?.find((l: any) => l.rel === "alternate")?.href || "https://mohaninsight.blogspot.com";
+          const title = entry.title?.$t || entry.title || "Untitled Post";
+          const category = entry.category && entry.category.length > 0 ? entry.category[0].term : "SEO Insights";
+          
+          const dateStr = entry.published?.$t || entry.published || "";
+          let formattedDate = "Recent Post";
+          if (dateStr) {
+            try {
+              const d = new Date(dateStr);
+              formattedDate = d.toLocaleDateString("en-US", {
+                month: "short",
+                day: "2-digit",
+                year: "numeric"
+              });
+            } catch (e) {}
+          }
+          
+          let excerpt = entry.summary?.$t || "";
+          if (!excerpt && entry.content?.$t) {
+            excerpt = entry.content.$t.replace(/<[^>]*>/g, " ").replace(/\s+/g, " ").trim().substring(0, 180) + "...";
+          }
+          if (!excerpt) {
+            excerpt = "Click to read this expert SEO post on Blogger.";
+          }
+          
+          let featuredImage = `https://picsum.photos/seed/blog-${index}/800/500`;
+          if (entry.media$thumbnail?.url) {
+            featuredImage = entry.media$thumbnail.url.replace(/\/s[0-9]+(-[a-zA-Z0-9_-]+)?\//, "/w800-h500-c/");
+            if (!featuredImage.startsWith("http")) {
+              featuredImage = entry.media$thumbnail.url;
+            }
+          } else if (entry.content?.$t) {
+            const imgMatch = entry.content.$t.match(/<img[^>]+src="([^">]+)"/);
+            if (imgMatch && imgMatch[1]) {
+              featuredImage = imgMatch[1];
+            }
+          }
+          
+          return {
+            id: `blogger-${index}`,
+            title,
+            excerpt,
+            category,
+            date: formattedDate,
+            readTime: `${Math.max(3, Math.ceil(excerpt.split(/\s+/).length / 200))} Min Read`,
+            featuredImage,
+            url: alternateLink
+          };
+        });
+
+        return res.json({ success: true, isDynamic: true, articles });
+      }
+    }
+  } catch (err) {
+    console.error("Failed to parse blogger feed:", err);
+  }
+
+  res.json({ success: true, isDynamic: false, articles: fallbackArticles });
+});
+
 // 2. API: Submit Contact (Contact Lead Form)
 app.post("/api/contact", (req, res) => {
   const { name, email, website, message, service } = req.body;

@@ -26,6 +26,7 @@ export interface BlogArticle {
   date: string;
   readTime: string;
   content?: string;
+  url?: string;
 }
 
 export interface Testimonial {

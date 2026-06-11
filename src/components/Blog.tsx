@@ -1,6 +1,6 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { BlogArticle } from "../types";
-import { Calendar, Clock, ArrowRight, Rss, Info, AlertCircle, Sparkles } from "lucide-react";
+import { Calendar, Clock, ArrowRight, Rss, Info, Sparkles } from "lucide-react";
 import { motion, AnimatePresence } from "motion/react";
 
 const mockArticles: BlogArticle[] = [
@@ -12,6 +12,7 @@ const mockArticles: BlogArticle[] = [
     date: "Jun 02, 2026",
     readTime: "6 Min Read",
     featuredImage: "https://picsum.photos/seed/vital/800/500",
+    url: "https://mohaninsight.blogspot.com"
   },
   {
     id: "blog-2",
@@ -21,6 +22,7 @@ const mockArticles: BlogArticle[] = [
     date: "May 24, 2026",
     readTime: "8 Min Read",
     featuredImage: "https://picsum.photos/seed/semantic/800/500",
+    url: "https://mohaninsight.blogspot.com"
   },
   {
     id: "blog-3",
@@ -30,12 +32,33 @@ const mockArticles: BlogArticle[] = [
     date: "May 18, 2026",
     readTime: "5 Min Read",
     featuredImage: "https://picsum.photos/seed/map/800/500",
+    url: "https://mohaninsight.blogspot.com"
   }
 ];
 
 export default function Blog() {
   const [rssActive, setRssActive] = useState(false);
-  const [selectedArticle, setSelectedArticle] = useState<BlogArticle | null>(null);
+  const [articles, setArticles] = useState<BlogArticle[]>(mockArticles);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    async function loadArticles() {
+      try {
+        const response = await fetch("/api/blog-posts");
+        if (response.ok) {
+          const resData = await response.json();
+          if (resData.success && resData.articles && resData.articles.length > 0) {
+            setArticles(resData.articles);
+          }
+        }
+      } catch (err) {
+        console.error("Error fetching blogger RSS articles:", err);
+      } finally {
+        setLoading(false);
+      }
+    }
+    loadArticles();
+  }, []);
 
   // Future Blogger RSS Integration Template configuration explanation
   const bloggerIntegrationTemplate = `
@@ -98,7 +121,7 @@ export default function Blog() {
                     Ready for blogger RSS integration
                   </h3>
                   <p className="text-xs text-zinc-550 dark:text-zinc-400 mt-1.5 leading-relaxed font-sans font-medium">
-                    Mohan can dynamically synchronize this section with his custom Blogger portal! All that is required is configuring a secure widget to parse Blogger's JSON feed from: <code className="bg-zinc-100 dark:bg-zinc-900 px-1 py-0.5 rounded text-[10.5px] font-mono text-orange-500 font-bold">https://clickfordigital.blogspot.com/feeds/posts/default?alt=json</code>.
+                    Mohan can dynamically synchronize this section with his custom Blogger portal! All that is required is configuring a secure widget to parse Blogger's JSON feed from: <code className="bg-zinc-100 dark:bg-zinc-900 px-1 py-0.5 rounded text-[10.5px] font-mono text-orange-500 font-bold">https://mohaninsight.blogspot.com/feeds/posts/default?alt=json</code>.
                   </p>
                   
                   {/* Code snip */}
@@ -115,18 +138,21 @@ export default function Blog() {
 
         {/* Blog layout grid */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8" id="blog-grid">
-          {mockArticles.map((art, idx) => (
-            <motion.article
+          {articles.map((art, idx) => (
+            <motion.a
               key={art.id}
+              href={art.url || "https://mohaninsight.blogspot.com"}
+              target="_blank"
+              rel="noopener noreferrer"
               initial={{ opacity: 0, y: 15 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.4, delay: idx * 0.1 }}
               id={art.id}
-              className="bg-zinc-50/50 dark:bg-zinc-900/10 rounded-2xl border border-zinc-150/80 dark:border-zinc-900 overflow-hidden flex flex-col h-full group"
+              className="bg-zinc-50/50 dark:bg-zinc-900/10 rounded-2xl border border-zinc-150/80 dark:border-zinc-900 overflow-hidden flex flex-col h-full group hover:shadow-lg dark:hover:bg-zinc-900/20 hover:border-teal-500/30 transition-all duration-300 cursor-pointer text-left"
             >
               {/* Featured image */}
-              <div className="h-48 overflow-hidden relative select-none">
+              <div className="h-48 overflow-hidden relative select-none bg-zinc-100 dark:bg-zinc-800">
                 <img
                   src={art.featuredImage}
                   alt={art.title}
@@ -166,84 +192,24 @@ export default function Blog() {
                 </div>
 
                 <div className="mt-5 pt-4 border-t border-zinc-100 dark:border-zinc-900/60 flex justify-between items-center">
-                  <button
-                    onClick={() => setSelectedArticle(art)}
-                    className="text-xs font-bold text-zinc-950 dark:text-white group-hover:text-teal-600 dark:group-hover:text-teal-400 flex items-center gap-1 transition-colors cursor-pointer focus:outline-none"
+                  <div
+                    className="text-xs font-bold text-zinc-950 dark:text-white group-hover:text-teal-600 dark:group-hover:text-teal-400 flex items-center gap-1 transition-colors"
                   >
-                    Read Detailed Guide
+                    Read on Blogger
                     <ArrowRight className="w-3.5 h-3.5" />
-                  </button>
+                  </div>
                   
                   <span className="text-[10px] items-center gap-1 text-orange-500/80 font-mono font-bold flex">
                     <Sparkles className="w-3 h-3 text-orange-400 fill-orange-400 animate-pulse" />
-                    Blogger Template
+                    Blogger Feed
                   </span>
                 </div>
               </div>
-            </motion.article>
+            </motion.a>
           ))}
         </div>
 
       </div>
-
-      {/* Article Detail Drawer Modal */}
-      <AnimatePresence>
-        {selectedArticle && (
-          <div
-            id="article-detail-modal"
-            className="fixed inset-0 z-50 bg-zinc-950/40 backdrop-blur-sm flex items-center justify-center p-4"
-          >
-            <motion.div
-              initial={{ scale: 0.95, opacity: 0 }}
-              animate={{ scale: 1, opacity: 1 }}
-              exit={{ scale: 0.95, opacity: 0 }}
-              className="bg-white dark:bg-zinc-900 rounded-3xl border border-zinc-150 dark:border-zinc-800 max-w-2xl w-full overflow-hidden shadow-2xl relative"
-            >
-              <div className="h-56 relative select-none">
-                <img
-                  src={selectedArticle.featuredImage}
-                  alt={selectedArticle.title}
-                  referrerPolicy="no-referrer"
-                  className="w-full h-full object-cover"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-zinc-950 to-transparent flex items-end p-6">
-                  <span className="bg-teal-500 text-white text-[9.5px] font-mono font-bold uppercase tracking-wider px-2.5 py-0.5 rounded-md">
-                    {selectedArticle.category}
-                  </span>
-                </div>
-              </div>
-
-              <div className="p-6 sm:p-8 space-y-4">
-                <div className="flex items-center gap-3 text-[10.5px] font-mono text-zinc-400">
-                  <span className="flex items-center gap-1">{selectedArticle.date}</span>
-                  <span className="w-1 h-1 rounded-full bg-zinc-300 dark:bg-zinc-700" />
-                  <span className="flex items-center gap-1">{selectedArticle.readTime}</span>
-                </div>
-
-                <h3 className="font-sans font-black text-lg sm:text-2xl text-zinc-950 dark:text-white leading-tight">
-                  {selectedArticle.title}
-                </h3>
-
-                <p className="text-xs sm:text-sm text-zinc-650 dark:text-zinc-300 font-sans font-medium leading-relaxed">
-                  {selectedArticle.excerpt}
-                </p>
-                <div className="p-4 rounded-xl border border-orange-500/10 bg-orange-500/5 text-xs text-orange-600 leading-normal font-sans font-medium">
-                  <strong>Notice:</strong> This detailed content node acts as an elegant showcase. Setting up Blogger XML feeds will automatically inject long-form nested HTML body, images, and anchors dynamically!
-                </div>
-
-                <div className="pt-4 border-t border-zinc-100 dark:border-zinc-800 flex justify-end">
-                  <button
-                    onClick={() => setSelectedArticle(null)}
-                    className="bg-zinc-950 dark:bg-white text-white dark:text-zinc-950 font-bold px-5 py-2.5 rounded-xl text-xs transition cursor-pointer focus:outline-none"
-                  >
-                    Close Article
-                  </button>
-                </div>
-              </div>
-            </motion.div>
-          </div>
-        )}
-      </AnimatePresence>
     </section>
   );
 }
