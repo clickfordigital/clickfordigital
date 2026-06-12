@@ -292,7 +292,8 @@ export default function Hero() {
               className="relative w-full max-w-[340px] sm:max-w-[390px] aspect-[4/5] z-10"
             >
               {/* Outer Cyan/Blue glow and high-contrast backplate */}
-              <div className="absolute -inset-1 bg-gradient-to-tr from-cyan-400 to-blue-500 rounded-[2rem] sm:rounded-[2.5rem] blur-xl opacity-40 dark:opacity-30 pointer-events-none" />
+              <div className="absolute -inset-4 bg-gradient-to-tr from-cyan-500/25 via-emerald-400/15 to-indigo-500/25 rounded-[2.5rem] sm:rounded-[3rem] blur-3xl opacity-60 dark:opacity-45 pointer-events-none transition-all duration-1000" />
+              <div className="absolute -inset-1 bg-gradient-to-tr from-cyan-400 to-blue-500 rounded-[2.2rem] sm:rounded-[2.7rem] blur-md opacity-25 dark:opacity-15 pointer-events-none" />
 
               {/* Floating animation wrapper */}
               <motion.div
@@ -307,10 +308,10 @@ export default function Hero() {
                 className="w-full h-full relative"
               >
                 {/* Premium Modern Glassmorphism Frame */}
-                <div className="w-full h-full rounded-[2rem] sm:rounded-[2.5rem] p-2 bg-white/30 dark:bg-zinc-900/40 backdrop-blur-xl border border-white/40 dark:border-zinc-800/80 shadow-[0_25px_50px_-12px_rgba(0,0,0,0.15)] dark:shadow-[0_25px_50px_-12px_rgba(0,0,0,0.5)] group overflow-hidden transition-all duration-500 hover:shadow-[0_0_45px_rgba(6,182,212,0.25)]">
+                <div className="w-full h-full rounded-[2.2rem] sm:rounded-[2.7rem] p-2 bg-white/40 dark:bg-zinc-900/50 backdrop-blur-2xl border border-white/60 dark:border-zinc-800/80 shadow-[0_30px_70px_-15px_rgba(0,0,0,0.18)] dark:shadow-[0_30px_70px_-15px_rgba(0,0,0,0.6)] group overflow-hidden transition-all duration-700 hover:shadow-[0_0_50px_rgba(6,182,212,0.3)]">
                   
                   {/* Subtle inner grid/gradient card */}
-                  <div className="w-full h-full overflow-hidden rounded-[1.6rem] sm:rounded-[2.1rem] bg-gradient-to-b from-zinc-100/50 to-zinc-200/50 dark:from-zinc-950/40 dark:to-zinc-900/40 relative">
+                  <div className="w-full h-full overflow-hidden rounded-[1.8rem] sm:rounded-[2.3rem] bg-gradient-to-b from-zinc-100/50 to-zinc-200/50 dark:from-zinc-950/40 dark:to-zinc-900/40 relative">
                     {/* Tech mesh grid decoration */}
                     <div className="absolute inset-0 bg-[linear-gradient(to_right,#0ea5e908_1px,transparent_1px),linear-gradient(to_bottom,#0ea5e908_1px,transparent_1px)] bg-[size:16px_16px] pointer-events-none" />
                     
@@ -336,70 +337,110 @@ export default function Hero() {
                 <motion.div
                   animate={{ y: [0, -6, 0] }}
                   transition={{ duration: 4.5, repeat: Infinity, ease: "easeInOut", delay: 0.2 }}
-                  className="absolute -top-4 -left-4 sm:-left-12 bg-white/75 dark:bg-zinc-900/80 backdrop-blur-md border border-white/40 dark:border-zinc-800/60 shadow-[0_8px_32px_0_rgba(14,165,233,0.12)] hover:shadow-[0_8px_32px_0_rgba(14,165,233,0.22)] rounded-2xl p-2 sm:p-2.5 flex items-center gap-2.5 hover:scale-[1.04] transition-all duration-300 z-20 cursor-default"
+                  whileHover={{ scale: 1.08, zIndex: 30 }}
+                  whileTap={{ scale: 0.95 }}
+                  className="absolute top-[12%] -left-6 sm:-left-12 group/badge z-20"
                 >
-                  <div className="p-1.5 rounded-xl bg-gradient-to-tr from-teal-500/10 to-emerald-500/10 text-teal-600 dark:text-teal-400 shadow-inner">
-                    <Rocket className="w-4 h-4" />
+                  <div className="relative flex items-center justify-center w-11 h-11 sm:w-12 sm:h-12 rounded-full bg-white/75 dark:bg-zinc-900/80 backdrop-blur-xl border border-white/50 dark:border-zinc-800/80 shadow-[0_8px_30px_rgb(20,184,166,0.15)] dark:shadow-[0_8px_30px_rgba(0,0,0,0.5)] group-hover/badge:border-teal-500/50 group-hover/badge:shadow-[0_0_25px_rgba(20,184,166,0.35)] transition-all duration-300 cursor-help select-none">
+                    <div className="absolute inset-0.5 rounded-full bg-gradient-to-tr from-teal-500/10 to-emerald-500/10 opacity-70 group-hover/badge:opacity-100 transition-opacity duration-300" />
+                    <Rocket className="w-5 h-5 text-teal-600 dark:text-teal-400 z-10 animate-pulse" />
                   </div>
-                  <span className="text-[10px] sm:text-[11.5px] font-sans font-bold text-zinc-900 dark:text-zinc-100 leading-tight">
-                    🚀 SEO & SMO Specialist
-                  </span>
+                  {/* Glassmorphic Slide-out Tooltip */}
+                  <div className="absolute left-full ml-3 top-1/2 -translate-y-1/2 flex items-center z-30 opacity-0 scale-95 pointer-events-none group-hover/badge:opacity-100 group-hover/badge:scale-100 transition-all duration-300 origin-left">
+                    <div className="w-1.5 h-3 border-y-[6px] border-y-transparent border-r-[6px] border-r-zinc-950 dark:border-r-white" />
+                    <div className="px-3 py-1.5 bg-zinc-950/95 dark:bg-white text-white dark:text-zinc-950 text-[11px] font-sans font-bold rounded-lg shadow-[0_10px_30px_rgba(0,0,0,0.25)] border border-white/10 dark:border-zinc-200/60 whitespace-nowrap flex items-center gap-1.5">
+                      <span>🚀</span>
+                      <span>SEO & SMO Specialist</span>
+                    </div>
+                  </div>
                 </motion.div>
 
                 {/* 2. Top-Right: Google Search Console */}
                 <motion.div
                   animate={{ y: [0, 6, 0] }}
                   transition={{ duration: 5.2, repeat: Infinity, ease: "easeInOut", delay: 0.8 }}
-                  className="absolute top-6 -right-4 sm:-right-12 bg-white/75 dark:bg-zinc-900/80 backdrop-blur-md border border-white/40 dark:border-zinc-800/60 shadow-[0_8px_32px_0_rgba(59,130,246,0.12)] hover:shadow-[0_8px_32px_0_rgba(59,130,246,0.22)] rounded-2xl p-2 sm:p-2.5 flex items-center gap-2.5 hover:scale-[1.04] transition-all duration-300 z-20 cursor-default"
+                  whileHover={{ scale: 1.08, zIndex: 30 }}
+                  whileTap={{ scale: 0.95 }}
+                  className="absolute top-[26%] -right-6 sm:-right-12 group/badge z-20"
                 >
-                  <div className="p-1.5 rounded-xl bg-gradient-to-tr from-blue-500/10 to-cyan-500/10 text-blue-600 dark:text-blue-400 shadow-inner">
-                    <TrendingUp className="w-4 h-4" />
+                  <div className="relative flex items-center justify-center w-11 h-11 sm:w-12 sm:h-12 rounded-full bg-white/75 dark:bg-zinc-900/80 backdrop-blur-xl border border-white/50 dark:border-zinc-800/80 shadow-[0_8px_30px_rgb(59,130,246,0.15)] dark:shadow-[0_8px_30px_rgba(0,0,0,0.5)] group-hover/badge:border-blue-500/50 group-hover/badge:shadow-[0_0_25px_rgba(59,130,246,0.35)] transition-all duration-300 cursor-help select-none">
+                    <div className="absolute inset-0.5 rounded-full bg-gradient-to-tr from-blue-500/10 to-cyan-500/10 opacity-70 group-hover/badge:opacity-100 transition-opacity duration-300" />
+                    <TrendingUp className="w-5 h-5 text-blue-600 dark:text-blue-400 z-10 animate-bounce" />
                   </div>
-                  <span className="text-[10px] sm:text-[11.5px] font-sans font-bold text-zinc-900 dark:text-zinc-100 leading-tight">
-                    📈 Google Search Console
-                  </span>
+                  {/* Glassmorphic Slide-out Tooltip */}
+                  <div className="absolute right-full mr-3 top-1/2 -translate-y-1/2 flex items-center z-30 opacity-0 scale-95 pointer-events-none group-hover/badge:opacity-100 group-hover/badge:scale-100 transition-all duration-300 origin-right">
+                    <div className="px-3 py-1.5 bg-zinc-950/95 dark:bg-white text-white dark:text-zinc-950 text-[11px] font-sans font-bold rounded-lg shadow-[0_10px_30px_rgba(0,0,0,0.25)] border border-white/10 dark:border-zinc-200/60 whitespace-nowrap flex items-center gap-1.5">
+                      <span>📈</span>
+                      <span>Google Search Console</span>
+                    </div>
+                    <div className="w-1.5 h-3 border-y-[6px] border-y-transparent border-l-[6px] border-l-zinc-950 dark:border-l-white" />
+                  </div>
                 </motion.div>
 
                 {/* 3. Center-Left: Core Web Vitals */}
                 <motion.div
                   animate={{ y: [0, -8, 0] }}
                   transition={{ duration: 4.8, repeat: Infinity, ease: "easeInOut", delay: 0.5 }}
-                  className="absolute top-[42%] -left-8 sm:-left-16 bg-white/75 dark:bg-zinc-900/80 backdrop-blur-md border border-white/40 dark:border-zinc-800/60 shadow-[0_8px_32px_0_rgba(245,158,11,0.12)] hover:shadow-[0_8px_32px_0_rgba(245,158,11,0.22)] rounded-2xl p-2 sm:p-2.5 flex items-center gap-2.5 hover:scale-[1.04] transition-all duration-300 z-20 cursor-default"
+                  whileHover={{ scale: 1.08, zIndex: 30 }}
+                  whileTap={{ scale: 0.95 }}
+                  className="absolute top-[44%] -left-8 sm:-left-16 group/badge z-20"
                 >
-                  <div className="p-1.5 rounded-xl bg-gradient-to-tr from-amber-500/10 to-yellow-500/10 text-amber-500 shadow-inner">
-                    <Zap className="w-4 h-4" />
+                  <div className="relative flex items-center justify-center w-11 h-11 sm:w-12 sm:h-12 rounded-full bg-white/75 dark:bg-zinc-900/80 backdrop-blur-xl border border-white/50 dark:border-zinc-800/80 shadow-[0_8px_30px_rgb(245,158,11,0.15)] dark:shadow-[0_8px_30px_rgba(0,0,0,0.5)] group-hover/badge:border-amber-500/50 group-hover/badge:shadow-[0_0_25px_rgba(245,158,11,0.35)] transition-all duration-300 cursor-help select-none">
+                    <div className="absolute inset-0.5 rounded-full bg-gradient-to-tr from-amber-500/10 to-yellow-500/10 opacity-70 group-hover/badge:opacity-100 transition-opacity duration-300" />
+                    <Zap className="w-5 h-5 text-amber-550 dark:text-amber-400 z-10 animate-pulse" />
                   </div>
-                  <span className="text-[10px] sm:text-[11.5px] font-sans font-bold text-zinc-900 dark:text-zinc-100 leading-tight">
-                    ⚡ Core Web Vitals
-                  </span>
+                  {/* Glassmorphic Slide-out Tooltip */}
+                  <div className="absolute left-full ml-3 top-1/2 -translate-y-1/2 flex items-center z-30 opacity-0 scale-95 pointer-events-none group-hover/badge:opacity-100 group-hover/badge:scale-100 transition-all duration-300 origin-left">
+                    <div className="w-1.5 h-3 border-y-[6px] border-y-transparent border-r-[6px] border-r-zinc-950 dark:border-r-white" />
+                    <div className="px-3 py-1.5 bg-zinc-950/95 dark:bg-white text-white dark:text-zinc-950 text-[11px] font-sans font-bold rounded-lg shadow-[0_10px_30px_rgba(0,0,0,0.25)] border border-white/10 dark:border-zinc-200/60 whitespace-nowrap flex items-center gap-1.5">
+                      <span>⚡</span>
+                      <span>Core Web Vitals</span>
+                    </div>
+                  </div>
                 </motion.div>
 
                 {/* 4. Center-Right: Google Analytics 4 */}
                 <motion.div
                   animate={{ y: [0, 8, 0] }}
                   transition={{ duration: 5.4, repeat: Infinity, ease: "easeInOut", delay: 1.1 }}
-                  className="absolute top-[52%] -right-8 sm:-right-16 bg-white/75 dark:bg-zinc-900/80 backdrop-blur-md border border-white/40 dark:border-zinc-800/60 shadow-[0_8px_32px_0_rgba(249,115,22,0.12)] hover:shadow-[0_8px_32px_0_rgba(249,115,22,0.22)] rounded-2xl p-2 sm:p-2.5 flex items-center gap-2.5 hover:scale-[1.04] transition-all duration-300 z-20 cursor-default"
+                  whileHover={{ scale: 1.08, zIndex: 30 }}
+                  whileTap={{ scale: 0.95 }}
+                  className="absolute top-[58%] -right-8 sm:-right-16 group/badge z-20"
                 >
-                  <div className="p-1.5 rounded-xl bg-gradient-to-tr from-orange-500/10 to-red-500/10 text-orange-600 dark:text-orange-400 shadow-inner">
-                    <BarChart3 className="w-4 h-4" />
+                  <div className="relative flex items-center justify-center w-11 h-11 sm:w-12 sm:h-12 rounded-full bg-white/75 dark:bg-zinc-900/80 backdrop-blur-xl border border-white/50 dark:border-zinc-800/80 shadow-[0_8px_30px_rgb(249,115,22,0.15)] dark:shadow-[0_8px_30px_rgba(0,0,0,0.5)] group-hover/badge:border-orange-500/50 group-hover/badge:shadow-[0_0_25px_rgba(249,115,22,0.35)] transition-all duration-300 cursor-help select-none">
+                    <div className="absolute inset-0.5 rounded-full bg-gradient-to-tr from-orange-500/10 to-red-500/10 opacity-70 group-hover/badge:opacity-100 transition-opacity duration-300" />
+                    <BarChart3 className="w-5 h-5 text-orange-600 dark:text-orange-400 z-10" />
                   </div>
-                  <span className="text-[10px] sm:text-[11.5px] font-sans font-bold text-zinc-900 dark:text-zinc-100 leading-tight">
-                    📊 Google Analytics 4
-                  </span>
+                  {/* Glassmorphic Slide-out Tooltip */}
+                  <div className="absolute right-full mr-3 top-1/2 -translate-y-1/2 flex items-center z-30 opacity-0 scale-95 pointer-events-none group-hover/badge:opacity-100 group-hover/badge:scale-100 transition-all duration-300 origin-right">
+                    <div className="px-3 py-1.5 bg-zinc-950/95 dark:bg-white text-white dark:text-zinc-950 text-[11px] font-sans font-bold rounded-lg shadow-[0_10px_30px_rgba(0,0,0,0.25)] border border-white/10 dark:border-zinc-200/60 whitespace-nowrap flex items-center gap-1.5">
+                      <span>📊</span>
+                      <span>Google Analytics 4</span>
+                    </div>
+                    <div className="w-1.5 h-3 border-y-[6px] border-y-transparent border-l-[6px] border-l-zinc-950 dark:border-l-white" />
+                  </div>
                 </motion.div>
 
-                {/* 5. Bottom-Right: Technical SEO */}
+                {/* 5. Bottom-Left: Technical SEO */}
                 <motion.div
                   animate={{ y: [0, -6, 0] }}
                   transition={{ duration: 4.2, repeat: Infinity, ease: "easeInOut", delay: 1.5 }}
-                  className="absolute bottom-4 -right-4 sm:-right-8 bg-white/75 dark:bg-zinc-900/80 backdrop-blur-md border border-white/40 dark:border-zinc-800/60 shadow-[0_8px_32px_0_rgba(99,102,241,0.12)] hover:shadow-[0_8px_32px_0_rgba(99,102,241,0.22)] rounded-2xl p-2 sm:p-2.5 flex items-center gap-2.5 hover:scale-[1.04] transition-all duration-300 z-20 cursor-default"
+                  whileHover={{ scale: 1.08, zIndex: 30 }}
+                  whileTap={{ scale: 0.95 }}
+                  className="absolute top-[76%] -left-6 sm:-left-12 group/badge z-20"
                 >
-                  <div className="p-1.5 rounded-xl bg-gradient-to-tr from-indigo-500/10 to-blue-500/10 text-indigo-600 dark:text-indigo-400 shadow-inner">
-                    <Search className="w-4 h-4" />
+                  <div className="relative flex items-center justify-center w-11 h-11 sm:w-12 sm:h-12 rounded-full bg-white/75 dark:bg-zinc-900/80 backdrop-blur-xl border border-white/50 dark:border-zinc-800/80 shadow-[0_8px_30px_rgb(99,102,241,0.15)] dark:shadow-[0_8px_30px_rgba(0,0,0,0.5)] group-hover/badge:border-indigo-500/50 group-hover/badge:shadow-[0_0_25px_rgba(99,102,241,0.35)] transition-all duration-300 cursor-help select-none">
+                    <div className="absolute inset-0.5 rounded-full bg-gradient-to-tr from-indigo-500/10 to-blue-500/10 opacity-70 group-hover/badge:opacity-100 transition-opacity duration-300" />
+                    <Search className="w-5 h-5 text-indigo-600 dark:text-indigo-400 z-10" />
                   </div>
-                  <span className="text-[10px] sm:text-[11.5px] font-sans font-bold text-zinc-900 dark:text-zinc-100 leading-tight">
-                    🔍 Technical SEO
-                  </span>
+                  {/* Glassmorphic Slide-out Tooltip */}
+                  <div className="absolute left-full ml-3 top-1/2 -translate-y-1/2 flex items-center z-30 opacity-0 scale-95 pointer-events-none group-hover/badge:opacity-100 group-hover/badge:scale-100 transition-all duration-300 origin-left">
+                    <div className="w-1.5 h-3 border-y-[6px] border-y-transparent border-r-[6px] border-r-zinc-950 dark:border-r-white" />
+                    <div className="px-3 py-1.5 bg-zinc-950/95 dark:bg-white text-white dark:text-zinc-950 text-[11px] font-sans font-bold rounded-lg shadow-[0_10px_30px_rgba(0,0,0,0.25)] border border-white/10 dark:border-zinc-200/60 whitespace-nowrap flex items-center gap-1.5">
+                      <span>🔍</span>
+                      <span>Technical SEO</span>
+                    </div>
+                  </div>
                 </motion.div>
 
               </motion.div>
