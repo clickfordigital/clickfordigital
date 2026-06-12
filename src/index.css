@@ -44,7 +44,9 @@
   animation: marquee 40s linear infinite;
 }
 
-.hover-pause:hover .animate-marquee {
-  animation-play-state: paused;
+@media (hover: hover) {
+  .hover-pause:hover .animate-marquee {
+    animation-play-state: paused;
+  }
 }
 

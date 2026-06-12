@@ -27,68 +27,6 @@ export default function HomePage() {
       {/* 2. STATS SECTION */}
       <Stats />
 
-      {/* 3. SEO SKILLS & EXPERTISE OVERVIEW */}
-      <section className="py-20 bg-white dark:bg-zinc-950 border-y border-zinc-100 dark:border-zinc-900 select-none">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          
-          {/* SEO Skills & Expertise Sub-Section */}
-          <div>
-            <div className="text-center max-w-3xl mx-auto mb-12">
-              <span className="text-[10px] font-mono text-indigo-600 dark:text-indigo-400 tracking-widest uppercase font-extrabold bg-indigo-505/10 px-3 py-1 rounded-full">
-                CORE MATRIX
-              </span>
-              <h2 className="mt-3 font-sans font-extrabold text-2xl sm:text-3xl text-zinc-900 dark:text-white tracking-tight">
-                SEO Skills & Expertise
-              </h2>
-              <p className="mt-2 text-xs sm:text-sm text-zinc-500 dark:text-zinc-400 font-sans font-medium">
-                Proven search methodologies integrated into clean, white-hat execution roadmaps.
-              </p>
-            </div>
-
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-              {[
-                {
-                  title: "Technical Auditing",
-                  icon: <Search className="w-5 h-5 text-teal-500" />,
-                  desc: "Crawl path analysis, rendering performance indexation, canonical loop fixations, sitemap tree designs.",
-                },
-                {
-                  title: "On-Page Relevance",
-                  icon: <Layers className="w-5 h-5 text-blue-500" />,
-                  desc: "Semantic frequency structures, NLP query mappings, structured headings distributions, metadata formulas.",
-                },
-                {
-                  title: "E-E-A-T Authority",
-                  icon: <Award className="w-5 h-5 text-indigo-500" />,
-                  desc: "Contextual editorial backlink building, toxic profile detoxing, structured author biography Schema.",
-                },
-                {
-                  title: "Local Search Domination",
-                  icon: <Globe className="w-5 h-5 text-emerald-500" />,
-                  desc: "Google Business Profile mapping, coordinate NAP consistency logs, hyper-local landing page grids.",
-                },
-              ].map((skill, sIdx) => (
-                <div
-                  key={sIdx}
-                  className="p-6 bg-zinc-50/50 dark:bg-zinc-900/30 rounded-xl border border-zinc-100 dark:border-zinc-900 hover:border-zinc-200 dark:hover:border-zinc-800 transition-colors"
-                >
-                  <div className="w-10 h-10 rounded-xl bg-white dark:bg-zinc-900 border border-zinc-100 dark:border-zinc-805 flex items-center justify-center shadow-xs">
-                    {skill.icon}
-                  </div>
-                  <h3 className="font-sans font-extrabold text-sm sm:text-base text-zinc-955 dark:text-white mt-4">
-                    {skill.title}
-                  </h3>
-                  <p className="text-xs text-zinc-500 dark:text-zinc-400 mt-2 font-medium leading-relaxed">
-                    {skill.desc}
-                  </p>
-                </div>
-              ))}
-            </div>
-          </div>
-
-        </div>
-      </section>
-
       {/* 4. FEATURED SEO PROJECTS & RESULTS (Case Studies Component) */}
       <section className="py-20 bg-zinc-50 dark:bg-zinc-950 overflow-hidden" id="growth-cases">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -97,7 +35,7 @@ export default function HomePage() {
               Growth Case Studies
             </span>
             <h2 className="mt-3 font-sans font-extrabold text-2xl sm:text-3xl text-zinc-900 dark:text-white tracking-tight">
-              Featured SEO Projects & Results
+              Websites I Have Worked On
             </h2>
             <p className="mt-2 text-xs sm:text-sm text-zinc-500 dark:text-zinc-400 font-sans font-medium">
               Take a detailed look at how I analyze problems, formulate strategies, and deliver organic growth.
