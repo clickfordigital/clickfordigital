@@ -23,7 +23,7 @@ import {
 import { motion, AnimatePresence } from "motion/react";
 import { ResponsiveContainer, AreaChart, Area, XAxis, YAxis, Tooltip, CartesianGrid } from "recharts";
 import { Link } from "../components/Router";
-import founderImg from "../assets/images/regenerated_image_1781170156857.jpg";
+import founderImg from "../assets/images/mohan.png";
 
 // Types for Website Performance
 interface WebsitePerformanceData {

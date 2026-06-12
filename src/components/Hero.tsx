@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { ArrowUpRight, Search, TrendingUp, CheckCircle, Smartphone, BarChart3, ArrowRight, Zap, Percent, ShieldCheck, Globe, Cog, Rocket, Target } from "lucide-react";
 import { motion } from "motion/react";
 import { Link } from "./Router";
+import mohanPortrait from "../assets/images/mohan.png";
 
 // Removed performanceData
 
@@ -315,7 +316,7 @@ export default function Hero() {
                     
                     {/* Hero Portrait Image */}
                     <img
-                      src="/mohan.png"
+                      src={mohanPortrait}
                       alt="Mohan - SEO & SMO Specialist Portfolio Portrait"
                       className="w-full h-full object-cover object-top transition-transform duration-700 ease-out group-hover:scale-[1.03]"
                       referrerPolicy="no-referrer"
