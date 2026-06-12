@@ -1,17 +1,9 @@
 import React, { useState, useEffect } from "react";
-import { ArrowUpRight, Search, TrendingUp, CheckCircle, Smartphone, BarChart3, ArrowRight, Zap, Percent, ShieldCheck, Globe, Cog } from "lucide-react";
+import { ArrowUpRight, Search, TrendingUp, CheckCircle, Smartphone, BarChart3, ArrowRight, Zap, Percent, ShieldCheck, Globe, Cog, Rocket, Target } from "lucide-react";
 import { motion } from "motion/react";
-import { ResponsiveContainer, AreaChart, Area, XAxis, YAxis, Tooltip, CartesianGrid } from "recharts";
 import { Link } from "./Router";
 
-const performanceData = [
-  { month: "Jan", clicks: 110000, impressions: 850000, position: 14.5, ctr: 8.2 },
-  { month: "Feb", clicks: 125000, impressions: 1100000, position: 13.1, ctr: 8.8 },
-  { month: "Mar", clicks: 140000, impressions: 1300000, position: 12.2, ctr: 9.5 },
-  { month: "Apr", clicks: 160000, impressions: 1450000, position: 11.0, ctr: 10.1 },
-  { month: "May", clicks: 185000, impressions: 1650000, position: 10.3, ctr: 10.6 },
-  { month: "Jun", clicks: 210000, impressions: 1850000, position: 9.8, ctr: 11.1 },
-];
+// Removed performanceData
 
 const STACK_TOOLS = [
   {
@@ -163,17 +155,6 @@ const STACK_TOOLS = [
 const DOUBLE_STACK_TOOLS = [...STACK_TOOLS, ...STACK_TOOLS, ...STACK_TOOLS];
 
 export default function Hero() {
-  const [activeMetric, setActiveMetric] = useState<"clicks" | "impressions" | "ctr" | "position">("clicks");
-  const [liveCounter, setLiveCounter] = useState(879142);
-
-  // Simulate real-time click tracking on Mohan's portfolio to show dynamic energy
-  useEffect(() => {
-    const timer = setInterval(() => {
-      setLiveCounter((prev) => prev + Math.floor(Math.random() * 4) + 1);
-    }, 4000);
-    return () => clearInterval(timer);
-  }, []);
-
   const handleScrollTo = (id: string) => {
     if (typeof window !== "undefined") {
       if (window.location.pathname !== "/") {
@@ -294,241 +275,133 @@ export default function Hero() {
             </motion.div>
           </div>
 
-          {/* Interactive GSC Dashboard Mockup - Right Column */}
-          <div className="lg:col-span-7" id="dashboard-mockup">
+          {/* Main Hero Portrait Section with Premium Float Frame */}
+          <div className="lg:col-span-7 flex items-center justify-center relative py-6 md:py-10" id="hero-portrait-section">
+            {/* Soft radial gradient blurred glow behind the image to make it stand out */}
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[110%] h-[110%] pointer-events-none z-0">
+              <div className="absolute top-10 left-10 w-44 sm:w-72 h-44 sm:h-72 bg-cyan-400/20 dark:bg-cyan-500/15 rounded-full blur-[70px] sm:blur-[100px]" />
+              <div className="absolute bottom-10 right-10 w-44 sm:w-72 h-44 sm:h-72 bg-blue-500/25 dark:bg-blue-600/15 rounded-full blur-[70px] sm:blur-[100px]" />
+            </div>
+
+            {/* Float container with glassmorphism frame */}
             <motion.div
               initial={{ opacity: 0, scale: 0.95 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.8, delay: 0.2 }}
-              className="bg-white dark:bg-zinc-900 rounded-2xl border border-zinc-100 dark:border-zinc-800/80 shadow-2xl overflow-hidden"
+              className="relative w-full max-w-[340px] sm:max-w-[390px] aspect-[4/5] z-10"
             >
-               {/* Browser Window Chrome */}
-              <div className="bg-zinc-50 dark:bg-zinc-900/90 px-4 py-3 border-b border-zinc-100 dark:border-zinc-800/50 flex items-center justify-between">
-                <div className="flex items-center gap-1.5">
-                  <div className="w-3" />
-                  <div className="w-2.5 h-2.5 rounded-full bg-red-400/80" />
-                  <div className="w-2.5 h-2.5 rounded-full bg-yellow-400/80" />
-                  <div className="w-2.5 h-2.5 rounded-full bg-green-400/80" />
-                </div>
-                <div className="bg-zinc-200/40 dark:bg-zinc-800/50 text-zinc-400 dark:text-zinc-500 text-[10px] font-mono py-1 px-8 rounded-md select-none tracking-wider flex items-center gap-1.5">
-                  <Search className="w-3.5 h-3.5" />
-                  <span>hanishbagga.com</span>
-                </div>
-                <div className="flex items-center gap-1">
-                  <span className="w-1.5 h-1.5 rounded-full bg-teal-500 animate-ping"></span>
-                  <span className="text-[10px] font-mono font-medium text-teal-600 dark:text-teal-400">LIVE</span>
-                </div>
-              </div>
+              {/* Outer Cyan/Blue glow and high-contrast backplate */}
+              <div className="absolute -inset-1 bg-gradient-to-tr from-cyan-400 to-blue-500 rounded-[2rem] sm:rounded-[2.5rem] blur-xl opacity-40 dark:opacity-30 pointer-events-none" />
 
-              {/* GSC Controls / Metrics Header */}
-              <div className="p-4 sm:p-6 bg-white dark:bg-zinc-900 border-b border-zinc-100 dark:border-zinc-800/50">
-                <div className="flex flex-wrap items-center justify-between gap-4 mb-4">
-                  <div className="flex flex-col">
-                    <span className="text-xs font-sans text-zinc-400 dark:text-zinc-500 font-bold uppercase tracking-wider">
-                      Search Console Overview
-                    </span>
-                    <span className="text-[10.5px] text-zinc-500 dark:text-zinc-400 font-mono mt-0.5">
-                      Property: All web referral channels
-                    </span>
-                  </div>
-                  {/* Date range badge */}
-                  <span className="bg-zinc-100 dark:bg-zinc-800 px-3 py-1 rounded-lg text-xs font-medium text-zinc-600 dark:text-zinc-300 border border-zinc-200/30 dark:border-zinc-700/30">
-                    Last 6 Months vs. Previous
-                  </span>
-                </div>
-
-                {/* Metrics tab selector */}
-                <div className="grid grid-cols-2 md:grid-cols-4 gap-2.5">
-                  <button
-                    onClick={() => setActiveMetric("clicks")}
-                    id="tab-metric-clicks"
-                    className={`p-3 rounded-xl text-left border transition-all cursor-pointer focus:outline-none ${
-                      activeMetric === "clicks"
-                        ? "border-teal-500 ring-2 ring-teal-500/15 bg-teal-500/5"
-                        : "border-zinc-100 dark:border-zinc-800/80 hover:bg-zinc-50 dark:hover:bg-zinc-800/30"
-                    }`}
-                  >
-                    <div className="flex items-center justify-between">
-                      <span className="text-[10px] sm:text-xs text-zinc-500 dark:text-zinc-400 font-medium">Total Clicks</span>
-                      <TrendingUp className="w-3.5 h-3.5 text-teal-500" />
-                    </div>
-                    <div className="mt-1 font-mono font-extrabold text-base sm:text-lg text-zinc-950 dark:text-white">
-                      {liveCounter.toLocaleString()}
-                    </div>
-                    <div className="text-[9px] font-mono text-teal-600 dark:text-teal-400 font-semibold mt-1 flex items-center gap-0.5 whitespace-nowrap overflow-hidden">
-                      +142% vs group
-                    </div>
-                  </button>
-
-                  <button
-                    onClick={() => setActiveMetric("impressions")}
-                    id="tab-metric-impressions"
-                    className={`p-3 rounded-xl text-left border transition-all cursor-pointer focus:outline-none ${
-                      activeMetric === "impressions"
-                        ? "border-indigo-500 ring-2 ring-indigo-500/15 bg-indigo-500/5"
-                        : "border-zinc-100 dark:border-zinc-800/80 hover:bg-zinc-50 dark:hover:bg-zinc-800/30"
-                    }`}
-                  >
-                    <div className="flex items-center justify-between">
-                      <span className="text-[10px] sm:text-xs text-zinc-500 dark:text-zinc-400 font-medium">Impressions</span>
-                      <BarChart3 className="w-3.5 h-3.5 text-indigo-500" />
-                    </div>
-                    <div className="mt-1 font-mono font-extrabold text-base sm:text-lg text-zinc-950 dark:text-white">
-                      7.9M
-                    </div>
-                    <div className="text-[9px] font-mono text-indigo-600 dark:text-indigo-400 font-semibold mt-1 whitespace-nowrap overflow-hidden">
-                      +310% search
-                    </div>
-                  </button>
-
-                  <button
-                    onClick={() => setActiveMetric("ctr")}
-                    id="tab-metric-ctr"
-                    className={`p-3 rounded-xl text-left border transition-all cursor-pointer focus:outline-none ${
-                      activeMetric === "ctr"
-                        ? "border-violet-500 ring-2 ring-violet-500/15 bg-violet-500/5"
-                        : "border-zinc-100 dark:border-zinc-800/80 hover:bg-zinc-50 dark:hover:bg-zinc-800/30"
-                    }`}
-                  >
-                    <div className="flex items-center justify-between">
-                      <span className="text-[10px] sm:text-xs text-zinc-500 dark:text-zinc-400 font-medium">Avg. CTR</span>
-                      <Percent className="w-3.5 h-3.5 text-violet-500" />
-                    </div>
-                    <div className="mt-1 font-mono font-extrabold text-base sm:text-lg text-zinc-950 dark:text-white">
-                      11.1%
-                    </div>
-                    <div className="text-[9px] font-mono text-violet-600 dark:text-violet-400 font-semibold mt-1 whitespace-nowrap overflow-hidden">
-                      +18.4% rates
-                    </div>
-                  </button>
-
-                  <button
-                    onClick={() => setActiveMetric("position")}
-                    id="tab-metric-position"
-                    className={`p-3 rounded-xl text-left border transition-all cursor-pointer focus:outline-none ${
-                      activeMetric === "position"
-                        ? "border-amber-500 ring-2 ring-amber-500/15 bg-amber-500/5"
-                        : "border-zinc-100 dark:border-zinc-800/80 hover:bg-zinc-50 dark:hover:bg-zinc-800/30"
-                    }`}
-                  >
-                    <div className="flex items-center justify-between">
-                      <span className="text-[10px] sm:text-xs text-zinc-500 dark:text-zinc-400 font-medium">Avg. Position</span>
-                      <Smartphone className="w-3.5 h-3.5 text-amber-500" />
-                    </div>
-                    <div className="mt-1 font-mono font-extrabold text-base sm:text-lg text-zinc-950 dark:text-white">
-                      9.8
-                    </div>
-                    <div className="text-[9px] font-mono text-amber-600 dark:text-amber-400 font-semibold mt-1 whitespace-nowrap overflow-hidden">
-                      Top #10 Organic
-                    </div>
-                  </button>
-                </div>
-              </div>
-
-              {/* Chart Visual Content */}
-              <div className="p-4 sm:p-6 bg-zinc-50/50 dark:bg-zinc-900/40 h-72 sm:h-80 relative select-none">
-                <ResponsiveContainer width="100%" height="100%">
-                  <AreaChart data={performanceData} margin={{ top: 20, right: 10, left: -20, bottom: 5 }}>
-                    <defs>
-                      <linearGradient id="colorClicks" x1="0" y1="0" x2="0" y2="1">
-                        <stop offset="5%" stopColor="#14b8a6" stopOpacity={0.25} />
-                        <stop offset="95%" stopColor="#14b8a6" stopOpacity={0.0} />
-                      </linearGradient>
-                      <linearGradient id="colorImpressions" x1="0" y1="0" x2="0" y2="1">
-                        <stop offset="5%" stopColor="#6366f1" stopOpacity={0.25} />
-                        <stop offset="95%" stopColor="#6366f1" stopOpacity={0.0} />
-                      </linearGradient>
-                      <linearGradient id="colorCtr" x1="0" y1="0" x2="0" y2="1">
-                        <stop offset="5%" stopColor="#8b5cf6" stopOpacity={0.25} />
-                        <stop offset="95%" stopColor="#8b5cf6" stopOpacity={0.0} />
-                      </linearGradient>
-                      <linearGradient id="colorPosition" x1="0" y1="0" x2="0" y2="1">
-                        <stop offset="5%" stopColor="#f59e0b" stopOpacity={0.25} />
-                        <stop offset="95%" stopColor="#f59e0b" stopOpacity={0.0} />
-                      </linearGradient>
-                    </defs>
-                    <CartesianGrid strokeDasharray="3 3" stroke="#f1f5f9" className="dark:hidden" />
-                    <CartesianGrid strokeDasharray="3 3" stroke="#1f2937" className="hidden dark:block" />
-                    <XAxis
-                      dataKey="month"
-                      stroke="#888888"
-                      fontSize={11}
-                      tickLine={false}
-                      axisLine={false}
-                      style={{ fontFamily: 'var(--font-mono, monospace)' }}
-                    />
-                    <YAxis
-                      stroke="#888888"
-                      fontSize={11}
-                      tickLine={false}
-                      axisLine={false}
-                      style={{ fontFamily: 'var(--font-mono, monospace)' }}
-                      reversed={activeMetric === "position"} // Lower rank is better position
-                    />
-                    <Tooltip
-                      contentStyle={{
-                        backgroundColor: "#18181b",
-                        border: "none",
-                        borderRadius: "10px",
-                        color: "#fff",
-                        fontFamily: "var(--font-mono, monospace)",
-                        fontSize: "12px",
+              {/* Floating animation wrapper */}
+              <motion.div
+                animate={{
+                  y: [0, -10, 0],
+                }}
+                transition={{
+                  duration: 6,
+                  repeat: Infinity,
+                  ease: "easeInOut"
+                }}
+                className="w-full h-full relative"
+              >
+                {/* Premium Modern Glassmorphism Frame */}
+                <div className="w-full h-full rounded-[2rem] sm:rounded-[2.5rem] p-2 bg-white/30 dark:bg-zinc-900/40 backdrop-blur-xl border border-white/40 dark:border-zinc-800/80 shadow-[0_25px_50px_-12px_rgba(0,0,0,0.15)] dark:shadow-[0_25px_50px_-12px_rgba(0,0,0,0.5)] group overflow-hidden transition-all duration-500 hover:shadow-[0_0_45px_rgba(6,182,212,0.25)]">
+                  
+                  {/* Subtle inner grid/gradient card */}
+                  <div className="w-full h-full overflow-hidden rounded-[1.6rem] sm:rounded-[2.1rem] bg-gradient-to-b from-zinc-100/50 to-zinc-200/50 dark:from-zinc-950/40 dark:to-zinc-900/40 relative">
+                    {/* Tech mesh grid decoration */}
+                    <div className="absolute inset-0 bg-[linear-gradient(to_right,#0ea5e908_1px,transparent_1px),linear-gradient(to_bottom,#0ea5e908_1px,transparent_1px)] bg-[size:16px_16px] pointer-events-none" />
+                    
+                    {/* Hero Portrait Image */}
+                    <img
+                      src="/mohan.png"
+                      alt="Mohan - SEO & SMO Specialist Portfolio Portrait"
+                      className="w-full h-full object-cover object-top transition-transform duration-700 ease-out group-hover:scale-[1.03]"
+                      referrerPolicy="no-referrer"
+                      onError={(e) => {
+                        e.currentTarget.src = "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=600&auto=format&fit=crop";
                       }}
-                      itemStyle={{ color: "#14b8a6" }}
                     />
 
-                    {activeMetric === "clicks" && (
-                      <Area
-                        type="monotone"
-                        dataKey="clicks"
-                        stroke="#14b8a6"
-                        strokeWidth={3}
-                        fillOpacity={1}
-                        fill="url(#colorClicks)"
-                      />
-                    )}
+                    {/* Subtle aesthetic overlay to enrich image tones */}
+                    <div className="absolute inset-0 bg-gradient-to-tr from-cyan-500/5 via-transparent to-blue-500/5 pointer-events-none" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-zinc-100/20 via-transparent to-transparent dark:from-zinc-950/20 pointer-events-none" />
+                  </div>
+                </div>
 
-                    {activeMetric === "impressions" && (
-                      <Area
-                        type="monotone"
-                        dataKey="impressions"
-                        stroke="#6366f1"
-                        strokeWidth={3}
-                        fillOpacity={1}
-                        fill="url(#colorImpressions)"
-                      />
-                    )}
+                {/* Elegant floating badges strategically positioned around the image to not cover the face */}
+                {/* 1. Top-Left: SEO & SMO Specialist */}
+                <motion.div
+                  animate={{ y: [0, -6, 0] }}
+                  transition={{ duration: 4.5, repeat: Infinity, ease: "easeInOut", delay: 0.2 }}
+                  className="absolute -top-4 -left-4 sm:-left-12 bg-white/75 dark:bg-zinc-900/80 backdrop-blur-md border border-white/40 dark:border-zinc-800/60 shadow-[0_8px_32px_0_rgba(14,165,233,0.12)] hover:shadow-[0_8px_32px_0_rgba(14,165,233,0.22)] rounded-2xl p-2 sm:p-2.5 flex items-center gap-2.5 hover:scale-[1.04] transition-all duration-300 z-20 cursor-default"
+                >
+                  <div className="p-1.5 rounded-xl bg-gradient-to-tr from-teal-500/10 to-emerald-500/10 text-teal-600 dark:text-teal-400 shadow-inner">
+                    <Rocket className="w-4 h-4" />
+                  </div>
+                  <span className="text-[10px] sm:text-[11.5px] font-sans font-bold text-zinc-900 dark:text-zinc-100 leading-tight">
+                    🚀 SEO & SMO Specialist
+                  </span>
+                </motion.div>
 
-                    {activeMetric === "ctr" && (
-                      <Area
-                        type="monotone"
-                        dataKey="ctr"
-                        stroke="#8b5cf6"
-                        strokeWidth={3}
-                        fillOpacity={1}
-                        fill="url(#colorCtr)"
-                      />
-                    )}
+                {/* 2. Top-Right: Google Search Console */}
+                <motion.div
+                  animate={{ y: [0, 6, 0] }}
+                  transition={{ duration: 5.2, repeat: Infinity, ease: "easeInOut", delay: 0.8 }}
+                  className="absolute top-6 -right-4 sm:-right-12 bg-white/75 dark:bg-zinc-900/80 backdrop-blur-md border border-white/40 dark:border-zinc-800/60 shadow-[0_8px_32px_0_rgba(59,130,246,0.12)] hover:shadow-[0_8px_32px_0_rgba(59,130,246,0.22)] rounded-2xl p-2 sm:p-2.5 flex items-center gap-2.5 hover:scale-[1.04] transition-all duration-300 z-20 cursor-default"
+                >
+                  <div className="p-1.5 rounded-xl bg-gradient-to-tr from-blue-500/10 to-cyan-500/10 text-blue-600 dark:text-blue-400 shadow-inner">
+                    <TrendingUp className="w-4 h-4" />
+                  </div>
+                  <span className="text-[10px] sm:text-[11.5px] font-sans font-bold text-zinc-900 dark:text-zinc-100 leading-tight">
+                    📈 Google Search Console
+                  </span>
+                </motion.div>
 
-                    {activeMetric === "position" && (
-                      <Area
-                        type="monotone"
-                        dataKey="position"
-                        stroke="#f59e0b"
-                        strokeWidth={3}
-                        fillOpacity={1}
-                        fill="url(#colorPosition)"
-                      />
-                    )}
-                  </AreaChart>
-                </ResponsiveContainer>
-              </div>
+                {/* 3. Center-Left: Core Web Vitals */}
+                <motion.div
+                  animate={{ y: [0, -8, 0] }}
+                  transition={{ duration: 4.8, repeat: Infinity, ease: "easeInOut", delay: 0.5 }}
+                  className="absolute top-[42%] -left-8 sm:-left-16 bg-white/75 dark:bg-zinc-900/80 backdrop-blur-md border border-white/40 dark:border-zinc-800/60 shadow-[0_8px_32px_0_rgba(245,158,11,0.12)] hover:shadow-[0_8px_32px_0_rgba(245,158,11,0.22)] rounded-2xl p-2 sm:p-2.5 flex items-center gap-2.5 hover:scale-[1.04] transition-all duration-300 z-20 cursor-default"
+                >
+                  <div className="p-1.5 rounded-xl bg-gradient-to-tr from-amber-500/10 to-yellow-500/10 text-amber-500 shadow-inner">
+                    <Zap className="w-4 h-4" />
+                  </div>
+                  <span className="text-[10px] sm:text-[11.5px] font-sans font-bold text-zinc-900 dark:text-zinc-100 leading-tight">
+                    ⚡ Core Web Vitals
+                  </span>
+                </motion.div>
 
-              {/* Dashboard footer metrics */}
-              <div className="px-6 py-4 bg-zinc-50 dark:bg-zinc-900 border-t border-zinc-100 dark:border-zinc-800/50 flex flex-wrap gap-4 items-center justify-between text-xs font-mono font-medium text-zinc-500 dark:text-zinc-400">
-                <span>⚡ Growth multiplier: 5.4x in 6 Months</span>
-                <span>SEO System Safe: Checked</span>
-              </div>
+                {/* 4. Center-Right: Google Analytics 4 */}
+                <motion.div
+                  animate={{ y: [0, 8, 0] }}
+                  transition={{ duration: 5.4, repeat: Infinity, ease: "easeInOut", delay: 1.1 }}
+                  className="absolute top-[52%] -right-8 sm:-right-16 bg-white/75 dark:bg-zinc-900/80 backdrop-blur-md border border-white/40 dark:border-zinc-800/60 shadow-[0_8px_32px_0_rgba(249,115,22,0.12)] hover:shadow-[0_8px_32px_0_rgba(249,115,22,0.22)] rounded-2xl p-2 sm:p-2.5 flex items-center gap-2.5 hover:scale-[1.04] transition-all duration-300 z-20 cursor-default"
+                >
+                  <div className="p-1.5 rounded-xl bg-gradient-to-tr from-orange-500/10 to-red-500/10 text-orange-600 dark:text-orange-400 shadow-inner">
+                    <BarChart3 className="w-4 h-4" />
+                  </div>
+                  <span className="text-[10px] sm:text-[11.5px] font-sans font-bold text-zinc-900 dark:text-zinc-100 leading-tight">
+                    📊 Google Analytics 4
+                  </span>
+                </motion.div>
+
+                {/* 5. Bottom-Right: Technical SEO */}
+                <motion.div
+                  animate={{ y: [0, -6, 0] }}
+                  transition={{ duration: 4.2, repeat: Infinity, ease: "easeInOut", delay: 1.5 }}
+                  className="absolute bottom-4 -right-4 sm:-right-8 bg-white/75 dark:bg-zinc-900/80 backdrop-blur-md border border-white/40 dark:border-zinc-800/60 shadow-[0_8px_32px_0_rgba(99,102,241,0.12)] hover:shadow-[0_8px_32px_0_rgba(99,102,241,0.22)] rounded-2xl p-2 sm:p-2.5 flex items-center gap-2.5 hover:scale-[1.04] transition-all duration-300 z-20 cursor-default"
+                >
+                  <div className="p-1.5 rounded-xl bg-gradient-to-tr from-indigo-500/10 to-blue-500/10 text-indigo-600 dark:text-indigo-400 shadow-inner">
+                    <Search className="w-4 h-4" />
+                  </div>
+                  <span className="text-[10px] sm:text-[11.5px] font-sans font-bold text-zinc-900 dark:text-zinc-100 leading-tight">
+                    🔍 Technical SEO
+                  </span>
+                </motion.div>
+
+              </motion.div>
             </motion.div>
           </div>
         </div>
