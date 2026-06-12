@@ -20,159 +20,35 @@ export default function Blog() {
 
   useEffect(() => {
     let isMounted = true;
-    const scriptId = "blogger-jsonp-script";
 
-    const fetchBloggerFeed = () => {
-      const callbackName = `bloggerCallback_${Date.now()}_${Math.floor(Math.random() * 1000)}`;
-      
-      // Define the global callback function
-      (window as any)[callbackName] = (data: any) => {
-        if (!isMounted) return;
-        try {
-          const entries = data.feed?.entry || [];
-          if (!entries || entries.length === 0) {
-            throw new Error("No articles publish found.");
+    async function loadFeed() {
+      try {
+        const response = await fetch("/api/blog-posts");
+        if (!response.ok) {
+          throw new Error("Failed to fetch blog posts from API");
+        }
+        const data = await response.json();
+        if (isMounted) {
+          if (data.success && Array.isArray(data.articles)) {
+            setPosts(data.articles);
+          } else {
+            throw new Error("Invalid posts schema received");
           }
-
-          const seenUrls = new Set<string>();
-          const parsedPosts: BloggerPost[] = [];
-
-          for (const entry of entries) {
-            // Find alternate link
-            const url = entry.link?.find((l: any) => l.rel === "alternate")?.href;
-            if (!url) continue;
-            
-            // Prevent duplicate posts
-            if (seenUrls.has(url)) continue;
-            seenUrls.add(url);
-
-            const title = entry.title?.$t || "Untitled Post";
-            
-            // Get category/label
-            const category = entry.category && entry.category.length > 0 && entry.category[0].term 
-              ? entry.category[0].term 
-              : "SEO Insights";
-
-            // Get publish date
-            const rawDateStr = entry.published?.$t || "";
-            let formattedDate = "Recent Post";
-            if (rawDateStr) {
-              try {
-                const d = new Date(rawDateStr);
-                formattedDate = d.toLocaleDateString("en-US", {
-                  month: "short",
-                  day: "2-digit",
-                  year: "numeric"
-                });
-              } catch (e) {}
-            }
-
-            // Excerpt extraction: strip script, style, and HTML tags, limit length target
-            let rawContent = entry.content?.$t || entry.summary?.$t || "";
-            let cleanText = rawContent
-              .replace(/<script[^>]*>([\s\S]*?)<\/script>/gi, "")
-              .replace(/<style[^>]*>([\s\S]*?)<\/style>/gi, "")
-              .replace(/<[^>]*>/g, " ")
-              .replace(/\s+/g, " ")
-              .trim();
-
-            let excerpt = cleanText;
-            if (excerpt.length > 135) {
-              excerpt = excerpt.substring(0, 132) + "...";
-            }
-            if (!excerpt) {
-              excerpt = "Click read article, discover expert analysis on SEO and digital marketing directly on our blog.";
-            }
-
-            // Get featured image: first img tag from content, or fallback media$thumbnail, or professional backup placeholder
-            let featuredImage = "";
-            if (entry.content?.$t) {
-              const imgMatch = entry.content.$t.match(/<img[^>]+src="([^">]+)"/);
-              if (imgMatch && imgMatch[1]) {
-                featuredImage = imgMatch[1];
-              }
-            }
-            if (!featuredImage && entry.media$thumbnail?.url) {
-              featuredImage = entry.media$thumbnail.url.replace(/\/s[0-9]+(-[a-zA-Z0-9_-]+)?\//, "/s1600/");
-              if (!featuredImage.startsWith("http")) {
-                featuredImage = entry.media$thumbnail.url;
-              }
-            }
-            if (!featuredImage) {
-              // High-quality professional placeholder matching dark slate/tech design
-              featuredImage = "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=800";
-            }
-
-            parsedPosts.push({
-              id: entry.id?.$t || url,
-              title,
-              excerpt,
-              category,
-              date: formattedDate,
-              rawDate: rawDateStr,
-              featuredImage,
-              url
-            });
-          }
-
-          // Sort posts by latest published date
-          parsedPosts.sort((a, b) => new Date(b.rawDate).getTime() - new Date(a.rawDate).getTime());
-
-          // Display latest 6 posts
-          const finalPosts = parsedPosts.slice(0, 6);
-          setPosts(finalPosts);
           setLoading(false);
-        } catch (err: any) {
-          console.error("JSONP parsing error:", err);
+        }
+      } catch (err: any) {
+        console.error("Error loading blog posts:", err);
+        if (isMounted) {
           setError("Failed to load feed articles");
           setLoading(false);
-        } finally {
-          cleanup();
         }
-      };
+      }
+    }
 
-      // Create Script tag for JSONP to bypass browser CORS completely
-      const baseUrl = "https://mohaninsight.blogspot.com/feeds/posts/default";
-      const script = document.createElement("script");
-      script.id = scriptId;
-      script.src = `${baseUrl}?alt=json-in-script&callback=${callbackName}`;
-      script.async = true;
-
-      // Timeout safety check
-      const timeoutId = setTimeout(() => {
-        if (isMounted) {
-          console.error("Blogger jsonp fetch timed out");
-          setError("Timeout loading Blogger feed");
-          setLoading(false);
-          cleanup();
-        }
-      }, 7000);
-
-      const cleanup = () => {
-        clearTimeout(timeoutId);
-        const existingScript = document.getElementById(scriptId);
-        if (existingScript) existingScript.remove();
-        delete (window as any)[callbackName];
-      };
-
-      script.onerror = () => {
-        if (isMounted) {
-          console.error("Blogger jsonp script failed to execute");
-          setError("Failed to fetch RSS script");
-          setLoading(false);
-          cleanup();
-        }
-      };
-
-      document.body.appendChild(script);
-      return cleanup;
-    };
-
-    const cancelFeed = fetchBloggerFeed();
+    loadFeed();
 
     return () => {
       isMounted = false;
-      if (cancelFeed) cancelFeed();
     };
   }, []);
 

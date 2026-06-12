@@ -2,7 +2,6 @@ import React, { useEffect } from "react";
 import Hero from "../components/Hero";
 import Stats from "../components/Stats";
 import CaseStudies from "../components/CaseStudies";
-import ResultsProof from "../components/ResultsProof";
 import Blog from "../components/Blog";
 import SeoAuditor from "../components/SeoAuditor";
 import Workflow from "../components/Workflow";
@@ -179,27 +178,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* 5. SEARCH CONSOLE SCREENSHOTS & GROWTH PROOF */}
-      <section className="py-20 bg-white dark:bg-zinc-950 border-t border-zinc-100 dark:border-zinc-900" id="proof-showcase">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center max-w-3xl mx-auto mb-12">
-            <span className="text-[10px] font-mono text-teal-650 dark:text-teal-400 tracking-widest uppercase font-extrabold bg-teal-500/10 px-3 py-1 rounded-full">
-              VERIFIABLE DATA
-            </span>
-            <h2 className="mt-3 font-sans font-extrabold text-2xl sm:text-3xl text-zinc-900 dark:text-white tracking-tight">
-              Search Console Screenshots & Growth Proof
-            </h2>
-            <p className="mt-2 text-xs sm:text-sm text-zinc-500 dark:text-zinc-400 font-sans font-medium">
-              Live snapshots and metrics directly from GSC showing real historical clicks scaling.
-            </p>
-          </div>
-          <div className="bg-zinc-50/50 dark:bg-zinc-900/10 rounded-2xl border border-zinc-150 dark:border-zinc-900 p-4 sm:p-5 shadow-sm">
-            <ResultsProof />
-          </div>
-        </div>
-      </section>
-
-      {/* 6. LATEST BLOG POSTS FROM MOHAN'S BLOGGER */}
+      {/* 5. LATEST BLOG POSTS FROM MOHAN'S BLOGGER */}
       <section className="py-20 bg-zinc-50 dark:bg-zinc-950 border-t border-zinc-150 dark:border-zinc-900" id="blog-posts">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-3xl mx-auto mb-12">

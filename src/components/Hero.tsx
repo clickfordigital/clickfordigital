@@ -126,11 +126,11 @@ export default function Hero() {
               id="hero-ctas"
             >
               <Link
-                to="/case-studies"
-                id="btn-hero-case-studies"
+                to="/about"
+                id="btn-hero-about-me"
                 className="bg-gradient-to-r from-teal-500 to-teal-600 text-white rounded-xl px-6 py-3 text-xs sm:text-sm font-semibold tracking-normal shadow-md hover:shadow-lg shadow-teal-500/10 hover:shadow-teal-500/20 hover:scale-[1.01] active:scale-[0.99] transition-all flex items-center justify-center gap-1.5 cursor-pointer focus:outline-none"
               >
-                View Portfolio
+                About Me
                 <ArrowRight className="w-4 h-4" />
               </Link>
 

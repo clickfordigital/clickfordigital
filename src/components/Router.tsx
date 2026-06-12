@@ -27,7 +27,7 @@ export function RouterProvider({ children }: { children: React.ReactNode }) {
     window.history.pushState(null, "", target);
     setPath(target);
     // instant scroll to top on routing changes
-    window.scrollTo({ top: 0, behavior: "instant" });
+    window.scrollTo({ top: 0, behavior: "auto" });
   };
 
   useEffect(() => {
@@ -37,7 +37,7 @@ export function RouterProvider({ children }: { children: React.ReactNode }) {
         currentPath = currentPath.slice(0, -1);
       }
       setPath(currentPath);
-      window.scrollTo({ top: 0, behavior: "instant" });
+      window.scrollTo({ top: 0, behavior: "auto" });
     };
     window.addEventListener("popstate", handlePopState);
     return () => window.removeEventListener("popstate", handlePopState);
