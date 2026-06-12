@@ -119,7 +119,7 @@ export default function Navbar({ darkMode, setDarkMode }: NavbarProps) {
                 id="cta-nav-audit"
                 className="bg-zinc-950 dark:bg-white text-white dark:text-zinc-950 hover:bg-teal-600 dark:hover:bg-teal-500 hover:text-white dark:hover:text-white px-4 py-2.2 rounded-xl text-xs font-semibold tracking-tight shadow-sm hover:shadow-md transition-all duration-300 flex items-center gap-1.5 focus:outline-none focus:ring-2 focus:ring-teal-500/50"
               >
-                Free AI Audit
+                Free Consultation
                 <ArrowUpRight className="w-3.5 h-3.5" />
               </Link>
             </div>
@@ -202,7 +202,7 @@ export default function Navbar({ darkMode, setDarkMode }: NavbarProps) {
                   onClick={handleMobileClick}
                   className="w-full text-center bg-gradient-to-r from-teal-500 to-indigo-600 text-white py-3 rounded-xl block font-sans text-xs font-semibold tracking-wide shadow-md shadow-teal-500/10 hover:shadow-lg active:scale-[0.98] transition-all focus:outline-none cursor-pointer"
                 >
-                  Get Free AI SEO Audit & Consultation
+                  Get Free SEO Consultation
                 </Link>
               </div>
             </div>

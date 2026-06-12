@@ -3,8 +3,6 @@ import Hero from "../components/Hero";
 import Stats from "../components/Stats";
 import CaseStudies from "../components/CaseStudies";
 import Blog from "../components/Blog";
-import SeoAuditor from "../components/SeoAuditor";
-import Workflow from "../components/Workflow";
 import Testimonials from "../components/Testimonials";
 import { ArrowRight, ChevronRight, Globe, Layers, Zap, Award, Search, CheckCircle } from "lucide-react";
 import { Link } from "../components/Router";
@@ -66,12 +64,6 @@ export default function HomePage() {
           </div>
         </div>
       </section>
-
-      {/* 7. REAL-TIME AI AUDITOR PANEL */}
-      <SeoAuditor />
-
-      {/* 8. SEAMLESS REINFORCEMENT WORKFLOW */}
-      <Workflow />
 
       {/* 9. VERIFIABLE CLIENT TESTIMONIALS */}
       <Testimonials />
