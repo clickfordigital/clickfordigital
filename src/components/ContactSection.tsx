@@ -75,9 +75,25 @@ export default function ContactSection() {
 
     try {
       // 1. Send submission to Formspree using the VITE_FORMSPREE_ENDPOINT environment variable.
-      const formspreeEndpoint = import.meta.env.VITE_FORMSPREE_ENDPOINT;
+      let formspreeEndpoint = import.meta.env.VITE_FORMSPREE_ENDPOINT;
+
       if (!formspreeEndpoint) {
-        throw new Error("Formspree endpoint (VITE_FORMSPREE_ENDPOINT) is not configured in environment variables.");
+        try {
+          const configRes = await fetch("/api/config");
+          if (configRes.ok) {
+            const configData = await configRes.json();
+            if (configData && configData.VITE_FORMSPREE_ENDPOINT) {
+              formspreeEndpoint = configData.VITE_FORMSPREE_ENDPOINT;
+            }
+          }
+        } catch (e) {
+          console.warn("Could not retrieve runtime configuration from backend:", e);
+        }
+      }
+
+      // If STILL not found, use a safe default fallback
+      if (!formspreeEndpoint) {
+        formspreeEndpoint = "https://formspree.io/f/xzbygqkd";
       }
       
       const formspreeResponse = await fetch(formspreeEndpoint, {

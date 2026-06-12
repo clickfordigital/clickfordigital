@@ -162,6 +162,14 @@ app.get("/api/blog-posts", async (req, res) => {
   res.json({ success: true, isDynamic: false, articles: fallbackArticles });
 });
 
+// 1c. API: Fetch Environment Config
+app.get("/api/config", (req, res) => {
+  res.json({
+    success: true,
+    VITE_FORMSPREE_ENDPOINT: process.env.VITE_FORMSPREE_ENDPOINT || ""
+  });
+});
+
 // 2. API: Submit Contact (Contact Lead Form)
 app.post("/api/contact", (req, res) => {
   const { name, email, phone, website, message, service } = req.body;
