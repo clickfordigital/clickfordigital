@@ -6,6 +6,7 @@ interface Lead {
   id: string;
   name: string;
   email: string;
+  phone?: string;
   website?: string;
   message: string;
   date: string;
@@ -16,8 +17,9 @@ interface Lead {
 export default function ContactSection() {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
+  const [phone, setPhone] = useState("");
   const [website, setWebsite] = useState("");
-  const [service, setService] = useState("Technical & Audit SEO");
+  const [service, setService] = useState("Technical SEO & Crawling fixes");
   const [message, setMessage] = useState("");
   
   const [submitting, setSubmitting] = useState(false);
@@ -52,33 +54,71 @@ export default function ContactSection() {
       return;
     }
 
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(email.trim())) {
+      setSubmitError("Please enter a valid email address.");
+      return;
+    }
+
     setSubmitting(true);
     setSubmitSuccess(null);
     setSubmitError(null);
 
+    const formData = {
+      name: name.trim(),
+      email: email.trim(),
+      phone: phone.trim(),
+      website: website.trim(),
+      service: service,
+      message: message.trim(),
+    };
+
     try {
-      const response = await fetch("/api/contact", {
+      // 1. Send submission to Formspree using the VITE_FORMSPREE_ENDPOINT environment variable.
+      const formspreeEndpoint = import.meta.env.VITE_FORMSPREE_ENDPOINT;
+      if (!formspreeEndpoint) {
+        throw new Error("Formspree endpoint (VITE_FORMSPREE_ENDPOINT) is not configured in environment variables.");
+      }
+      
+      const formspreeResponse = await fetch(formspreeEndpoint, {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ name: name.trim(), email: email.trim(), website: website.trim(), service, message: message.trim() }),
+        headers: {
+          "Content-Type": "application/json",
+          "Accept": "application/json"
+        },
+        body: JSON.stringify(formData)
       });
 
-      const resData = await response.json();
-      if (resData.success) {
-        setSubmitSuccess(resData.message || "Consultation request placed successfully! Mohan will email you shortly.");
-        // Clear forms
-        setName("");
-        setEmail("");
-        setWebsite("");
-        setMessage("");
-        // Reload leads list dynamically
-        fetchLeads();
-      } else {
-        setSubmitError(resData.error || "Form submission could not process successfully.");
+      const responseData = await formspreeResponse.json();
+      if (!formspreeResponse.ok || responseData.ok === false) {
+        throw new Error(responseData.error || "Formspree submission rejected.");
       }
+
+      // 2. Submit to local leads store if backend is running (graceful fallback)
+      try {
+        await fetch("/api/contact", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(formData),
+        });
+      } catch (localErr) {
+        console.warn("Skipped local in-memory DB caching:", localErr);
+      }
+
+      setSubmitSuccess("Thank you! Your message has been sent successfully. I'll get back to you soon.");
+      
+      // Clear all form inputs
+      setName("");
+      setEmail("");
+      setPhone("");
+      setWebsite("");
+      setMessage("");
+      
+      // Reload in-memory leads panel checks
+      fetchLeads();
     } catch (err: any) {
-      console.error(err);
-      setSubmitError("Error posting parameters to backend. Verify your connections.");
+      console.error("Form submission trace error:", err);
+      setSubmitError(err.message || "Something went wrong. Please check your network and try again.");
     } finally {
       setSubmitting(false);
     }
@@ -244,6 +284,19 @@ export default function ContactSection() {
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 font-sans">
                   <div>
                     <label className="text-[10.5px] font-semibold text-zinc-550 dark:text-zinc-400 uppercase block mb-1.5">
+                      Phone Number
+                    </label>
+                    <input
+                      type="tel"
+                      placeholder="E.g., +1 (555) 016-4392"
+                      value={phone}
+                      onChange={(e) => setPhone(e.target.value)}
+                      disabled={submitting}
+                      className="w-full p-2.5 rounded-xl border border-zinc-200 dark:border-zinc-850 bg-white dark:bg-zinc-905 text-xs sm:text-sm text-zinc-950 dark:text-white focus:outline-none focus:ring-2 focus:ring-teal-500/50 disabled:opacity-50"
+                    />
+                  </div>
+                  <div>
+                    <label className="text-[10.5px] font-semibold text-zinc-550 dark:text-zinc-400 uppercase block mb-1.5">
                       Website URL
                     </label>
                     <input
@@ -255,22 +308,23 @@ export default function ContactSection() {
                       className="w-full p-2.5 rounded-xl border border-zinc-200 dark:border-zinc-850 bg-white dark:bg-zinc-905 text-xs sm:text-sm text-zinc-950 dark:text-white focus:outline-none focus:ring-2 focus:ring-teal-500/50 disabled:opacity-50"
                     />
                   </div>
-                  <div>
-                    <label className="text-[10.5px] font-semibold text-zinc-550 dark:text-zinc-400 uppercase block mb-1.5">
-                      Target SEO Service
-                    </label>
-                    <select
-                      value={service}
-                      onChange={(e) => setService(e.target.value)}
-                      disabled={submitting}
-                      className="w-full p-2.5 rounded-xl border border-zinc-200 dark:border-zinc-850 bg-white dark:bg-zinc-905 text-xs sm:text-sm text-zinc-950 dark:text-white focus:outline-none focus:ring-2 focus:ring-teal-500/50 disabled:opacity-50 cursor-pointer"
-                    >
-                      <option value="Technical SEO & Crawling fixes">Technical SEO & Crawling fixes</option>
-                      <option value="On-Page Content relevance optimization">On-Page relevance optimization</option>
-                      <option value="Local maps hyper-local setup">Local maps hyper-local setup</option>
-                      <option value="E-E-A-T Authority Link building">E-E-A-T Link building</option>
-                    </select>
-                  </div>
+                </div>
+
+                <div>
+                  <label className="text-[10.5px] font-semibold text-zinc-550 dark:text-zinc-400 uppercase block mb-1.5">
+                    Target SEO Service
+                  </label>
+                  <select
+                    value={service}
+                    onChange={(e) => setService(e.target.value)}
+                    disabled={submitting}
+                    className="w-full p-2.5 rounded-xl border border-zinc-200 dark:border-zinc-850 bg-white dark:bg-zinc-905 text-xs sm:text-sm text-zinc-950 dark:text-white focus:outline-none focus:ring-2 focus:ring-teal-500/50 disabled:opacity-50 cursor-pointer"
+                  >
+                    <option value="Technical SEO & Crawling fixes">Technical SEO & Crawling fixes</option>
+                    <option value="On-Page Content relevance optimization">On-Page relevance optimization</option>
+                    <option value="Local maps hyper-local setup">Local maps hyper-local setup</option>
+                    <option value="E-E-A-T Authority Link building">E-E-A-T Link building</option>
+                  </select>
                 </div>
 
                 <div>
@@ -354,7 +408,7 @@ export default function ContactSection() {
                   <thead>
                     <tr className="bg-zinc-50 dark:bg-zinc-900 border-b border-zinc-100 dark:border-zinc-800 font-mono text-[9px] text-zinc-400 font-bold uppercase select-none">
                       <th className="p-3 sm:p-4">Contact name</th>
-                      <th className="p-3 sm:p-4">Contact email</th>
+                      <th className="p-3 sm:p-4">Contact Details</th>
                       <th className="p-3 sm:p-4">Target Website</th>
                       <th className="p-3 sm:p-4">Desired Service</th>
                       <th className="p-3 sm:p-4">Objectives</th>
@@ -368,7 +422,10 @@ export default function ContactSection() {
                         className="border-b last:border-b-0 border-zinc-100 dark:border-zinc-800/80 hover:bg-zinc-50/50 dark:hover:bg-zinc-900/30 transition text-zinc-700 dark:text-zinc-300"
                       >
                         <td className="p-3 sm:p-4 font-bold">{l.name}</td>
-                        <td className="p-3 sm:p-4 font-mono select-all text-teal-600 dark:text-teal-400">{l.email}</td>
+                        <td className="p-3 sm:p-4 font-mono text-[11px] leading-relaxed">
+                          <div className="select-all text-teal-600 dark:text-teal-400">{l.email}</div>
+                          {l.phone && <div className="text-zinc-400 dark:text-zinc-500 font-sans text-xs">{l.phone}</div>}
+                        </td>
                         <td className="p-3 sm:p-4">
                           {l.website ? (
                             <a

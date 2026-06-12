@@ -16,6 +16,7 @@ interface Lead {
   id: string;
   name: string;
   email: string;
+  phone?: string;
   website?: string;
   message: string;
   date: string;
@@ -28,6 +29,7 @@ const leads: Lead[] = [
     id: "lead-1",
     name: "Sarah Chen",
     email: "sarah@lumina-designs.com",
+    phone: "+1 (555) 019-2834",
     website: "https://lumina-designs.com",
     message: "We need an on-page and technical audit for our eCommerce brand. We are seeing a steady drop in organic checkouts over the past month.",
     date: new Date(Date.now() - 24 * 60 * 60 * 1000).toISOString(),
@@ -38,6 +40,7 @@ const leads: Lead[] = [
     id: "lead-2",
     name: "Marcus Aurelius",
     email: "marcus@rome-builders.org",
+    phone: "+1 (555) 043-9812",
     website: "https://rome-builders.org",
     message: "Looking for expert content strategy to rank for local keywords. Our business specializes in custom architecture in Rome, NY.",
     date: new Date(Date.now() - 3 * 24 * 60 * 60 * 1000).toISOString(),
@@ -161,7 +164,7 @@ app.get("/api/blog-posts", async (req, res) => {
 
 // 2. API: Submit Contact (Contact Lead Form)
 app.post("/api/contact", (req, res) => {
-  const { name, email, website, message, service } = req.body;
+  const { name, email, phone, website, message, service } = req.body;
   if (!name || !email || !message) {
     return res.status(400).json({ success: false, error: "Please fill in all required fields." });
   }
@@ -170,6 +173,7 @@ app.post("/api/contact", (req, res) => {
     id: `lead-${Date.now()}`,
     name,
     email,
+    phone: phone || "",
     website: website || "",
     message,
     date: new Date().toISOString(),
