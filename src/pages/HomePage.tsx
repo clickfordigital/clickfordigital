@@ -27,79 +27,10 @@ export default function HomePage() {
       {/* 2. STATS SECTION */}
       <Stats />
 
-      {/* 3. WEBSITES WORKED ON & EXPERTISE OVERVIEW */}
+      {/* 3. SEO SKILLS & EXPERTISE OVERVIEW */}
       <section className="py-20 bg-white dark:bg-zinc-950 border-y border-zinc-100 dark:border-zinc-900 select-none">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           
-          {/* Websites Worked On Sub-Section */}
-          <div className="mb-20">
-            <div className="text-center max-w-3xl mx-auto mb-10">
-              <span className="text-[10px] font-mono text-teal-600 dark:text-teal-400 tracking-widest uppercase font-extrabold bg-teal-500/10 px-3 py-1 rounded-full">
-                ESTABLISHED AUTHORITY
-              </span>
-              <h2 className="mt-3 font-sans font-extrabold text-2xl sm:text-3xl text-zinc-900 dark:text-white tracking-tight">
-                Websites I Have Worked On
-              </h2>
-              <p className="mt-2 text-xs sm:text-sm text-zinc-500 dark:text-zinc-400 font-sans font-medium">
-                Designing search ecosystems and scaling organic channels for industry leaders.
-              </p>
-            </div>
-
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-              {[
-                {
-                  name: "Acharya Ganesh",
-                  domain: "acharyaganesh.com",
-                  clicks: "85K / month",
-                  growth: "+608% Clicks",
-                  desc: "Leading astrology EdTech in India. Reconstructed Core Web Vitals to zero out layout shifts, and deployed optimized course schema mappings.",
-                },
-                {
-                  name: "Hanish Bagga",
-                  domain: "hanishbagga.com",
-                  clicks: "29K / month",
-                  growth: "+544% Clicks",
-                  desc: "Consulting & mentorship platform. Repaired sitemap crawl blocks, resolved indexing loops, and structured high-intent query maps.",
-                },
-                {
-                  name: "ClickForDigital",
-                  domain: "clickfordigital.com",
-                  clicks: "8.9K / month",
-                  growth: "+1012% Leads",
-                  desc: "B2B optimization & search campaign agency. Structured highly clean custom semantic code layouts driving steady localized lead acquisition.",
-                },
-              ].map((site) => (
-                <div
-                  key={site.name}
-                  className="p-6 bg-zinc-50/50 dark:bg-zinc-900/30 rounded-2xl border border-zinc-100 dark:border-zinc-900 flex flex-col justify-between hover:border-teal-500/30 dark:hover:border-teal-500/20 transition-all duration-300 group"
-                >
-                  <div>
-                    <div className="flex items-center justify-between mb-4">
-                      <div className="flex flex-col">
-                        <span className="font-sans font-extrabold text-base text-zinc-900 dark:text-white">
-                          {site.name}
-                        </span>
-                        <span className="font-mono text-[10.5px] text-teal-655 dark:text-teal-400 mt-0.5">
-                          {site.domain}
-                        </span>
-                      </div>
-                      <span className="bg-teal-500/10 text-teal-600 dark:text-teal-400 font-mono text-[10px] font-black px-2 py-1 rounded-md">
-                        {site.growth}
-                      </span>
-                    </div>
-                    <p className="text-xs sm:text-sm text-zinc-500 dark:text-zinc-400 font-sans leading-relaxed">
-                      {site.desc}
-                    </p>
-                  </div>
-                  <div className="mt-5 pt-3 border-t border-zinc-150 dark:border-zinc-800/50 flex justify-between items-center text-[10px] font-mono text-zinc-400">
-                    <span>Performance Verified</span>
-                    <span className="font-extrabold">{site.clicks}</span>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-
           {/* SEO Skills & Expertise Sub-Section */}
           <div>
             <div className="text-center max-w-3xl mx-auto mb-12">
