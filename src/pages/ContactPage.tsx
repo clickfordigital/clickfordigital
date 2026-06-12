@@ -6,10 +6,10 @@ import { Link } from "../components/Router";
 
 export default function ContactPage() {
   useEffect(() => {
-    document.title = "Contact Mohan — Schedule Your B2B Organic SEO Audit";
+    document.title = "Contact Mohan — Let's Connect";
     const metaDesc = document.querySelector('meta[name="description"]');
     if (metaDesc) {
-      metaDesc.setAttribute("content", "Submit your crawl credentials or schedule a live organic roadmap workshop with Mohan. Fast feedback loop within 24 hours guaranteed.");
+      metaDesc.setAttribute("content", "Get in touch with Mohan regarding professional opportunities, collaborations, internships, and networking in digital marketing.");
     }
   }, []);
 
@@ -18,18 +18,18 @@ export default function ContactPage() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Dynamic SEO breadcrumbs */}
-        <Breadcrumbs currentPage="Contact Consultant" />
+        <Breadcrumbs currentPage="Contact Professional" />
 
         {/* Section Header with structured metadata */}
         <div className="mb-10 text-left select-none">
           <span className="text-[10px] font-mono font-bold tracking-widest text-teal-600 dark:text-teal-400 uppercase bg-teal-500/5 px-2.5 py-1 rounded-md">
-            GET IN CONTACT
+            GET IN TOUCH
           </span>
           <h1 className="mt-3 font-sans font-extrabold text-3xl sm:text-4xl text-zinc-900 dark:text-white tracking-tight">
-            Schedule Your Organic Consultation
+            Let's Connect
           </h1>
           <p className="mt-2.5 text-xs sm:text-sm text-zinc-550 dark:text-zinc-400 font-sans font-medium max-w-2xl leading-normal">
-            Have crawling questions or need an expert to inspect your site rankings? Fill in your website configuration below and Mohan will examine it within 24 hours.
+            Thank you for visiting my portfolio. Whether you're a recruiter, hiring manager, business owner, or fellow digital marketing professional, I'd be happy to connect. Feel free to reach out regarding career opportunities, collaborations, SEO discussions, or any professional inquiries. I look forward to hearing from you.
           </p>
         </div>
 
@@ -43,7 +43,7 @@ export default function ContactPage() {
           <div className="flex items-center gap-3">
             <Mail className="w-5 h-5 text-teal-500" />
             <p className="text-xs sm:text-sm text-zinc-700 dark:text-zinc-300 font-sans font-semibold">
-              Want to read what Mohan's previous clients have achieved with on-page changes?
+              Want to view the search visibility and organic traffic milestones Mohan has delivered?
             </p>
           </div>
           <Link
@@ -51,7 +51,7 @@ export default function ContactPage() {
             id="contact-cta-to-case-studies"
             className="inline-flex items-center gap-1 text-xs font-bold text-teal-600 dark:text-teal-400 hover:text-teal-700 dark:hover:text-teal-300 transition duration-200"
           >
-            Read Growth Case Studies
+            View SEO Case Studies
             <ArrowRight className="w-4 h-4" />
           </Link>
         </div>

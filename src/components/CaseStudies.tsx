@@ -27,6 +27,7 @@ interface CaseStudyDetails {
   industry: string;
   duration: string;
   overview: string;
+  performanceProofImage: string;
   problems: string[];
   seoWork: {
     onPage: string[];
@@ -60,6 +61,7 @@ const caseStudiesList: CaseStudyDetails[] = [
     industry: "Astrology & EdTech Platform",
     duration: "6 Months Intensive",
     overview: "Acharya Ganesh is a high-growth Astrology platform providing online courses, consultancy, and daily insights. Despite strong offline popularity, the brand faced heavy search suppression barriers and critical slow-performance mobile pages.",
+    performanceProofImage: "https://placehold.co/1200x675?text=Acharya+Ganesh+Performance+Proof",
     problems: [
       "Stuck at bottom of search rankings due to core Web Web Vitals cumulative layout shift (CLS) penalties.",
       "Fragmented, duplicate thin blog content with zero semantic topical groupings.",
@@ -113,6 +115,7 @@ const caseStudiesList: CaseStudyDetails[] = [
     industry: "Consulting & Mentorship Hub",
     duration: "4 Months Plan",
     overview: "Hanish Bagga is an elite financial and personal consultancy brand. The primary goal was to bypass cold organic results and construct a high-converting inbound customer acquisition funnel targeting corporate leads.",
+    performanceProofImage: "https://placehold.co/1200x675?text=Hanish+Bagga+Performance+Proof",
     problems: [
       "No organic visibility for primary high-ticket transactional query categories.",
       "Bloated theme files making mobile Page Load speeds exceed 6 seconds.",
@@ -159,21 +162,22 @@ const caseStudiesList: CaseStudyDetails[] = [
     ]
   },
   {
-    id: "case-click",
-    websiteName: "ClickForDigital",
-    industry: "Lead Generation agency Portal",
+    id: "case-thinkbizz",
+    websiteName: "ThinkBizz",
+    industry: "Business Directory & SaaS Portal",
     duration: "Continuous",
-    overview: "ClickForDigital is Mohan's primary inbound search optimization portfolio website. To prove white-hat efficacy, it was critical to dominate search queries and generate steady B2B agency leads organ-wise.",
+    overview: "ThinkBizz is a high-authority business directory and lead generation platform. To establish top-tier white-hat authority and attract premium B2B consulting partners, the platform optimized localized entities to dominate highly competitive advisory keywords.",
+    performanceProofImage: "https://placehold.co/1200x675?text=ThinkBizz+Performance+Proof",
     problems: [
-      "Tough, massive SEO keyword competition from veteran marketing agencies.",
-      "Slow initial indexation latency of new informational topical clusters.",
-      "Minimal social post interaction signals reducing auxiliary CTR scores."
+      "Deeply entrenched competition from established global directories and databases.",
+      "Delayed initial crawl budget allocation for dynamically generated city nodes.",
+      "Moderate click-through rates (CTR) from standardized search result layouts."
     ],
     seoWork: {
       onPage: [
         "Crafted outstanding topical clusters mapping out exactly how B2B clients grow via search channels.",
-        "Optimized image sizes and ALT tags to index cleanly inside global search directories.",
-        "Deployed precise callouts driving raw informational traffic to the AI auditing box."
+        "Optimized brand layouts and metadata fields to index cleanly inside global search directories.",
+        "Deployed precise CTA elements driving organic traffic to consulting solutions pages."
       ],
       offPage: [
         "Secured contextual natural links in tech resource directories and blogging communities.",
@@ -213,6 +217,7 @@ const caseStudiesList: CaseStudyDetails[] = [
 
 export default function CaseStudies() {
   const [activeTab, setActiveTab] = useState<string>("case-acharya");
+  const [selectedProofImage, setSelectedProofImage] = useState<string | null>(null);
 
   return (
     <section id="case-studies" className="py-12 bg-transparent">
@@ -262,6 +267,55 @@ export default function CaseStudies() {
                     <p className="mt-4 text-xs sm:text-sm text-zinc-650 dark:text-zinc-400 font-sans font-medium leading-relaxed">
                       {cs.overview}
                     </p>
+
+                    {/* Dedicated Performance Proof Screenshot/Visual Area */}
+                    <div className="mt-6 space-y-3">
+                      <div className="flex items-center gap-1.5">
+                        <span className="inline-block w-1.5 h-1.5 rounded-full bg-teal-500 dark:bg-teal-400 animate-pulse" />
+                        <span className="text-[10px] font-mono font-bold tracking-wider text-teal-605 dark:text-teal-400 uppercase">
+                          Performance Proof
+                        </span>
+                      </div>
+                      
+                      {/* Interactive premium mock browser frame */}
+                      <div 
+                        onClick={() => setSelectedProofImage(cs.performanceProofImage)}
+                        className="relative group cursor-zoom-in rounded-[16px] overflow-hidden border border-zinc-200/80 dark:border-zinc-800/85 shadow-md bg-zinc-50 dark:bg-zinc-900 transition-all duration-500 hover:shadow-xl hover:scale-[1.015] hover:border-teal-500/30"
+                      >
+                        {/* Browser dot controls bar */}
+                        <div className="bg-zinc-100 dark:bg-zinc-900/90 border-b border-zinc-200/80 dark:border-zinc-805 px-4 py-2.5 flex items-center gap-1.5 select-none text-zinc-400 text-[10px]">
+                          <div className="flex gap-1">
+                            <span className="w-2 h-2 rounded-full bg-red-400" />
+                            <span className="w-2 h-2 rounded-full bg-yellow-400" />
+                            <span className="w-2 h-2 rounded-full bg-green-400" />
+                          </div>
+                          <span className="ml-4 font-mono text-[9px] text-zinc-450 dark:text-zinc-500 truncate w-1/2">
+                            https://www.{cs.websiteName.toLowerCase().replace(/\s+/g, '')}.com/performance-audit
+                          </span>
+                        </div>
+
+                        {/* Interactive dynamic showcase container */}
+                        <div className="relative aspect-[16/9] w-full overflow-hidden bg-zinc-100 dark:bg-zinc-900 flex items-center justify-center">
+                          <img 
+                            src={cs.performanceProofImage} 
+                            alt={`${cs.websiteName} Search Console Proof`}
+                            className="object-cover w-full h-full transition-transform duration-700 ease-out group-hover:scale-[1.03]"
+                            referrerPolicy="no-referrer"
+                          />
+                          {/* Shimmer hovering helper badge overlay */}
+                          <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors duration-300 flex items-center justify-center">
+                            <span className="px-3 py-1.5 rounded-lg bg-zinc-950/80 text-white font-sans text-2xs uppercase tracking-widest font-black opacity-0 group-hover:opacity-100 transition-opacity duration-300 transform translate-y-2 group-hover:translate-y-0 text-center">
+                              Click to view full report
+                            </span>
+                          </div>
+                        </div>
+                      </div>
+
+                      {/* Caption details */}
+                      <p className="text-[10px] sm:text-[10.5px] text-center font-mono font-bold text-zinc-400 dark:text-zinc-500 tracking-wider">
+                        Google Search Console &bull; Google Analytics 4 &bull; SEO Performance Report
+                      </p>
+                    </div>
                   </div>
 
                   {/* Problems list */}
@@ -485,6 +539,50 @@ export default function CaseStudies() {
         </div>
 
       </div>
+
+      {/* Premium Lightbox Modal for Performance Proof Images */}
+      <AnimatePresence>
+        {selectedProofImage && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            onClick={() => setSelectedProofImage(null)}
+            className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-zinc-950/95 backdrop-blur-md cursor-zoom-out"
+          >
+            {/* Close button in top-right */}
+            <button 
+              onClick={(e) => {
+                e.stopPropagation();
+                setSelectedProofImage(null);
+              }}
+              className="absolute top-6 right-6 p-2 rounded-full bg-white/10 text-white hover:bg-white/20 transition-all focus:outline-none cursor-pointer"
+              aria-label="Close Lightbox"
+            >
+              <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+              </svg>
+            </button>
+
+            {/* Scale animation container for the preview */}
+            <motion.div
+              initial={{ scale: 0.9, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              exit={{ scale: 0.9, opacity: 0 }}
+              transition={{ type: "spring", damping: 25, stiffness: 200 }}
+              className="relative max-w-5xl w-full aspect-[16/9] rounded-2xl overflow-hidden border border-white/10 shadow-2xl bg-zinc-900"
+              onClick={(e) => e.stopPropagation()}
+            >
+              <img
+                src={selectedProofImage}
+                alt="Full-Screen Performance Proof"
+                className="w-full h-full object-contain"
+                referrerPolicy="no-referrer"
+              />
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </section>
   );
 }

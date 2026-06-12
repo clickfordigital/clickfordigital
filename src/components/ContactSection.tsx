@@ -19,7 +19,7 @@ export default function ContactSection() {
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
   const [website, setWebsite] = useState("");
-  const [service, setService] = useState("Technical SEO & Crawling fixes");
+  const [service, setService] = useState("Full-Time / Contract Role");
   const [message, setMessage] = useState("");
   
   const [submitting, setSubmitting] = useState(false);
@@ -142,7 +142,7 @@ export default function ContactSection() {
 
   // Pre-compiled Whatsapp template url
   const whatsappTemplateUrl = "https://wa.me/918585974338?text=" + encodeURIComponent(
-    "Hello Mohan, I want to book a consultation regarding SEO and digital growth for my business."
+    "Hello Mohan, I read your SEO & SMO portfolio and would love to connect with you."
   );
 
   return (
@@ -152,29 +152,29 @@ export default function ContactSection() {
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto mb-16">
           <span className="text-xs font-mono font-bold tracking-widest text-teal-600 dark:text-teal-400 uppercase block">
-            GET IN TOUCH FOR CLIENT ACQUISITION
+            GET IN TOUCH
           </span>
           <h2 className="mt-2 font-sans font-extrabold text-3xl sm:text-4xl text-zinc-900 dark:text-white tracking-tight">
-            Book an SEO Consultation
+            Let's Connect
           </h2>
           <p className="mt-4 text-zinc-500 dark:text-zinc-400 text-sm sm:text-base font-sans font-medium">
-            Take the first step to command your SERPs. Fill out the consultation request below, or connect directly via WhatsApp.
+            Thank you for visiting my portfolio. Whether you're a recruiter, hiring manager, business owner, or fellow digital marketing professional, I'd be happy to connect. Feel free to reach out regarding career opportunities, collaborations, SEO discussions, or any professional inquiries. I look forward to hearing from you.
           </p>
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 sm:gap-16 items-start" id="contact-panel-view">
           
-          {/* Quick Contacts details - Left Side */}
+           {/* Quick Contacts details - Left Side */}
           <div className="lg:col-span-5 space-y-8 flex flex-col justify-between">
             <div>
               <span className="text-[10px] font-mono tracking-widest font-extrabold text-zinc-400 dark:text-zinc-505 uppercase block mb-3">
                 Mohan’s Direct Contacts
               </span>
               <h3 className="font-sans font-extrabold text-xl text-zinc-950 dark:text-white leading-snug">
-                Let’s construct a long-term organic revenue strategy.
+                Let’s connect on professional & career opportunities.
               </h3>
               <p className="mt-4 text-xs sm:text-sm text-zinc-505 dark:text-zinc-400 leading-relaxed font-sans font-medium">
-                Whether you own an eCommerce brand, a SaaS startup, or a regional clinics network, schedule an advisory call to diagnose your crawl budget and organic keyword gaps.
+                I am open to full-time opportunities, internships, research collaborations, digital marketing discussions, and professional networking. Feel free to reach out via Email, WhatsApp, or the contact form.
               </p>
             </div>
 
@@ -213,14 +213,14 @@ export default function ContactSection() {
                     </span>
                     <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[9px] font-bold font-mono bg-[#25D366] text-white">
                       <span className="w-1.5 h-1.5 rounded-full bg-white block animate-ping"></span>
-                      Book on WhatsApp
+                      Connect on WhatsApp
                     </span>
                   </div>
                   <h4 className="text-sm sm:text-base font-sans font-extrabold text-zinc-900 dark:text-zinc-100 mt-1 flex items-center gap-2">
                     Chat on WhatsApp <ExternalLink className="w-3.5 h-3.5 text-zinc-400 group-hover:text-zinc-600 transition-colors" />
                   </h4>
                   <p className="text-xs font-sans font-medium text-zinc-500 dark:text-zinc-400 mt-0.5 leading-normal">
-                    Click to message +91 8585974338 directly. Get answers within minutes!
+                    Click to message +91 8585974338 directly. Get in touch within minutes!
                   </p>
                 </div>
               </a>
@@ -230,7 +230,7 @@ export default function ContactSection() {
             <div className="pt-6 border-t border-zinc-100 dark:border-zinc-850 flex flex-col sm:flex-row sm:items-center justify-between gap-4 font-mono text-[10.5px] text-zinc-400">
               <div className="flex items-center gap-2">
                 <Globe className="w-4 h-4 text-indigo-500" />
-                <span>Based: ClickForDigital, NY / remote</span>
+                <span>Based: New York, USA / Remote</span>
               </div>
               <div className="flex items-center gap-4">
                 <a href="#home" className="hover:text-teal-500">LinkedIn</a>
@@ -262,7 +262,7 @@ export default function ContactSection() {
           <div className="lg:col-span-7" id="contact-form-card">
             <div className="bg-zinc-50/50 dark:bg-zinc-900/40 rounded-2xl border border-zinc-150/80 dark:border-zinc-900 p-6 sm:p-8 shadow-sm">
               <span className="text-[10px] font-mono tracking-widest font-extrabold text-zinc-400 dark:text-zinc-505 uppercase block mb-6">
-                Consultation Request Form
+                Send a Message
               </span>
 
               <form onSubmit={handleSubmit} className="space-y-4">
@@ -317,7 +317,7 @@ export default function ContactSection() {
                     </label>
                     <input
                       type="text"
-                      placeholder="E.g., millerlegal.com"
+                      placeholder="E.g., company.com"
                       value={website}
                       onChange={(e) => setWebsite(e.target.value)}
                       disabled={submitting}
@@ -328,7 +328,7 @@ export default function ContactSection() {
 
                 <div>
                   <label className="text-[10.5px] font-semibold text-zinc-550 dark:text-zinc-400 uppercase block mb-1.5">
-                    Target SEO Service
+                    Target Opportunity / Inquiry Type
                   </label>
                   <select
                     value={service}
@@ -336,20 +336,20 @@ export default function ContactSection() {
                     disabled={submitting}
                     className="w-full p-2.5 rounded-xl border border-zinc-200 dark:border-zinc-850 bg-white dark:bg-zinc-905 text-xs sm:text-sm text-zinc-950 dark:text-white focus:outline-none focus:ring-2 focus:ring-teal-500/50 disabled:opacity-50 cursor-pointer"
                   >
-                    <option value="Technical SEO & Crawling fixes">Technical SEO & Crawling fixes</option>
-                    <option value="On-Page Content relevance optimization">On-Page relevance optimization</option>
-                    <option value="Local maps hyper-local setup">Local maps hyper-local setup</option>
-                    <option value="E-E-A-T Authority Link building">E-E-A-T Link building</option>
+                    <option value="Full-Time / Contract Role">Full-Time / Contract Role</option>
+                    <option value="Part-Time / Internship">Part-Time / Internship</option>
+                    <option value="Collaborations & Projects">Collaborations & Projects</option>
+                    <option value="Professional Networking / Chat">Professional Networking / Chat</option>
                   </select>
                 </div>
 
                 <div>
                   <label className="text-[10.5px] font-semibold text-zinc-550 dark:text-zinc-400 uppercase block mb-1.5">
-                    Briefly outline your SEO objectives <span className="text-teal-500">*</span>
+                    Outline your opportunity, collaboration details, or message <span className="text-teal-500">*</span>
                   </label>
                   <textarea
                     required
-                    placeholder="Provide details about your target objectives or drop links to search console errors."
+                    placeholder="Provide details about your target opportunity, joint projects, networking questions, or career suggestions."
                     rows={4}
                     value={message}
                     onChange={(e) => setMessage(e.target.value)}
@@ -392,7 +392,7 @@ export default function ContactSection() {
                     id="btn-submit-contact"
                     className="w-full bg-gradient-to-r from-teal-500 to-indigo-600 hover:from-teal-600 hover:to-indigo-700 text-white p-3.5 rounded-xl text-xs sm:text-sm font-semibold shadow-md hover:shadow-lg transition flex items-center justify-center gap-2 cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed select-none focus:outline-none"
                   >
-                    {submitting ? "Sending consultation parameters..." : "Request Call & SEO Consultation"}
+                    {submitting ? "Sending details..." : "Send Message"}
                     <Send className="w-3.5 h-3.5" />
                   </button>
                 </div>
