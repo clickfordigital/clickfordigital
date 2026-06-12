@@ -93,7 +93,7 @@ export default function ContactSection() {
 
       // If STILL not found, use a safe default fallback
       if (!formspreeEndpoint) {
-        formspreeEndpoint = "https://formspree.io/f/xzbygqkd";
+        formspreeEndpoint = "https://formspree.io/f/mgobpwvv";
       }
       
       const formspreeResponse = await fetch(formspreeEndpoint, {
