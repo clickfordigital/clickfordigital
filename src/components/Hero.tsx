@@ -225,90 +225,8 @@ export default function Hero() {
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.25 }}
-              className="mt-6 mx-auto lg:mx-0 w-full max-w-sm select-none text-left"
-            >
-              <h3 className="text-[10px] font-mono font-bold tracking-widest text-zinc-400 dark:text-zinc-500 uppercase block mb-3">
-                I've Worked With
-              </h3>
-              
-              <div className="space-y-2.5">
-                {/* Brand card 1: Acharya Ganesh */}
-                <div 
-                  id="brand-card-acharya-ganesh"
-                  className="flex items-center gap-3.5 p-3 rounded-2xl bg-white/40 dark:bg-zinc-900/45 backdrop-blur-md border border-zinc-200/50 dark:border-zinc-850 shadow-sm hover:shadow-md hover:border-teal-500/30 dark:hover:border-teal-500/30 transition-all duration-300 transform hover:-translate-y-0.5 group"
-                >
-                  <div className="w-10 h-10 rounded-xl bg-zinc-50 dark:bg-zinc-950 overflow-hidden flex items-center justify-center border border-zinc-200/40 dark:border-zinc-800 shrink-0 shadow-inner">
-                    <img 
-                      src={acharyaGaneshLogo} 
-                      alt="Acharya Ganesh Logo" 
-                      className="w-full h-full object-cover"
-                      referrerPolicy="no-referrer"
-                    />
-                  </div>
-                  <div>
-                    <h4 className="font-sans font-bold text-xs text-zinc-850 dark:text-zinc-100 group-hover:text-teal-605 dark:group-hover:text-teal-400 transition-colors">
-                      Acharya Ganesh
-                    </h4>
-                    <p className="text-[10px] text-zinc-400 dark:text-zinc-500 font-medium mt-0.5">
-                      Astrology & EdTech Platform
-                    </p>
-                  </div>
-                </div>
-
-                {/* Brand card 2: Hanish Bagga */}
-                <div 
-                  id="brand-card-hanish-bagga"
-                  className="flex items-center gap-3.5 p-3 rounded-2xl bg-white/40 dark:bg-zinc-900/45 backdrop-blur-md border border-zinc-200/50 dark:border-zinc-850 shadow-sm hover:shadow-md hover:border-indigo-500/30 dark:hover:border-indigo-505/30 transition-all duration-300 transform hover:-translate-y-0.5 group"
-                >
-                  <div className="w-10 h-10 rounded-xl bg-zinc-50 dark:bg-zinc-950 overflow-hidden flex items-center justify-center border border-zinc-200/40 dark:border-zinc-800 shrink-0 shadow-inner p-0.5">
-                    <img 
-                      src={hanishBaggaLogo} 
-                      alt="Hanish Bagga Logo" 
-                      className="w-full h-full object-contain"
-                      referrerPolicy="no-referrer"
-                    />
-                  </div>
-                  <div>
-                    <h4 className="font-sans font-bold text-xs text-zinc-850 dark:text-zinc-100 group-hover:text-teal-605 dark:group-hover:text-teal-400 transition-colors">
-                      Hanish Bagga
-                    </h4>
-                    <p className="text-[10px] text-zinc-400 dark:text-zinc-500 font-medium mt-0.5">
-                      Consulting & Mentorship Hub
-                    </p>
-                  </div>
-                </div>
-
-                {/* Brand card 3: ThinkBizz Hightech */}
-                <div 
-                  id="brand-card-thinkbizz"
-                  className="flex items-center gap-3.5 p-3 rounded-2xl bg-white/40 dark:bg-zinc-900/45 backdrop-blur-md border border-zinc-200/50 dark:border-zinc-850 shadow-sm hover:shadow-md hover:border-purple-500/30 dark:hover:border-purple-500/30 transition-all duration-300 transform hover:-translate-y-0.5 group"
-                >
-                  <div className="w-10 h-10 rounded-xl bg-zinc-50 dark:bg-zinc-950 overflow-hidden flex items-center justify-center border border-zinc-200/40 dark:border-zinc-800 shrink-0 shadow-inner p-0.5">
-                    <img 
-                      src={thinkbizLogo} 
-                      alt="ThinkBizz Hightech Logo" 
-                      className="w-full h-full object-contain"
-                      referrerPolicy="no-referrer"
-                    />
-                  </div>
-                  <div>
-                    <h4 className="font-sans font-bold text-xs text-zinc-850 dark:text-zinc-100 group-hover:text-teal-605 dark:group-hover:text-teal-400 transition-colors">
-                      ThinkBizz Hightech
-                    </h4>
-                    <p className="text-[10px] text-zinc-400 dark:text-zinc-500 font-medium mt-0.5">
-                      Business Directory & SaaS Portal
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </motion.div>
-
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.3 }}
-              className="mt-6 flex flex-col sm:flex-row gap-3 justify-center lg:justify-start"
+              className="mt-8 flex flex-col sm:flex-row gap-3 justify-center lg:justify-start"
               id="hero-ctas"
             >
               <Link
@@ -524,6 +442,110 @@ export default function Hero() {
             </motion.div>
           </div>
         </div>
+
+        {/* Premium "I've Worked With" Section */}
+        <motion.div
+          initial={{ opacity: 0, y: 25 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.7 }}
+          className="mt-16 sm:mt-24 relative rounded-[2.5rem] overflow-hidden border border-zinc-200/50 dark:border-zinc-850 shadow-[0_20px_50px_rgba(0,0,0,0.02)] dark:shadow-[0_20px_50px_rgba(0,0,0,0.4)] bg-gradient-to-tr from-zinc-50/80 via-white to-zinc-100/50 dark:from-zinc-950/60 dark:via-zinc-900/30 dark:to-zinc-950/45 backdrop-blur-2xl px-6 py-10 sm:py-14"
+          id="premium-clients-showcase"
+        >
+          {/* Soft abstract background elements */}
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[80%] h-[80%] pointer-events-none z-0 opacity-40 dark:opacity-30">
+            <div className="absolute -top-10 left-1/4 w-72 h-72 bg-teal-400/10 dark:bg-teal-500/5 rounded-full blur-[90px]" />
+            <div className="absolute -bottom-10 right-1/4 w-72 h-72 bg-indigo-500/10 dark:bg-indigo-600/5 rounded-full blur-[90px]" />
+          </div>
+
+          <div className="relative z-10 flex flex-col items-center">
+            {/* Centered bold heading */}
+            <div className="text-center mb-8 sm:mb-10">
+              <span className="text-[10px] font-mono font-bold tracking-[0.2em] text-teal-600 dark:text-teal-400 uppercase block mb-2.5">
+                Valued Clients & Collaborations
+              </span>
+              <h2 className="text-2xl sm:text-3xl font-sans font-extrabold tracking-tight text-zinc-900 dark:text-white leading-none">
+                I've Worked With
+              </h2>
+              <div className="h-1 w-10 bg-gradient-to-r from-teal-500 to-indigo-600 mx-auto mt-4 rounded-full" />
+            </div>
+
+            {/* Clean horizontal row of client logos/icons with spacing */}
+            <div className="flex flex-col sm:flex-row flex-wrap justify-center items-center gap-4 sm:gap-6 w-full max-w-5xl">
+              {/* Card 1: Acharya Ganesh */}
+              <motion.div
+                whileHover={{ y: -5, scale: 1.02 }}
+                transition={{ type: "spring", stiffness: 400, damping: 25 }}
+                className="flex items-center gap-4 pl-4 pr-6 py-3.5 w-full sm:w-auto min-w-[260px] rounded-2xl bg-white/70 dark:bg-zinc-900/55 backdrop-blur-md border border-zinc-200/60 dark:border-zinc-800/80 shadow-[0_4px_20px_rgba(0,0,0,0.01)] hover:shadow-[0_15px_30px_rgba(20,184,166,0.1)] dark:hover:shadow-[0_15px_30px_rgba(20,184,166,0.15)] hover:border-teal-500/30 dark:hover:border-teal-400/20 group transition-all duration-300"
+              >
+                <div className="w-12 h-12 rounded-xl bg-zinc-50 dark:bg-zinc-950 overflow-hidden flex items-center justify-center border border-zinc-200/50 dark:border-zinc-800/60 shrink-0 shadow-inner group-hover:scale-105 transition-transform duration-300">
+                  <img
+                    src={acharyaGaneshLogo}
+                    alt="Acharya Ganesh Logo"
+                    className="w-full h-full object-cover"
+                    referrerPolicy="no-referrer"
+                  />
+                </div>
+                <div className="text-left">
+                  <h4 className="font-sans font-extrabold text-xs text-zinc-850 dark:text-zinc-100 group-hover:text-teal-600 dark:group-hover:text-teal-400 transition-colors">
+                    Acharya Ganesh
+                  </h4>
+                  <p className="text-[10px] text-zinc-400 dark:text-zinc-500 font-semibold tracking-wide uppercase mt-0.5">
+                    Astrology & EdTech
+                  </p>
+                </div>
+              </motion.div>
+
+              {/* Card 2: Hanish Bagga */}
+              <motion.div
+                whileHover={{ y: -5, scale: 1.02 }}
+                transition={{ type: "spring", stiffness: 400, damping: 25 }}
+                className="flex items-center gap-4 pl-4 pr-6 py-3.5 w-full sm:w-auto min-w-[260px] rounded-2xl bg-white/70 dark:bg-zinc-900/55 backdrop-blur-md border border-zinc-200/60 dark:border-zinc-800/80 shadow-[0_4px_20px_rgba(0,0,0,0.01)] hover:shadow-[0_15px_30px_rgba(99,102,241,0.1)] dark:hover:shadow-[0_15px_30px_rgba(99,102,241,0.15)] hover:border-indigo-500/30 dark:hover:border-indigo-400/20 group transition-all duration-300"
+              >
+                <div className="w-12 h-12 rounded-xl bg-zinc-50 dark:bg-zinc-950 overflow-hidden flex items-center justify-center border border-zinc-200/50 dark:border-zinc-800/60 shrink-0 shadow-inner p-1 group-hover:scale-105 transition-transform duration-300">
+                  <img
+                    src={hanishBaggaLogo}
+                    alt="Hanish Bagga Logo"
+                    className="w-full h-full object-contain"
+                    referrerPolicy="no-referrer"
+                  />
+                </div>
+                <div className="text-left">
+                  <h4 className="font-sans font-extrabold text-xs text-zinc-850 dark:text-zinc-100 group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition-colors">
+                    Hanish Bagga
+                  </h4>
+                  <p className="text-[10px] text-zinc-400 dark:text-zinc-500 font-semibold tracking-wide uppercase mt-0.5">
+                    Consulting & Mentorship
+                  </p>
+                </div>
+              </motion.div>
+
+              {/* Card 3: ThinkBizz Hightech */}
+              <motion.div
+                whileHover={{ y: -5, scale: 1.02 }}
+                transition={{ type: "spring", stiffness: 400, damping: 25 }}
+                className="flex items-center gap-4 pl-4 pr-6 py-3.5 w-full sm:w-auto min-w-[260px] rounded-2xl bg-white/70 dark:bg-zinc-900/55 backdrop-blur-md border border-zinc-200/60 dark:border-zinc-800/80 shadow-[0_4px_20px_rgba(0,0,0,0.01)] hover:shadow-[0_15px_30px_rgba(168,85,247,0.1)] dark:hover:shadow-[0_15px_30px_rgba(168,85,247,0.15)] hover:border-purple-500/30 dark:hover:border-purple-400/20 group transition-all duration-300"
+              >
+                <div className="w-12 h-12 rounded-xl bg-zinc-50 dark:bg-zinc-950 overflow-hidden flex items-center justify-center border border-zinc-200/50 dark:border-zinc-800/60 shrink-0 shadow-inner p-1 group-hover:scale-105 transition-transform duration-300">
+                  <img
+                    src={thinkbizLogo}
+                    alt="ThinkBiz Logo"
+                    className="w-full h-full object-contain"
+                    referrerPolicy="no-referrer"
+                  />
+                </div>
+                <div className="text-left">
+                  <h4 className="font-sans font-bold text-xs text-zinc-850 dark:text-zinc-100 group-hover:text-purple-600 dark:group-hover:text-purple-400 transition-colors">
+                    ThinkBizz Hightech
+                  </h4>
+                  <p className="text-[10px] text-zinc-400 dark:text-zinc-500 font-semibold tracking-wide uppercase mt-0.5">
+                    SaaS & Directory Portal
+                  </p>
+                </div>
+              </motion.div>
+            </div>
+          </div>
+        </motion.div>
 
         {/* 🛠 My Digital Marketing Stack Section */}
         <div className="mt-20 border-t border-zinc-150/70 dark:border-zinc-900/80 pt-16 animate-fade-in" id="marketing-stack">
