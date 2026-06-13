@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { ArrowUpRight, Search, TrendingUp, CheckCircle, Smartphone, BarChart3, ArrowRight, Zap, Percent, ShieldCheck, Globe, Cog, Rocket, Target } from "lucide-react";
+import { ArrowUpRight, Search, TrendingUp, CheckCircle, Smartphone, BarChart3, ArrowRight, Zap, Percent, ShieldCheck, Globe, Cog, Rocket, Target, ChevronLeft, ChevronRight, Sparkles } from "lucide-react";
 import { motion } from "motion/react";
 import { Link } from "./Router";
 import mohanPortrait from "../assets/images/mohan.png";
@@ -160,6 +160,32 @@ const STACK_TOOLS = [
 const DOUBLE_STACK_TOOLS = [...STACK_TOOLS, ...STACK_TOOLS, ...STACK_TOOLS];
 
 export default function Hero() {
+  const [activeClientIdx, setActiveClientIdx] = useState(0);
+  const [clientTouchStart, setClientTouchStart] = useState<number | null>(null);
+
+  const handleNextClient = () => {
+    setActiveClientIdx((prev) => (prev + 1) % 3);
+  };
+
+  const handlePrevClient = () => {
+    setActiveClientIdx((prev) => (prev - 1 + 3) % 3);
+  };
+
+  const handleClientTouchStart = (e: React.TouchEvent) => {
+    setClientTouchStart(e.touches[0].clientX);
+  };
+
+  const handleClientTouchEnd = (e: React.TouchEvent) => {
+    if (clientTouchStart === null) return;
+    const diff = clientTouchStart - e.changedTouches[0].clientX;
+    if (diff > 50) {
+      handleNextClient();
+    } else if (diff < -50) {
+      handlePrevClient();
+    }
+    setClientTouchStart(null);
+  };
+
   const handleScrollTo = (id: string) => {
     if (typeof window !== "undefined") {
       if (window.location.pathname !== "/") {
@@ -449,101 +475,219 @@ export default function Hero() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.7 }}
-          className="mt-16 sm:mt-24 relative rounded-[2.5rem] overflow-hidden border border-zinc-200/50 dark:border-zinc-850 shadow-[0_20px_50px_rgba(0,0,0,0.02)] dark:shadow-[0_20px_50px_rgba(0,0,0,0.4)] bg-gradient-to-tr from-zinc-50/80 via-white to-zinc-100/50 dark:from-zinc-950/60 dark:via-zinc-900/30 dark:to-zinc-950/45 backdrop-blur-2xl px-6 py-10 sm:py-14"
+          className="mt-16 sm:mt-24 relative rounded-[2.5rem] overflow-hidden border border-zinc-200/50 dark:border-zinc-850 shadow-[0_30px_70px_rgba(0,0,0,0.02)] dark:shadow-[0_30px_70px_rgba(0,0,0,0.45)] bg-gradient-to-tr from-zinc-50/90 via-white to-zinc-100/70 dark:from-zinc-950/75 dark:via-zinc-900/45 dark:to-zinc-950/50 backdrop-blur-3xl px-4 sm:px-10 py-12 sm:py-16 md:-mx-8 lg:-mx-16 xl:-mx-24"
           id="premium-clients-showcase"
         >
           {/* Soft abstract background elements */}
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[80%] h-[80%] pointer-events-none z-0 opacity-40 dark:opacity-30">
-            <div className="absolute -top-10 left-1/4 w-72 h-72 bg-teal-400/10 dark:bg-teal-500/5 rounded-full blur-[90px]" />
-            <div className="absolute -bottom-10 right-1/4 w-72 h-72 bg-indigo-500/10 dark:bg-indigo-600/5 rounded-full blur-[90px]" />
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[85%] h-[85%] pointer-events-none z-0 opacity-40 dark:opacity-30">
+            <div className="absolute -top-12 left-1/4 w-80 h-80 bg-teal-400/10 dark:bg-teal-500/5 rounded-full blur-[100px]" />
+            <div className="absolute -bottom-12 right-1/4 w-80 h-80 bg-indigo-500/10 dark:bg-indigo-600/5 rounded-full blur-[100px]" />
           </div>
 
-          <div className="relative z-10 flex flex-col items-center">
-            {/* Centered bold heading */}
-            <div className="text-center mb-8 sm:mb-10">
-              <span className="text-[10px] font-mono font-bold tracking-[0.2em] text-teal-600 dark:text-teal-400 uppercase block mb-2.5">
+          <div className="relative z-10 flex flex-col items-center w-full">
+            {/* Centered bold heading with decorative elements */}
+            <div className="text-center mb-10 sm:mb-12">
+              <span className="text-[10px] font-mono font-bold tracking-[0.25em] text-teal-600 dark:text-teal-400 uppercase block mb-3">
+                <Sparkles className="w-3.5 h-3.5 inline-block mr-1.5 animate-pulse text-teal-500" />
                 Valued Clients & Collaborations
               </span>
-              <h2 className="text-2xl sm:text-3xl font-sans font-extrabold tracking-tight text-zinc-900 dark:text-white leading-none">
+              <h2 className="text-3xl sm:text-4xl font-sans font-black tracking-tight text-zinc-900 dark:text-white leading-none uppercase">
                 I've Worked With
               </h2>
-              <div className="h-1 w-10 bg-gradient-to-r from-teal-500 to-indigo-600 mx-auto mt-4 rounded-full" />
+              <div className="h-1.5 w-16 bg-gradient-to-r from-teal-500 via-emerald-400 to-indigo-600 mx-auto mt-5 rounded-full shadow-sm" />
             </div>
 
-            {/* Clean horizontal row of client logos/icons with spacing */}
-            <div className="flex flex-col sm:flex-row flex-wrap justify-center items-center gap-4 sm:gap-6 w-full max-w-5xl">
-              {/* Card 1: Acharya Ganesh */}
-              <motion.div
-                whileHover={{ y: -5, scale: 1.02 }}
-                transition={{ type: "spring", stiffness: 400, damping: 25 }}
-                className="flex items-center gap-4 pl-4 pr-6 py-3.5 w-full sm:w-auto min-w-[260px] rounded-2xl bg-white/70 dark:bg-zinc-900/55 backdrop-blur-md border border-zinc-200/60 dark:border-zinc-800/80 shadow-[0_4px_20px_rgba(0,0,0,0.01)] hover:shadow-[0_15px_30px_rgba(20,184,166,0.1)] dark:hover:shadow-[0_15px_30px_rgba(20,184,166,0.15)] hover:border-teal-500/30 dark:hover:border-teal-400/20 group transition-all duration-300"
-              >
-                <div className="w-12 h-12 rounded-xl bg-zinc-50 dark:bg-zinc-950 overflow-hidden flex items-center justify-center border border-zinc-200/50 dark:border-zinc-800/60 shrink-0 shadow-inner group-hover:scale-105 transition-transform duration-300">
-                  <img
-                    src={acharyaGaneshLogo}
-                    alt="Acharya Ganesh Logo"
-                    className="w-full h-full object-cover"
-                    referrerPolicy="no-referrer"
-                  />
-                </div>
-                <div className="text-left">
-                  <h4 className="font-sans font-extrabold text-xs text-zinc-850 dark:text-zinc-100 group-hover:text-teal-600 dark:group-hover:text-teal-400 transition-colors">
-                    Acharya Ganesh
-                  </h4>
-                  <p className="text-[10px] text-zinc-400 dark:text-zinc-500 font-semibold tracking-wide uppercase mt-0.5">
-                    Astrology & EdTech
-                  </p>
-                </div>
-              </motion.div>
+            {/* Slider container with relative boundaries & swiping listeners */}
+            <div 
+              className="relative w-full overflow-hidden select-none"
+              onTouchStart={handleClientTouchStart}
+              onTouchEnd={handleClientTouchEnd}
+            >
+              <div className="absolute left-0 top-0 bottom-0 w-8 sm:w-16 bg-gradient-to-r from-zinc-50/20 dark:from-zinc-950/20 to-transparent z-10 pointer-events-none" />
+              <div className="absolute right-0 top-0 bottom-0 w-8 sm:w-16 bg-gradient-to-l from-zinc-50/20 dark:from-zinc-950/20 to-transparent z-10 pointer-events-none" />
 
-              {/* Card 2: Hanish Bagga */}
-              <motion.div
-                whileHover={{ y: -5, scale: 1.02 }}
-                transition={{ type: "spring", stiffness: 400, damping: 25 }}
-                className="flex items-center gap-4 pl-4 pr-6 py-3.5 w-full sm:w-auto min-w-[260px] rounded-2xl bg-white/70 dark:bg-zinc-900/55 backdrop-blur-md border border-zinc-200/60 dark:border-zinc-800/80 shadow-[0_4px_20px_rgba(0,0,0,0.01)] hover:shadow-[0_15px_30px_rgba(99,102,241,0.1)] dark:hover:shadow-[0_15px_30px_rgba(99,102,241,0.15)] hover:border-indigo-500/30 dark:hover:border-indigo-400/20 group transition-all duration-300"
-              >
-                <div className="w-12 h-12 rounded-xl bg-zinc-50 dark:bg-zinc-950 overflow-hidden flex items-center justify-center border border-zinc-200/50 dark:border-zinc-800/60 shrink-0 shadow-inner p-1 group-hover:scale-105 transition-transform duration-300">
-                  <img
-                    src={hanishBaggaLogo}
-                    alt="Hanish Bagga Logo"
-                    className="w-full h-full object-contain"
-                    referrerPolicy="no-referrer"
-                  />
-                </div>
-                <div className="text-left">
-                  <h4 className="font-sans font-extrabold text-xs text-zinc-850 dark:text-zinc-100 group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition-colors">
-                    Hanish Bagga
-                  </h4>
-                  <p className="text-[10px] text-zinc-400 dark:text-zinc-500 font-semibold tracking-wide uppercase mt-0.5">
-                    Consulting & Mentorship
-                  </p>
-                </div>
-              </motion.div>
+              {/* Slider Track */}
+              <div className="relative overflow-visible">
+                <motion.div 
+                  className="flex w-full"
+                  animate={{ x: `-${activeClientIdx * 100}%` }}
+                  transition={{ type: "spring", stiffness: 220, damping: 28 }}
+                >
+                  {[
+                    {
+                      name: "Acharya Ganesh",
+                      logo: acharyaGaneshLogo,
+                      fallback: <AcharyaGaneshSvg />,
+                      category: "Astrology, Devotional & EdTech",
+                      metric: "+608% Organics Scaling",
+                      niche: "EdTech & Spiritual Consultation Platform",
+                      metricsBadge: "Sub-Second Loading Timing",
+                      summary: "Successfully compressed bulk content, deferred heavy render-blocking JS executes, styled elegant custom layout details, and bridged topical content gaps.",
+                      results: [
+                        "Drove a stellar 99/100 PageSpeed Core Web Vitals rating",
+                        "Secured prominent Google Knowledge Graph snippets",
+                        "Programmatic NLP keyword silos bypassed crawl limits"
+                      ],
+                      classGlow: "shadow-[0_0_50px_-10px_rgba(20,184,166,0.25)]",
+                      glowHex: "#14b8a6"
+                    },
+                    {
+                      name: "Hanish Bagga",
+                      logo: hanishBaggaLogo,
+                      fallback: <HanishBaggaSvg />,
+                      category: "Consulting & Executive Mentorship",
+                      metric: "+240% Course Registrations",
+                      niche: "High-Ticket Enterprise Advisory",
+                      metricsBadge: "100% Tracking Accuracy GTM",
+                      summary: "Configured flawless Google Tag Manager purchase/order logging events, purged client-side measurement noise, and injected strict structured schema profiles.",
+                      results: [
+                        "Ranked #1 for regional Consulting Consulting search phrases",
+                        "Eliminated transaction duplicate loops on analytic dashboards",
+                        "Spurred direct organic advisory inbound traffic scale of +544%"
+                      ],
+                      classGlow: "shadow-[0_0_50px_-10px_rgba(249,115,22,0.25)]",
+                      glowHex: "#f97316"
+                    },
+                    {
+                      name: "ThinkBizz Hightech",
+                      logo: thinkbizLogo,
+                      fallback: <ThinkBizzSvg />,
+                      category: "SaaS & Directory Portal",
+                      metric: "100% Crawl Indexability",
+                      niche: "Directory Portal & Directory SaaS Ecosystem",
+                      metricsBadge: "Zero Index Errors",
+                      summary: "Architected modern canonical hierarchy rules, restaged automated sitemaps, solved heavy pagination issues, and expanded semantic coverage mapping.",
+                      results: [
+                        "Recovered 100% perfect crawl efficiency scoring metrics",
+                        "Successfully indexated 50,000+ custom list pages",
+                        "Bypassed legacy directory search crawler bottlenecking"
+                      ],
+                      classGlow: "shadow-[0_0_50px_-10px_rgba(168,85,247,0.25)]",
+                      glowHex: "#a855f7"
+                    }
+                  ].map((partner, pIdx) => (
+                    <div 
+                      key={pIdx} 
+                      className="w-full shrink-0 px-2 sm:px-6 md:px-12"
+                    >
+                      <div className={`mx-auto max-w-5xl rounded-3xl border border-zinc-200/80 dark:border-zinc-800 bg-white/70 dark:bg-zinc-900/60 backdrop-blur-2xl p-6 sm:p-10 ${partner.classGlow} hover:border-zinc-300 dark:hover:border-zinc-700 transition-all duration-300`}>
+                        <div className="grid grid-cols-1 md:grid-cols-12 gap-8 items-center text-left">
+                          
+                          {/* Col 1: Prominent Logo, Niche, Category */}
+                          <div className="md:col-span-4 flex flex-col items-center md:items-start text-center md:text-left space-y-4">
+                            <div className="relative group/logo">
+                              {/* Ambient animated glow ring behind logo */}
+                              <div 
+                                className="absolute -inset-1.5 rounded-3xl blur-md opacity-25 group-hover/logo:opacity-50 transition duration-500 animate-pulse" 
+                                style={{ backgroundColor: partner.glowHex }}
+                              />
+                              <div className="relative w-24 h-24 sm:w-28 sm:h-28 rounded-2xl bg-zinc-50 dark:bg-zinc-950 p-2 border border-zinc-200/60 dark:border-zinc-800/80 shadow-md flex items-center justify-center overflow-hidden shrink-0 group-hover/logo:scale-105 transition-transform duration-300">
+                                {partner.logo ? (
+                                  <img 
+                                    src={partner.logo} 
+                                    alt={`${partner.name} Logo`} 
+                                    className="w-full h-full object-contain"
+                                    referrerPolicy="no-referrer"
+                                  />
+                                ) : (
+                                  partner.fallback
+                                )}
+                              </div>
+                            </div>
 
-              {/* Card 3: ThinkBizz Hightech */}
-              <motion.div
-                whileHover={{ y: -5, scale: 1.02 }}
-                transition={{ type: "spring", stiffness: 400, damping: 25 }}
-                className="flex items-center gap-4 pl-4 pr-6 py-3.5 w-full sm:w-auto min-w-[260px] rounded-2xl bg-white/70 dark:bg-zinc-900/55 backdrop-blur-md border border-zinc-200/60 dark:border-zinc-800/80 shadow-[0_4px_20px_rgba(0,0,0,0.01)] hover:shadow-[0_15px_30px_rgba(168,85,247,0.1)] dark:hover:shadow-[0_15px_30px_rgba(168,85,247,0.15)] hover:border-purple-500/30 dark:hover:border-purple-400/20 group transition-all duration-300"
-              >
-                <div className="w-12 h-12 rounded-xl bg-zinc-50 dark:bg-zinc-950 overflow-hidden flex items-center justify-center border border-zinc-200/50 dark:border-zinc-800/60 shrink-0 shadow-inner p-1 group-hover:scale-105 transition-transform duration-300">
-                  <img
-                    src={thinkbizLogo}
-                    alt="ThinkBiz Logo"
-                    className="w-full h-full object-contain"
-                    referrerPolicy="no-referrer"
-                  />
-                </div>
-                <div className="text-left">
-                  <h4 className="font-sans font-bold text-xs text-zinc-850 dark:text-zinc-100 group-hover:text-purple-600 dark:group-hover:text-purple-400 transition-colors">
-                    ThinkBizz Hightech
-                  </h4>
-                  <p className="text-[10px] text-zinc-400 dark:text-zinc-500 font-semibold tracking-wide uppercase mt-0.5">
-                    SaaS & Directory Portal
-                  </p>
-                </div>
-              </motion.div>
+                            <div className="space-y-1">
+                              <span className="text-[10px] font-mono font-bold text-teal-600 dark:text-teal-400 tracking-wider uppercase block">
+                                {partner.category}
+                              </span>
+                              <h3 className="font-sans font-black text-xl sm:text-2xl text-zinc-900 dark:text-white leading-tight">
+                                {partner.name}
+                              </h3>
+                              <p className="text-[11px] text-zinc-400 dark:text-zinc-500 font-mono">
+                                Role: SEO Consultant
+                              </p>
+                            </div>
+                          </div>
+
+                          {/* Col 2: Metric highlight, detailed bullets list */}
+                          <div className="md:col-span-8 space-y-5">
+                            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-zinc-100 dark:border-zinc-800 pb-4">
+                              <div className="space-y-0.5">
+                                <span className="text-[9px] font-mono tracking-widest font-black text-zinc-400 uppercase block">
+                                  Primary Metric Scaled
+                                </span>
+                                <span className="text-xl sm:text-2xl font-sans font-black tracking-tight text-emerald-600 dark:text-emerald-400">
+                                  {partner.metric}
+                                </span>
+                              </div>
+                              <span className="self-start sm:self-center bg-zinc-900 dark:bg-white text-white dark:text-zinc-900 text-[10px] font-mono font-bold px-3 py-1 rounded-sm uppercase tracking-wider">
+                                {partner.metricsBadge}
+                              </span>
+                            </div>
+
+                            <p className="text-zinc-600 dark:text-zinc-350 text-xs sm:text-[13px] leading-relaxed font-semibold">
+                              {partner.summary}
+                            </p>
+
+                            <div className="space-y-2.5">
+                              <h4 className="text-[10px] sm:text-xs font-mono font-bold text-zinc-500 tracking-wider uppercase">
+                                Verified Results Delivered
+                              </h4>
+                              <ul className="grid grid-cols-1 gap-2">
+                                {partner.results.map((bullet, bIdx) => (
+                                  <li key={bIdx} className="flex items-start gap-2 text-xs text-zinc-700 dark:text-zinc-300 bg-zinc-50/50 dark:bg-zinc-900/30 p-2.5 rounded-xl border border-zinc-150/40 dark:border-zinc-805/40 transition-all hover:translate-x-1 duration-200">
+                                    <CheckCircle className="w-4 h-4 text-emerald-500 shrink-0 mt-0.5" />
+                                    <span className="font-semibold text-zinc-800 dark:text-zinc-300 leading-snug">{bullet}</span>
+                                  </li>
+                                ))}
+                              </ul>
+                            </div>
+                          </div>
+
+                        </div>
+                      </div>
+                    </div>
+                  ))}
+                </motion.div>
+              </div>
+
+              {/* Slider Arrow Controls */}
+              <div className="absolute inset-y-0 left-0 flex items-center md:pl-2 z-20">
+                <button
+                  onClick={handlePrevClient}
+                  className="w-10 h-10 rounded-full border border-zinc-200/80 dark:border-zinc-800 bg-white/80 dark:bg-zinc-950/80 backdrop-blur-md shadow-md flex items-center justify-center hover:scale-105 active:scale-95 text-zinc-700 dark:text-zinc-300 transition-all cursor-pointer focus:outline-none"
+                  aria-label="Previous Partner"
+                >
+                  <ChevronLeft className="w-5 h-5" />
+                </button>
+              </div>
+              
+              <div className="absolute inset-y-0 right-0 flex items-center md:pr-2 z-20">
+                <button
+                  onClick={handleNextClient}
+                  className="w-10 h-10 rounded-full border border-zinc-200/80 dark:border-zinc-800 bg-white/80 dark:bg-zinc-950/80 backdrop-blur-md shadow-md flex items-center justify-center hover:scale-105 active:scale-95 text-zinc-700 dark:text-zinc-300 transition-all cursor-pointer focus:outline-none"
+                  aria-label="Next Partner"
+                >
+                  <ChevronRight className="w-5 h-5" />
+                </button>
+              </div>
             </div>
+
+            {/* Pagination Indicators / DOTS */}
+            <div className="flex gap-2.5 pt-8 select-none">
+              {[0, 1, 2].map((idx) => (
+                <button
+                  key={idx}
+                  onClick={() => setActiveClientIdx(idx)}
+                  className={`h-2.5 rounded-full transition-all duration-300 cursor-pointer ${
+                    activeClientIdx === idx 
+                      ? "bg-teal-500 dark:bg-teal-400 w-7" 
+                      : "bg-zinc-300 dark:bg-zinc-750 hover:bg-zinc-400 dark:hover:bg-zinc-600 w-2.5"
+                  }`}
+                  aria-label={`Jump to partner ${idx + 1}`}
+                />
+              ))}
+            </div>
+
           </div>
         </motion.div>
 
