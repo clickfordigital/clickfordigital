@@ -406,7 +406,7 @@ export default function CaseStudies() {
               <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
                 
                 {/* 1. Project overview with the interactive carousel view */}
-                <div className="lg:col-span-7 space-y-6">
+                <div className="lg:col-span-12 space-y-6">
                   <div>
                     <span className="text-[10px] font-mono font-bold tracking-widest text-teal-605 dark:text-teal-400 bg-teal-550/10 dark:bg-teal-500/5 px-2.5 py-1 rounded-sm uppercase">
                       {cs.industry} &bull; {cs.duration}
@@ -547,89 +547,7 @@ export default function CaseStudies() {
                   </div>
                 </div>
 
-                {/* 2. Headline Outcomes Achieved */}
-                <div className="lg:col-span-5 bg-gradient-to-tr from-zinc-50 to-zinc-100/50 dark:from-zinc-900/60 dark:to-zinc-900/10 border border-zinc-150 dark:border-zinc-850 p-6 sm:p-8 rounded-2xl space-y-6">
-                  <div>
-                    <span className="text-[10px] font-mono font-bold tracking-widest text-[#a855f7] dark:text-violet-400 uppercase block">
-                      OUTSTANDING CONVERSIONS
-                    </span>
-                    <h3 className="font-sans font-extrabold text-lg text-zinc-900 dark:text-white mt-1">
-                      Results Delivered
-                    </h3>
-                  </div>
 
-                  {/* Results metrics board */}
-                  <div className="grid grid-cols-2 gap-4">
-                    <div className="bg-white dark:bg-zinc-950 p-4 rounded-xl border border-zinc-100 dark:border-zinc-850 shadow-xs">
-                      <span className="text-[9px] font-mono text-zinc-400 uppercase font-bold block tracking-wider">Traffic Surge</span>
-                      <span className="font-sans font-black text-xs sm:text-sm text-zinc-950 dark:text-white mt-1.5 block truncate">
-                        {cs.results.traffic}
-                      </span>
-                    </div>
-
-                    <div className="bg-white dark:bg-zinc-950 p-4 rounded-xl border border-zinc-100 dark:border-zinc-850 shadow-xs">
-                      <span className="text-[9px] font-mono text-zinc-400 uppercase font-bold block tracking-wider">Rank Placement</span>
-                      <span className="font-sans font-black text-xs sm:text-sm text-zinc-950 dark:text-white mt-1.5 block truncate">
-                        {cs.results.ranking}
-                      </span>
-                    </div>
-
-                    <div className="bg-white dark:bg-zinc-950 p-4 rounded-xl border border-zinc-100 dark:border-zinc-850 shadow-xs">
-                      <span className="text-[9px] font-mono text-zinc-400 uppercase font-bold block tracking-wider">Organic Clicks</span>
-                      <span className="font-sans font-black text-xs sm:text-sm text-zinc-950 dark:text-white mt-1.5 block truncate">
-                        {cs.results.clicks}
-                      </span>
-                    </div>
-
-                    <div className="bg-white dark:bg-zinc-950 p-4 rounded-xl border border-zinc-100 dark:border-zinc-850 shadow-xs">
-                      <span className="text-[9px] font-mono text-zinc-400 uppercase font-bold block tracking-wider">Impressions</span>
-                      <span className="font-sans font-black text-xs sm:text-sm text-zinc-950 dark:text-white mt-1.5 block truncate">
-                        {cs.results.impressions}
-                      </span>
-                    </div>
-                  </div>
-
-                  {/* Before vs After comparison sliders/counters */}
-                  <div className="space-y-3 pt-4 border-t border-zinc-250 dark:border-zinc-800">
-                    <span className="text-[10px] font-mono tracking-wider text-zinc-450 dark:text-zinc-500 uppercase block font-bold">
-                      Verified Before vs. After
-                    </span>
-
-                    <div className="p-3 bg-white dark:bg-zinc-950 rounded-xl border border-zinc-150 dark:border-zinc-850 space-y-1.5 shadow-xs">
-                      <div className="flex justify-between items-center text-xs">
-                        <span className="font-semibold text-zinc-400 dark:text-zinc-550">Clicks Traffic Scale:</span>
-                        <span className="font-mono text-teal-605 dark:text-teal-400 font-bold">
-                          +{Math.floor(((cs.beforeAfter.clicks.after - cs.beforeAfter.clicks.before) / cs.beforeAfter.clicks.before) * 100)}%
-                        </span>
-                      </div>
-                      <div className="flex items-center gap-2.5 text-xs font-mono">
-                        <span className="text-zinc-400 block px-2 py-0.5 bg-zinc-100 dark:bg-zinc-900 rounded select-none text-[10px]">
-                          Before: {cs.beforeAfter.clicks.before.toLocaleString()}
-                        </span>
-                        <span className="text-zinc-300 font-semibold">&bull;&bull;&bull;</span>
-                        <span className="text-teal-600 dark:text-teal-400 font-black text-[10px]">
-                          After: {cs.beforeAfter.clicks.after.toLocaleString()}
-                        </span>
-                      </div>
-                    </div>
-
-                    <div className="p-3 bg-white dark:bg-zinc-950 rounded-xl border border-zinc-150 dark:border-zinc-850 space-y-1.5 shadow-xs font-sans">
-                      <div className="flex justify-between items-center text-xs">
-                        <span className="font-semibold text-zinc-400 dark:text-zinc-550">Impressions & Keywords:</span>
-                        <span className="font-mono text-indigo-600 dark:text-indigo-400 font-bold uppercase tracking-wider">Optimized</span>
-                      </div>
-                      <div className="flex items-center gap-2.5 text-xs font-mono">
-                        <span className="text-zinc-400 block px-2 py-0.5 bg-zinc-100 dark:bg-zinc-900 rounded select-none text-[10px]">
-                          Before: {cs.beforeAfter.impressions.before}
-                        </span>
-                        <span className="text-zinc-300 font-semibold">&bull;&bull;&bull;</span>
-                        <span className="text-indigo-650 dark:text-indigo-400 font-black text-[10px]">
-                          After: {cs.beforeAfter.impressions.after}
-                        </span>
-                      </div>
-                    </div>
-                  </div>
-                </div>
 
               </div>
 
@@ -704,47 +622,7 @@ export default function CaseStudies() {
                 </div>
               </div>
 
-              {/* 4. PROOF SECTION (Certified screenshots mock diagram grid) */}
-              <div className="border-t border-zinc-200/80 dark:border-zinc-900/60 pt-8" id="proof-section">
-                <span className="text-[10px] font-mono tracking-widest font-extrabold text-indigo-600 dark:text-indigo-400 uppercase block mb-6 text-center lg:text-left">
-                  VERIFIED EVIDENCE LOG (COMPLIANT DIAGNOSTIC CHECKS)
-                </span>
 
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-                  {cs.proofImages.map((proof, pIdx) => (
-                    <div
-                      key={pIdx}
-                      className="bg-white dark:bg-zinc-950 border border-zinc-150 dark:border-zinc-850 rounded-2xl p-4 sm:p-5 shadow-xs relative overflow-hidden group hover:border-indigo-500/20 transition-all duration-300"
-                    >
-                      {/* Browser mockup header */}
-                      <div className="flex items-center justify-between border-b border-zinc-100 dark:border-zinc-850 pb-2.5 mb-4 font-mono text-[9px] text-zinc-405 dark:text-zinc-500">
-                        <span className="flex items-center gap-1.5">
-                          <span className="w-1.5 h-1.5 bg-yellow-405 rounded-full" />
-                          Certified Data Block
-                        </span>
-                        <span>{proof.type} VERIFIED</span>
-                      </div>
-
-                      {/* Mock performance UI */}
-                      <div className="bg-zinc-50 dark:bg-zinc-900/40 border border-zinc-100 dark:border-zinc-850 p-4 rounded-xl flex flex-col items-center justify-center text-center h-28 relative">
-                        <div className={`absolute inset-0 bg-gradient-to-tr ${proof.colorClass} opacity-[0.075]`} />
-                        
-                        <ImageIcon className="w-5 h-5 text-zinc-400 dark:text-zinc-500 mb-2" />
-                        <span className="text-zinc-950 dark:text-white font-mono text-xs font-black tracking-wide leading-tight px-3 z-10 text-center uppercase">
-                          {proof.metrics}
-                        </span>
-                        <span className="text-[9px] text-zinc-400 dark:text-zinc-500 uppercase tracking-widest mt-1 font-bold z-10">
-                          {proof.type} INTEGRITY LOG
-                        </span>
-                      </div>
-
-                      <h4 className="font-sans font-bold text-xs text-zinc-700 dark:text-zinc-350 mt-3 text-center">
-                        {proof.title}
-                      </h4>
-                    </div>
-                  ))}
-                </div>
-              </div>
 
             </motion.div>
           </AnimatePresence>
