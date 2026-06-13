@@ -325,8 +325,6 @@ export default function CaseStudies() {
   const [activeProjectIdx, setActiveProjectIdx] = useState<number>(0);
   const [activeSlideIdx, setActiveSlideIdx] = useState<number>(0);
   const [selectedProofImage, setSelectedProofImage] = useState<string | null>(null);
-  const [showSecretStrategy, setShowSecretStrategy] = useState<boolean>(false);
-  const [isHovered, setIsHovered] = useState<boolean>(false);
 
   const handleCarouselNext = () => {
     setActiveSlideIdx((prev) => (prev + 1) % 5);
@@ -339,8 +337,6 @@ export default function CaseStudies() {
   const handleSwitchProject = (index: number) => {
     setActiveProjectIdx(index);
     setActiveSlideIdx(0); // Reset slide index when changing project tab!
-    setShowSecretStrategy(false); // Reset secret reveal state!
-    setIsHovered(false);
   };
 
   // Touch Swipe Support for Carousels
@@ -547,108 +543,7 @@ export default function CaseStudies() {
                       </div>
                     </div>
 
-                    {/* Interactive Achievements & Deep Strategy Section */}
-                    <div className="bg-white dark:bg-zinc-900 border border-zinc-200/80 dark:border-zinc-800/85 rounded-2xl p-5 sm:p-6 space-y-4 shadow-sm relative overflow-hidden group/achievements mt-6">
-                      <div className="flex items-center justify-between">
-                        <div className="flex items-center gap-2">
-                          <span className="flex items-center justify-center w-6 h-6 rounded-full bg-teal-500/10 dark:bg-teal-500/20 text-teal-605 dark:text-teal-400">
-                            <TrendingUp className="w-3.5 h-3.5" />
-                          </span>
-                          <h3 className="font-sans font-black text-xs sm:text-xs text-zinc-900 dark:text-white uppercase tracking-wider">
-                            {cs.websiteName} Core Achievements
-                          </h3>
-                        </div>
-                        <span className="text-[9px] font-mono font-bold text-zinc-400 dark:text-zinc-500 border border-zinc-200/60 dark:border-zinc-800 px-2.5 py-0.5 rounded-md">
-                          SEO VISIBILITY METRICS
-                        </span>
-                      </div>
 
-                      {/* Short high-impact bullet points */}
-                      <ul className="grid grid-cols-1 gap-2.5">
-                        {cs.achievements?.map((ach, aIdx) => (
-                          <li 
-                            key={aIdx} 
-                            className="text-xs text-zinc-700 dark:text-zinc-3.5 flex items-start gap-2.5 leading-relaxed bg-zinc-50/70 dark:bg-zinc-950/40 p-3 rounded-xl border border-zinc-100 dark:border-zinc-850/60 transition-all hover:translate-x-1.5 duration-300"
-                          >
-                            <Check className="w-4 h-4 text-teal-505 dark:text-teal-400 shrink-0 mt-0.5" />
-                            <span className="font-semibold text-zinc-850 dark:text-zinc-200 leading-snug">{ach}</span>
-                          </li>
-                        ))}
-                      </ul>
-
-                      {/* Interactive "Reveal Secret Strategy Detail" area with hover, click, & swipe support */}
-                      <div className="pt-4 border-t border-dashed border-zinc-200 dark:border-zinc-800">
-                        <div 
-                          onMouseEnter={() => setIsHovered(true)}
-                          onMouseLeave={() => setIsHovered(false)}
-                          onClick={() => setShowSecretStrategy(!showSecretStrategy)}
-                          className={`cursor-pointer rounded-2xl p-4 transition-all duration-350 border text-left relative overflow-hidden select-none ${
-                            showSecretStrategy || isHovered
-                              ? "bg-gradient-to-r from-teal-500/10 via-indigo-500/5 to-transparent border-teal-500/25 dark:border-teal-500/25 shadow-lg scale-[1.01]"
-                              : "bg-zinc-100/40 dark:bg-zinc-950/20 border-zinc-200/40 dark:border-zinc-850/70 hover:bg-zinc-100/80 hover:border-zinc-250 dark:hover:bg-zinc-900/60"
-                          }`}
-                        >
-                          <div className="flex items-center justify-between gap-3">
-                            <div className="flex items-center gap-2">
-                              <span className={`w-1.5 h-1.5 rounded-full ${showSecretStrategy || isHovered ? 'bg-teal-500 animate-pulse' : 'bg-zinc-400'}`} />
-                              <span className="text-[10px] sm:text-[11px] font-mono tracking-wider font-extrabold text-zinc-500 dark:text-zinc-400 uppercase">
-                                {showSecretStrategy ? "TECHNICAL BLUEPRINT ACTIVE" : "RELEASE TECHNICAL CASE STUDY STRATEGY (HOVER/TAP)"}
-                              </span>
-                            </div>
-                            
-                            <div className="text-zinc-400 dark:text-zinc-500 transition-transform duration-300">
-                              {showSecretStrategy ? (
-                                <ChevronUp className="w-4 h-4 text-teal-555" />
-                              ) : (
-                                <ChevronDown className="w-4 h-4 text-zinc-400 group-hover/achievements:translate-y-0.5" />
-                              )}
-                            </div>
-                          </div>
-
-                          {/* Hidden dynamic paragraph container with react-motion animation */}
-                          <AnimatePresence initial={false}>
-                            {(showSecretStrategy || isHovered) && (
-                              <motion.div
-                                initial={{ height: 0, opacity: 0, marginTop: 0 }}
-                                animate={{ 
-                                  height: "auto", 
-                                  opacity: 1, 
-                                  marginTop: 12,
-                                  transition: { height: { duration: 0.25 }, opacity: { duration: 0.2, delay: 0.05 } } 
-                                }}
-                                exit={{ 
-                                  height: 0, 
-                                  opacity: 0, 
-                                  marginTop: 0,
-                                  transition: { height: { duration: 0.2 }, opacity: { duration: 0.1 } } 
-                                }}
-                                className="overflow-hidden"
-                              >
-                                <p className="text-xs sm:text-[12.5px] text-zinc-650 dark:text-zinc-350 font-sans font-medium leading-relaxed pl-3 border-l-2 border-teal-500/60">
-                                  {cs.hiddenOverviewParagraph}
-                                </p>
-                              </motion.div>
-                            )}
-                          </AnimatePresence>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-
-                  {/* Problems list */}
-                  <div className="p-5 bg-red-500/5 border border-red-500/10 rounded-2xl">
-                    <span className="text-[10px] font-mono tracking-widest font-extrabold text-red-500 uppercase flex items-center gap-1.5 mb-3">
-                      <AlertTriangle className="w-4 h-4 text-red-500 shrink-0" />
-                      CRITICAL DEBT BARRIERS IDENTIFIED
-                    </span>
-                    <ul className="space-y-2.5 text-left">
-                      {cs.problems.map((problem, pIdx) => (
-                        <li key={pIdx} className="text-xs sm:text-sm text-zinc-700 dark:text-zinc-300 flex items-start gap-2 leading-relaxed">
-                          <span className="w-1.5 h-1.5 bg-red-500 rounded-full shrink-0 mt-2" />
-                          <span className="font-semibold text-zinc-800 dark:text-zinc-300">{problem}</span>
-                        </li>
-                      ))}
-                    </ul>
                   </div>
                 </div>
 
