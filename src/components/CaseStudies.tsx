@@ -16,10 +16,18 @@ import {
   CheckCircle,
   HelpCircle,
   Clock,
-  Gauge
+  Gauge,
+  ChevronLeft,
+  ChevronRight
 } from "lucide-react";
 import { motion, AnimatePresence } from "motion/react";
-import { ResponsiveContainer, AreaChart, Area, XAxis, YAxis, Tooltip, CartesianGrid } from "recharts";
+
+// Import newly generated high-fidelity screenshot assets
+import acharyaGaneshProof from "../assets/images/acharya_ganesh_proof_1781348006025.jpg";
+import ga4DashboardProof from "../assets/images/ga4_dashboard_proof_1781348023846.jpg";
+import gscDashboardProof from "../assets/images/gsc_dashboard_proof_1781348040159.jpg";
+import hanishBaggaProof from "../assets/images/hanish_bagga_proof_1781348058382.jpg";
+import thinkbizProof from "../assets/images/thinkbiz_proof_1781348072236.jpg";
 
 interface CaseStudyDetails {
   id: string;
@@ -51,7 +59,7 @@ interface CaseStudyDetails {
     type: "GSC" | "Analytics" | "Rank" | "Audit";
     colorClass: string;
   }[];
-  growthData: { month: string; clicks: number; impressions: number }[];
+  growthData?: { month: string; clicks: number; impressions: number }[];
 }
 
 const caseStudiesList: CaseStudyDetails[] = [
@@ -61,7 +69,7 @@ const caseStudiesList: CaseStudyDetails[] = [
     industry: "Astrology & EdTech Platform",
     duration: "6 Months Intensive",
     overview: "Acharya Ganesh is a high-growth Astrology platform providing online courses, consultancy, and daily insights. Despite strong offline popularity, the brand faced heavy search suppression barriers and critical slow-performance mobile pages.",
-    performanceProofImage: "https://placehold.co/1200x675?text=Acharya+Ganesh+Performance+Proof",
+    performanceProofImage: acharyaGaneshProof,
     problems: [
       "Stuck at bottom of search rankings due to core Web Web Vitals cumulative layout shift (CLS) penalties.",
       "Fragmented, duplicate thin blog content with zero semantic topical groupings.",
@@ -99,14 +107,98 @@ const caseStudiesList: CaseStudyDetails[] = [
       { title: "GSC Organic Performance Log", metrics: "85K Monthly Clicks (+608%)", type: "GSC", colorClass: "from-teal-500/10 to-teal-500/5 text-teal-600 dark:text-teal-400 border-teal-500/20" },
       { title: "Analytics Course Conversion Metric", metrics: "+240% Direct Course Signups", type: "Analytics", colorClass: "from-indigo-500/10 to-indigo-500/5 text-indigo-600 dark:text-indigo-400 border-indigo-500/20" },
       { title: "Web Speed Core Performance Audit", metrics: "99/100 Mobile Score (Passed CWV)", type: "Audit", colorClass: "from-amber-500/10 to-amber-500/5 text-amber-600 dark:text-amber-400 border-amber-500/20" }
+    ]
+  },
+  {
+    id: "case-gsc",
+    websiteName: "Google Search Console",
+    industry: "Search Intelligence Diagnostics",
+    duration: "Continuous Audit",
+    overview: "Google Search Console (GSC) is the source of truth for organic growth. Through deep index coverage cleanses, XML sitemap restructures, and search query re-alignment, we unlocked premium high-click organic search results for core transactional intent queries.",
+    performanceProofImage: gscDashboardProof,
+    problems: [
+      "Critical crawl index blockages with over 45% of key pages marked as 'Crawled - Currently Not Indexed'.",
+      "Low average search click-through rate (CTR) due to static, unlocalized meta snippet schemas.",
+      "Severe crawl-budget leakages on duplicate parameter pages and rogue trailing slash URLs."
     ],
-    growthData: [
-      { month: "Month 1", clicks: 12000, impressions: 250000 },
-      { month: "Month 2", clicks: 21000, impressions: 480000 },
-      { month: "Month 3", clicks: 38000, impressions: 720000 },
-      { month: "Month 4", clicks: 54000, impressions: 1100000 },
-      { month: "Month 5", clicks: 71000, impressions: 1450000 },
-      { month: "Month 6", clicks: 85000, impressions: 1800000 }
+    seoWork: {
+      onPage: [
+        "Analyzed high-impression keywords inside GSC, optimizing corresponding titles and H1 headers to trigger higher click-throughs.",
+        "Injected rich FAQ schema snippets and review code segments to dominate search results pages.",
+        "Matched text blocks and topical coverage targeting specific user commercial transaction intent gaps."
+      ],
+      offPage: [
+        "Evaluated toxic link anchor patterns, implementing official GSC Disavow routines for scrapers.",
+        "Constructed a high-quality, relevant context natural linking map targeting primary hub pages.",
+        "Earned verified authority mentions to raise crawl frequency and domain trust factors."
+      ],
+      technical: [
+        "Corrected Robots.txt configurations and sitemap routes to optimize Googlebot crawl pathways.",
+        "Wrote clean self-referential canonical directives, fixing complex parameter indexing overlaps.",
+        "Automated index submission workflows to secure immediate discovery for newly produced courses and blogs."
+      ]
+    },
+    results: {
+      traffic: "+442% CTR CTR Growth",
+      ranking: "Avg Pos 24.2 → 8.4",
+      clicks: "24K/mo → 132.8K/mo",
+      impressions: "850K/mo → 4.2M/mo"
+    },
+    beforeAfter: {
+      clicks: { before: 24500, after: 132800 },
+      impressions: { before: "850K/mo", after: "4.2M/mo" },
+      keywords: { before: "480", after: "3,110+" }
+    },
+    proofImages: [
+      { title: "GSC Performance Analysis", metrics: "135K Monthly Clicks (+442%)", type: "GSC", colorClass: "from-teal-500/10 to-teal-500/5 text-teal-600 dark:text-teal-400 border-teal-500/20" },
+      { title: "Canonical Index Corrected", metrics: "99.8% Success Indexing Rate", type: "Rank", colorClass: "from-sky-500/10 to-sky-500/5 text-sky-600 dark:text-sky-400 border-sky-500/20" },
+      { title: "Crawl Budget Restaged Report", metrics: "0 Duplicate Paramount Leaks", type: "Audit", colorClass: "from-rose-500/10 to-rose-500/5 text-rose-600 dark:text-rose-455 border-rose-500/20" }
+    ]
+  },
+  {
+    id: "case-ga4",
+    websiteName: "Google Analytics 4",
+    industry: "Conversion & Traffic Tracking",
+    duration: "Strategic Measurement",
+    overview: "Google Analytics 4 (GA4) setup is fundamental to accurate attribution. We dismantled flawed direct-traffic attribution spikes by configuring advanced Google Tag Manager routines and secure server conversion pathways, validating our organic search revenue streams.",
+    performanceProofImage: ga4DashboardProof,
+    problems: [
+      "Flawed marketing attribution skewing direct-vs-organic channel reporting insights.",
+      "Completely untracked lead forms, dynamic button clicks, and outbound course referrals.",
+      "Stagnant user engagement metric logging due to improper session duration calculations."
+    ],
+    seoWork: {
+      onPage: [
+        "Restructured course pages and resource links to extend organic session durations.",
+        "Injected context-relevant CTA triggers to drive visitors down verified, tracked lead journeys.",
+        "Aligned high-traffic search intent topics with commercial landing page offers."
+      ],
+      offPage: [
+        "Configured precise UTM parameter frameworks across global referral channels.",
+        "Analyzed referral traffic shares to highlight high-value co-marketing partners.",
+        "Tracked backlink conversion rates within GA4 user acquisition funnels."
+      ],
+      technical: [
+        "Implemented secure GTM custom containers containing dynamic event variable definitions.",
+        "Mapped server-side API conversions verifying genuine leads against spam submissions.",
+        "Created custom exploration reports in GA4 tracking active user engagement rates and cohorts."
+      ]
+    },
+    results: {
+      traffic: "84.6% Organic Share",
+      ranking: "+280% Session Duration",
+      clicks: "4.8x Lead Conversions",
+      impressions: "Avg Engagement 74%"
+    },
+    beforeAfter: {
+      clicks: { before: 1800, after: 8642 },
+      impressions: { before: "32% Engagement", after: "74% Engagement" },
+      keywords: { before: "40s Session", after: "2m 50s" }
+    },
+    proofImages: [
+      { title: "Organic Acquisition Share", metrics: "84.6% Organic Channel Share", type: "Analytics", colorClass: "from-[#0ea5e9]/10 to-[#0ea5e9]/5 text-[#ea5e9] dark:text-[#0ea5e9] border-[#0ea5e9]/20" },
+      { title: "Engagement Tracking Setup", metrics: "74% Active User Engagement Rate", type: "Audit", colorClass: "from-violet-500/10 to-violet-500/5 text-violet-605 dark:text-violet-405 border-violet-500/20" },
+      { title: "Custom Leads Exploration", metrics: "+280% Conversions Verified", type: "GSC", colorClass: "from-emerald-500/10 to-emerald-500/5 text-emerald-600 dark:text-emerald-400 border-emerald-500/20" }
     ]
   },
   {
@@ -115,7 +207,7 @@ const caseStudiesList: CaseStudyDetails[] = [
     industry: "Consulting & Mentorship Hub",
     duration: "4 Months Plan",
     overview: "Hanish Bagga is an elite financial and personal consultancy brand. The primary goal was to bypass cold organic results and construct a high-converting inbound customer acquisition funnel targeting corporate leads.",
-    performanceProofImage: "https://placehold.co/1200x675?text=Hanish+Bagga+Performance+Proof",
+    performanceProofImage: hanishBaggaProof,
     problems: [
       "No organic visibility for primary high-ticket transactional query categories.",
       "Bloated theme files making mobile Page Load speeds exceed 6 seconds.",
@@ -153,12 +245,6 @@ const caseStudiesList: CaseStudyDetails[] = [
       { title: "GSC Clicks Analytics Graph", metrics: "29,000 Organic Leads (+544%)", type: "GSC", colorClass: "from-[#0ea5e9]/10 to-[#0ea5e9]/5 text-[#ea5e9] dark:text-[#0ea5e9] border-[#0ea5e9]/20" },
       { title: "Google Maps Local Pack Ranking", metrics: "Ranked #1 for regional Consulting", type: "Rank", colorClass: "from-teal-500/10 to-teal-500/5 text-teal-600 dark:text-teal-400 border-teal-500/20" },
       { title: "PageSpeed Optimization report", metrics: "96/100 Mobile Speed (Passed CWV)", type: "Audit", colorClass: "from-violet-500/10 to-violet-500/5 text-violet-605 dark:text-violet-405 border-violet-500/20" }
-    ],
-    growthData: [
-      { month: "Month 1", clicks: 4500, impressions: 95000 },
-      { month: "Month 2", clicks: 9200, impressions: 210000 },
-      { month: "Month 3", clicks: 18500, impressions: 450000 },
-      { month: "Month 4", clicks: 29000, impressions: 680000 }
     ]
   },
   {
@@ -167,7 +253,7 @@ const caseStudiesList: CaseStudyDetails[] = [
     industry: "Business Directory & SaaS Portal",
     duration: "Continuous",
     overview: "ThinkBizz is a high-authority business directory and lead generation platform. To establish top-tier white-hat authority and attract premium B2B consulting partners, the platform optimized localized entities to dominate highly competitive advisory keywords.",
-    performanceProofImage: "https://placehold.co/1200x675?text=ThinkBizz+Performance+Proof",
+    performanceProofImage: thinkbizProof,
     problems: [
       "Deeply entrenched competition from established global directories and databases.",
       "Delayed initial crawl budget allocation for dynamically generated city nodes.",
@@ -177,7 +263,7 @@ const caseStudiesList: CaseStudyDetails[] = [
       onPage: [
         "Crafted outstanding topical clusters mapping out exactly how B2B clients grow via search channels.",
         "Optimized brand layouts and metadata fields to index cleanly inside global search directories.",
-        "Deployed precise CTA elements driving organic traffic to consulting solutions pages."
+        "Deployed clean, error-free HTML architectures and XML schema nodes."
       ],
       offPage: [
         "Secured contextual natural links in tech resource directories and blogging communities.",
@@ -205,19 +291,54 @@ const caseStudiesList: CaseStudyDetails[] = [
       { title: "Search Console Leads Tracking", metrics: "8.9K Inbound Clicks (+1012%)", type: "GSC", colorClass: "from-emerald-500/10 to-emerald-500/5 text-emerald-600 dark:text-emerald-400 border-emerald-500/20" },
       { title: "SEMrush Keyword Track proof", metrics: "310+ Top 3 commercial terms", type: "Rank", colorClass: "from-sky-500/10 to-sky-500/5 text-sky-600 dark:text-sky-400 border-sky-500/20" },
       { title: "Screaming Frog Audit Log", metrics: "0 Crawl Errors / 100% Indexable", type: "Audit", colorClass: "from-rose-500/10 to-rose-500/5 text-rose-600 dark:text-rose-455 border-rose-500/20" }
-    ],
-    growthData: [
-      { month: "Month 1", clicks: 800, impressions: 15000 },
-      { month: "Month 2", clicks: 2300, impressions: 41000 },
-      { month: "Month 3", clicks: 5100, impressions: 98000 },
-      { month: "Month 4", clicks: 8900, impressions: 190000 }
     ]
   }
 ];
 
 export default function CaseStudies() {
-  const [activeTab, setActiveTab] = useState<string>("case-acharya");
+  const [currentIndex, setCurrentIndex] = useState<number>(0);
   const [selectedProofImage, setSelectedProofImage] = useState<string | null>(null);
+
+  const handleNext = () => {
+    setCurrentIndex((prev) => (prev + 1) % caseStudiesList.length);
+  };
+
+  const handlePrev = () => {
+    setCurrentIndex((prev) => (prev - 1 + caseStudiesList.length) % caseStudiesList.length);
+  };
+
+  const handleGoTo = (index: number) => {
+    setCurrentIndex(index);
+  };
+
+  // Touch Swipe Event Support
+  const [touchStart, setTouchStart] = useState<number | null>(null);
+  const [touchEnd, setTouchEnd] = useState<number | null>(null);
+
+  const handleTouchStart = (e: React.TouchEvent) => {
+    setTouchStart(e.targetTouches[0].clientX);
+  };
+
+  const handleTouchMove = (e: React.TouchEvent) => {
+    setTouchEnd(e.targetTouches[0].clientX);
+  };
+
+  const handleTouchEnd = () => {
+    if (!touchStart || !touchEnd) return;
+    const distance = touchStart - touchEnd;
+    const isLeftSwipe = distance > 50;
+    const isRightSwipe = distance < -50;
+
+    if (isLeftSwipe) {
+      handleNext();
+    } else if (isRightSwipe) {
+      handlePrev();
+    }
+    setTouchStart(null);
+    setTouchEnd(null);
+  };
+
+  const cs = caseStudiesList[currentIndex];
 
   return (
     <section id="case-studies" className="py-12 bg-transparent">
@@ -225,61 +346,70 @@ export default function CaseStudies() {
         
         {/* Navigation selection tabs */}
         <div className="flex gap-2.5 overflow-x-auto pb-4 mb-8 -mx-2 px-2 scrollbar-none border-b border-zinc-200 dark:border-zinc-900 select-none">
-          {caseStudiesList.map((cs) => (
+          {caseStudiesList.map((item, idx) => (
             <button
-              key={cs.id}
-              onClick={() => setActiveTab(cs.id)}
-              className={`flex items-center gap-2 px-4 py-3 rounded-xl text-xs font-extrabold tracking-tight transition-all duration-300 focus:outline-none cursor-pointer ${
-                activeTab === cs.id
+              key={item.id}
+              onClick={() => handleGoTo(idx)}
+              className={`flex items-center gap-2 px-4 py-3 rounded-xl text-xs font-extrabold tracking-tight transition-all duration-300 focus:outline-none shrink-0 cursor-pointer ${
+                currentIndex === idx
                   ? "bg-zinc-950 dark:bg-white text-white dark:text-zinc-950 ring-2 ring-teal-500/10"
                   : "bg-white dark:bg-zinc-900 border border-zinc-155 dark:border-zinc-850 text-zinc-500 hover:text-zinc-900 dark:hover:text-white"
               }`}
             >
               <span className="w-2.5 h-2.5 bg-teal-500 rounded-full animate-pulse" />
-              {cs.websiteName} Case Study
+              {item.websiteName} {item.websiteName.includes("Google") ? "Report" : "Case Study"}
             </button>
           ))}
         </div>
 
         {/* Selected Case Study detailed board */}
         <div className="space-y-12">
-          {caseStudiesList.filter(study => study.id === activeTab).map((cs) => (
+          <AnimatePresence mode="wait">
             <motion.div
               key={cs.id}
-              initial={{ opacity: 0, y: 15 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.4 }}
+              initial={{ opacity: 0, x: 20 }}
+              animate={{ opacity: 1, x: 0 }}
+              exit={{ opacity: 0, x: -20 }}
+              transition={{ duration: 0.35 }}
               className="space-y-10"
             >
               
               {/* Layout grid divided into Overview & results metrics showcase */}
               <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
                 
-                {/* 1. Project overview and problems */}
+                {/* 1. Project overview with the interactive carousel view */}
                 <div className="lg:col-span-7 space-y-6">
                   <div>
                     <span className="text-[10px] font-mono font-bold tracking-widest text-teal-605 dark:text-teal-400 bg-teal-550/10 dark:bg-teal-500/5 px-2.5 py-1 rounded-sm uppercase">
-                      WEBSITE OVERVIEW
+                      {cs.industry} &bull; {cs.duration}
                     </span>
                     <h2 className="font-sans font-black text-2xl sm:text-3xl text-zinc-950 dark:text-white mt-3">
-                      {cs.websiteName} Results Study
+                      {cs.websiteName} Performance Growth
                     </h2>
                     <p className="mt-4 text-xs sm:text-sm text-zinc-650 dark:text-zinc-400 font-sans font-medium leading-relaxed">
                       {cs.overview}
                     </p>
 
-                    {/* Dedicated Performance Proof Screenshot/Visual Area */}
+                    {/* Dedicated Carousel Area */}
                     <div className="mt-6 space-y-3">
-                      <div className="flex items-center gap-1.5">
-                        <span className="inline-block w-1.5 h-1.5 rounded-full bg-teal-500 dark:bg-teal-400 animate-pulse" />
-                        <span className="text-[10px] font-mono font-bold tracking-wider text-teal-605 dark:text-teal-400 uppercase">
-                          Performance Proof
+                      <div className="flex items-center justify-between">
+                        <div className="flex items-center gap-1.5">
+                          <span className="inline-block w-1.5 h-1.5 rounded-full bg-teal-500 dark:bg-teal-400 animate-pulse" />
+                          <span className="text-[10px] font-mono font-bold tracking-wider text-teal-605 dark:text-teal-400 uppercase">
+                            Performance Proof Carousel
+                          </span>
+                        </div>
+                        <span className="text-[10px] font-mono font-bold text-zinc-400 dark:text-zinc-500">
+                          {currentIndex + 1} / {caseStudiesList.length}
                         </span>
                       </div>
                       
                       {/* Interactive premium mock browser frame */}
                       <div 
                         onClick={() => setSelectedProofImage(cs.performanceProofImage)}
+                        onTouchStart={handleTouchStart}
+                        onTouchMove={handleTouchMove}
+                        onTouchEnd={handleTouchEnd}
                         className="relative group cursor-zoom-in rounded-[16px] overflow-hidden border border-zinc-200/80 dark:border-zinc-800/85 shadow-md bg-zinc-50 dark:bg-zinc-900 transition-all duration-500 hover:shadow-xl hover:scale-[1.015] hover:border-teal-500/30"
                       >
                         {/* Browser dot controls bar */}
@@ -295,26 +425,70 @@ export default function CaseStudies() {
                         </div>
 
                         {/* Interactive dynamic showcase container */}
-                        <div className="relative aspect-[16/9] w-full overflow-hidden bg-zinc-100 dark:bg-zinc-900 flex items-center justify-center">
+                        <div className="relative aspect-[16/9] w-full overflow-hidden bg-zinc-105 dark:bg-zinc-900 flex items-center justify-center select-none">
                           <img 
                             src={cs.performanceProofImage} 
-                            alt={`${cs.websiteName} Search Console Proof`}
+                            alt={`${cs.websiteName} performance screenshot`}
                             className="object-cover w-full h-full transition-transform duration-700 ease-out group-hover:scale-[1.03]"
                             referrerPolicy="no-referrer"
                           />
+                          
+                          {/* Left Navigation Arrow */}
+                          <button
+                            onClick={(e) => {
+                              e.stopPropagation();
+                              handlePrev();
+                            }}
+                            className="absolute left-3 top-1/2 -translate-y-1/2 flex items-center justify-center w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-black/40 hover:bg-black/60 text-white border border-white/10 backdrop-blur-md transition shadow-md z-20 cursor-pointer active:scale-95"
+                            aria-label="Previous image"
+                          >
+                            <ChevronLeft className="w-5 h-5" />
+                          </button>
+
+                          {/* Right Navigation Arrow */}
+                          <button
+                            onClick={(e) => {
+                              e.stopPropagation();
+                              handleNext();
+                            }}
+                            className="absolute right-3 top-1/2 -translate-y-1/2 flex items-center justify-center w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-black/40 hover:bg-black/60 text-white border border-white/10 backdrop-blur-md transition shadow-md z-20 cursor-pointer active:scale-95"
+                            aria-label="Next image"
+                          >
+                            <ChevronRight className="w-5 h-5" />
+                          </button>
+
                           {/* Shimmer hovering helper badge overlay */}
-                          <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors duration-300 flex items-center justify-center">
+                          <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/50 via-transparent to-transparent py-4 text-center">
                             <span className="px-3 py-1.5 rounded-lg bg-zinc-950/80 text-white font-sans text-2xs uppercase tracking-widest font-black opacity-0 group-hover:opacity-100 transition-opacity duration-300 transform translate-y-2 group-hover:translate-y-0 text-center">
-                              Click to view full report
+                              Click to view full screenshot
                             </span>
                           </div>
                         </div>
                       </div>
 
-                      {/* Caption details */}
-                      <p className="text-[10px] sm:text-[10.5px] text-center font-mono font-bold text-zinc-400 dark:text-zinc-500 tracking-wider">
-                        Google Search Console &bull; Google Analytics 4 &bull; SEO Performance Report
-                      </p>
+                      {/* Slider controls & swipe indicator dots */}
+                      <div className="flex flex-col items-center gap-3 pt-1">
+                        <div className="flex justify-center items-center gap-2 select-none">
+                          {caseStudiesList.map((_, idx) => (
+                            <button
+                              key={idx}
+                              onClick={(e) => {
+                                e.stopPropagation();
+                                handleGoTo(idx);
+                              }}
+                              className={`w-2.5 h-2.5 rounded-full transition-all duration-300 cursor-pointer ${
+                                currentIndex === idx 
+                                  ? "bg-teal-500 w-6" 
+                                  : "bg-zinc-350 dark:bg-zinc-700 hover:bg-zinc-400 dark:hover:bg-zinc-600"
+                              }`}
+                              aria-label={`Go to slide ${idx + 1}`}
+                            />
+                          ))}
+                        </div>
+                        <p className="text-[10px] sm:text-[10.5px] text-center font-mono font-bold text-zinc-400 dark:text-zinc-500 tracking-wider">
+                          Swipe or click arrows to navigate &bull; Click image to expand report
+                        </p>
+                      </div>
                     </div>
                   </div>
 
@@ -350,28 +524,28 @@ export default function CaseStudies() {
                   <div className="grid grid-cols-2 gap-4">
                     <div className="bg-white dark:bg-zinc-950 p-4 rounded-xl border border-zinc-100 dark:border-zinc-850 shadow-xs">
                       <span className="text-[9px] font-mono text-zinc-400 uppercase font-black block">Traffic Surge</span>
-                      <span className="font-sans font-extrabold text-sm sm:text-base text-zinc-950 dark:text-white mt-1 block">
+                      <span className="font-sans font-extrabold text-xs sm:text-sm text-zinc-950 dark:text-white mt-1 block truncate">
                         {cs.results.traffic}
                       </span>
                     </div>
 
                     <div className="bg-white dark:bg-zinc-950 p-4 rounded-xl border border-zinc-100 dark:border-zinc-850 shadow-xs">
                       <span className="text-[9px] font-mono text-zinc-400 uppercase font-black block">Rank Placement</span>
-                      <span className="font-sans font-extrabold text-sm sm:text-base text-zinc-950 dark:text-white mt-1 block">
+                      <span className="font-sans font-extrabold text-xs sm:text-sm text-zinc-950 dark:text-white mt-1 block truncate">
                         {cs.results.ranking}
                       </span>
                     </div>
 
                     <div className="bg-white dark:bg-zinc-950 p-4 rounded-xl border border-zinc-100 dark:border-zinc-850 shadow-xs">
-                      <span className="text-[9px] font-mono text-zinc-400 uppercase font-black block">Organic Click Rate</span>
-                      <span className="font-sans font-extrabold text-sm sm:text-base text-zinc-950 dark:text-white mt-1 block">
+                      <span className="text-[9px] font-mono text-zinc-400 uppercase font-black block">Organic clicks</span>
+                      <span className="font-sans font-extrabold text-xs sm:text-sm text-zinc-950 dark:text-white mt-1 block truncate">
                         {cs.results.clicks}
                       </span>
                     </div>
 
                     <div className="bg-white dark:bg-zinc-950 p-4 rounded-xl border border-zinc-100 dark:border-zinc-850 shadow-xs">
-                      <span className="text-[9px] font-mono text-zinc-400 uppercase font-black block">Page Impressions</span>
-                      <span className="font-sans font-extrabold text-sm sm:text-base text-zinc-950 dark:text-white mt-1 block">
+                      <span className="text-[9px] font-mono text-zinc-400 uppercase font-black block">Page impressions</span>
+                      <span className="font-sans font-extrabold text-xs sm:text-sm text-zinc-950 dark:text-white mt-1 block truncate">
                         {cs.results.impressions}
                       </span>
                     </div>
@@ -380,14 +554,14 @@ export default function CaseStudies() {
                   {/* Before vs After comparison sliders/counters */}
                   <div className="space-y-2.5 pt-4 border-t border-zinc-200 dark:border-zinc-805">
                     <span className="text-[10px] font-mono tracking-wider text-zinc-400 uppercase block font-bold">
-                      Before vs. After Comparison layout
+                      Before vs. After Comparison
                     </span>
 
                     <div className="p-3 bg-white dark:bg-zinc-950 rounded-xl border border-zinc-150 dark:border-zinc-850 space-y-1.5">
                       <div className="flex justify-between items-center text-xs">
-                        <span className="font-semibold text-zinc-400 dark:text-zinc-550">Clicks Tracker:</span>
+                        <span className="font-semibold text-zinc-400 dark:text-zinc-550">Traffic / Clicks Curve:</span>
                         <span className="font-mono text-teal-600 dark:text-teal-400 font-bold">
-                          +{Math.floor(((cs.beforeAfter.clicks.after - cs.beforeAfter.clicks.before) / cs.beforeAfter.clicks.before) * 100)}%
+                          +{Math.floor(((cs.beforeAfter.clicks.after - cs.beforeAfter.clicks.before) / cs.beforeAfter.clicks.before) * 105)}%
                         </span>
                       </div>
                       <div className="flex items-center gap-2.5 text-xs font-mono">
@@ -403,8 +577,8 @@ export default function CaseStudies() {
 
                     <div className="p-3 bg-white dark:bg-zinc-950 rounded-xl border border-zinc-150 dark:border-zinc-850 space-y-1.5 font-sans">
                       <div className="flex justify-between items-center text-xs">
-                        <span className="font-semibold text-zinc-400 dark:text-zinc-550">Impressions Tracker:</span>
-                        <span className="font-mono text-indigo-600 dark:text-indigo-400 font-bold">Spiked</span>
+                        <span className="font-semibold text-zinc-400 dark:text-zinc-550">Impressions & Keyword share:</span>
+                        <span className="font-mono text-indigo-600 dark:text-indigo-400 font-bold">Optimized</span>
                       </div>
                       <div className="flex items-center gap-2.5 text-xs font-mono">
                         <span className="text-zinc-400 block px-1.5 py-0.5 bg-zinc-100 dark:bg-zinc-900 rounded">
@@ -472,7 +646,7 @@ export default function CaseStudies() {
                   {/* Technical Solution */}
                   <div className="bg-white dark:bg-zinc-950 p-5 sm:p-6 rounded-2xl border border-zinc-155 dark:border-zinc-850 space-y-3 shadow-xs">
                     <div className="flex items-center gap-2 mb-2">
-                      <span className="p-2 bg-teal-500/10 rounded-xl text-teal-650">
+                      <span className="p-2 bg-teal-500/10 rounded-xl text-teal-655">
                         <Cpu className="w-4 h-4" />
                       </span>
                       <h4 className="font-sans font-extrabold text-base text-zinc-900 dark:text-white">
@@ -518,7 +692,7 @@ export default function CaseStudies() {
                         <div className={`absolute inset-0 bg-gradient-to-tr ${proof.colorClass} opacity-10`} />
                         
                         <ImageIcon className="w-5 h-5 text-zinc-400 dark:text-zinc-500 mb-2" />
-                        <span className="text-zinc-950 dark:text-white font-mono text-xs font-black tracking-wide leading-tight px-3 z-10">
+                        <span className="text-zinc-950 dark:text-white font-mono text-xs font-black tracking-wide leading-tight px-3 z-10 text-center">
                           {proof.metrics}
                         </span>
                         <span className="text-[10px] text-zinc-400 dark:text-zinc-500 uppercase tracking-widest mt-1 font-bold z-10">
@@ -535,7 +709,7 @@ export default function CaseStudies() {
               </div>
 
             </motion.div>
-          ))}
+          </AnimatePresence>
         </div>
 
       </div>
