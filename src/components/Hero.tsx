@@ -513,20 +513,27 @@ export default function Hero() {
                   animate={{ x: `-${activeClientIdx * 100}%` }}
                   transition={{ type: "spring", stiffness: 220, damping: 28 }}
                 >
-                  {[
+                  {([
                     {
                       name: "Acharya Ganesh",
                       logo: acharyaGaneshLogo,
                       fallback: <AcharyaGaneshSvg />,
                       category: "Astrology, Devotional & EdTech",
-                      metric: "+608% Organics Scaling",
-                      niche: "EdTech & Spiritual Consultation Platform",
-                      metricsBadge: "Sub-Second Loading Timing",
-                      summary: "Successfully compressed bulk content, deferred heavy render-blocking JS executes, styled elegant custom layout details, and bridged topical content gaps.",
+                      role: "SEO Executive",
+                      duration: "August 2025 to Present",
+                      resultsTitle: "✅ Key Responsibilities",
                       results: [
-                        "Drove a stellar 99/100 PageSpeed Core Web Vitals rating",
-                        "Secured prominent Google Knowledge Graph snippets",
-                        "Programmatic NLP keyword silos bypassed crawl limits"
+                        "Technical SEO",
+                        "On-Page SEO",
+                        "Off-Page SEO",
+                        "Keyword Research",
+                        "Content Optimization",
+                        "Website Speed Optimization",
+                        "Core Web Vitals Optimization",
+                        "Schema Markup Implementation",
+                        "Google Search Console Management",
+                        "Google Analytics (GA4)",
+                        "SEO Audits & Reporting"
                       ],
                       classGlow: "shadow-[0_0_50px_-10px_rgba(20,184,166,0.25)]",
                       glowHex: "#14b8a6"
@@ -536,14 +543,21 @@ export default function Hero() {
                       logo: hanishBaggaLogo,
                       fallback: <HanishBaggaSvg />,
                       category: "Consulting & Executive Mentorship",
-                      metric: "+240% Course Registrations",
-                      niche: "High-Ticket Enterprise Advisory",
-                      metricsBadge: "100% Tracking Accuracy GTM",
-                      summary: "Configured flawless Google Tag Manager purchase/order logging events, purged client-side measurement noise, and injected strict structured schema profiles.",
+                      role: "SEO Consultant",
+                      duration: "August 2025 to Present",
+                      resultsTitle: "✅ Key Responsibilities",
                       results: [
-                        "Ranked #1 for regional Consulting Consulting search phrases",
-                        "Eliminated transaction duplicate loops on analytic dashboards",
-                        "Spurred direct organic advisory inbound traffic scale of +544%"
+                        "Technical SEO",
+                        "On-Page SEO",
+                        "Off-Page SEO",
+                        "Keyword Research",
+                        "Content Optimization",
+                        "Website Speed Optimization",
+                        "Core Web Vitals Optimization",
+                        "Schema Markup Implementation",
+                        "Google Search Console Management",
+                        "Google Analytics (GA4)",
+                        "SEO Audits & Reporting"
                       ],
                       classGlow: "shadow-[0_0_50px_-10px_rgba(249,115,22,0.25)]",
                       glowHex: "#f97316"
@@ -553,19 +567,32 @@ export default function Hero() {
                       logo: thinkbizLogo,
                       fallback: <ThinkBizzSvg />,
                       category: "SaaS & Directory Portal",
-                      metric: "100% Crawl Indexability",
-                      niche: "Directory Portal & Directory SaaS Ecosystem",
-                      metricsBadge: "Zero Index Errors",
-                      summary: "Architected modern canonical hierarchy rules, restaged automated sitemaps, solved heavy pagination issues, and expanded semantic coverage mapping.",
+                      role: "SEO Intern",
+                      duration: "December 2024 to June 2025",
+                      resultsTitle: "✅ Key Responsibilities",
                       results: [
-                        "Recovered 100% perfect crawl efficiency scoring metrics",
-                        "Successfully indexated 50,000+ custom list pages",
-                        "Bypassed legacy directory search crawler bottlenecking"
+                        "Technical SEO",
+                        "On-Page SEO",
+                        "Off-Page SEO",
+                        "Keyword Research",
+                        "Content Optimization"
                       ],
                       classGlow: "shadow-[0_0_50px_-10px_rgba(168,85,247,0.25)]",
                       glowHex: "#a855f7"
                     }
-                  ].map((partner, pIdx) => (
+                  ] as Array<{
+                    name: string;
+                    logo: any;
+                    fallback: React.ReactNode;
+                    category: string;
+                    role: string;
+                    duration?: string;
+                    summary?: string;
+                    resultsTitle?: string;
+                    results: string[];
+                    classGlow: string;
+                    glowHex: string;
+                  }>).map((partner, pIdx) => (
                     <div 
                       key={pIdx} 
                       className="w-full shrink-0 px-2 sm:px-6 md:px-12"
@@ -603,34 +630,27 @@ export default function Hero() {
                                 {partner.name}
                               </h3>
                               <p className="text-[11px] text-zinc-400 dark:text-zinc-500 font-mono">
-                                Role: SEO Consultant
+                                Role: {partner.role || "SEO Consultant"}
                               </p>
+                              {partner.duration && (
+                                <p className="text-[11px] text-zinc-400 dark:text-zinc-500 font-mono mt-0.5">
+                                  Duration: {partner.duration}
+                                </p>
+                              )}
                             </div>
                           </div>
 
-                          {/* Col 2: Metric highlight, detailed bullets list */}
+                          {/* Col 2: Detailed bullets list */}
                           <div className="md:col-span-8 space-y-5">
-                            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-zinc-100 dark:border-zinc-800 pb-4">
-                              <div className="space-y-0.5">
-                                <span className="text-[9px] font-mono tracking-widest font-black text-zinc-400 uppercase block">
-                                  Primary Metric Scaled
-                                </span>
-                                <span className="text-xl sm:text-2xl font-sans font-black tracking-tight text-emerald-600 dark:text-emerald-400">
-                                  {partner.metric}
-                                </span>
-                              </div>
-                              <span className="self-start sm:self-center bg-zinc-900 dark:bg-white text-white dark:text-zinc-900 text-[10px] font-mono font-bold px-3 py-1 rounded-sm uppercase tracking-wider">
-                                {partner.metricsBadge}
-                              </span>
-                            </div>
-
-                            <p className="text-zinc-600 dark:text-zinc-350 text-xs sm:text-[13px] leading-relaxed font-semibold">
-                              {partner.summary}
-                            </p>
+                            {partner.summary && (
+                              <p className="text-zinc-600 dark:text-zinc-350 text-xs sm:text-[13px] leading-relaxed font-semibold">
+                                {partner.summary}
+                              </p>
+                            )}
 
                             <div className="space-y-2.5">
-                              <h4 className="text-[10px] sm:text-xs font-mono font-bold text-zinc-500 tracking-wider uppercase">
-                                Verified Results Delivered
+                              <h4 className="text-[10px] sm:text-xs font-mono font-bold text-zinc-500 tracking-wider uppercase flex items-center gap-1.5">
+                                {partner.resultsTitle || "Verified Results Delivered"}
                               </h4>
                               <ul className="grid grid-cols-1 gap-2">
                                 {partner.results.map((bullet, bIdx) => (
