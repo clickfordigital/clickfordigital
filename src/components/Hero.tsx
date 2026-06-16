@@ -518,7 +518,7 @@ export default function Hero() {
                       name: "Acharya Ganesh",
                       logo: acharyaGaneshLogo,
                       fallback: <AcharyaGaneshSvg />,
-                      category: "Astrology, Devotional & EdTech",
+                      category: "",
                       role: "SEO Executive",
                       duration: "August 2025 to Present",
                       resultsTitle: "✅ Key Responsibilities",
@@ -527,6 +527,7 @@ export default function Hero() {
                         "On-Page SEO",
                         "Off-Page SEO",
                         "Keyword Research",
+                        "Competitor Research",
                         "Content Optimization",
                         "Website Speed Optimization",
                         "Core Web Vitals Optimization",
@@ -542,7 +543,7 @@ export default function Hero() {
                       name: "Hanish Bagga",
                       logo: hanishBaggaLogo,
                       fallback: <HanishBaggaSvg />,
-                      category: "Consulting & Executive Mentorship",
+                      category: "",
                       role: "SEO Consultant",
                       duration: "August 2025 to Present",
                       resultsTitle: "✅ Key Responsibilities",
@@ -551,6 +552,7 @@ export default function Hero() {
                         "On-Page SEO",
                         "Off-Page SEO",
                         "Keyword Research",
+                        "Competitor Research",
                         "Content Optimization",
                         "Website Speed Optimization",
                         "Core Web Vitals Optimization",
@@ -566,7 +568,7 @@ export default function Hero() {
                       name: "ThinkBizz Hightech",
                       logo: thinkbizLogo,
                       fallback: <ThinkBizzSvg />,
-                      category: "SaaS & Directory Portal",
+                      category: "",
                       role: "SEO Intern",
                       duration: "December 2024 to June 2025",
                       resultsTitle: "✅ Key Responsibilities",
@@ -623,9 +625,11 @@ export default function Hero() {
                             </div>
 
                             <div className="space-y-1">
-                              <span className="text-[10px] font-mono font-bold text-teal-600 dark:text-teal-400 tracking-wider uppercase block">
-                                {partner.category}
-                              </span>
+                              {partner.category && (
+                                <span className="text-[10px] font-mono font-bold text-teal-600 dark:text-teal-400 tracking-wider uppercase block">
+                                  {partner.category}
+                                </span>
+                              )}
                               <h3 className="font-sans font-black text-xl sm:text-2xl text-zinc-900 dark:text-white leading-tight">
                                 {partner.name}
                               </h3>
@@ -652,12 +656,12 @@ export default function Hero() {
                               <h4 className="text-[10px] sm:text-xs font-mono font-bold text-zinc-500 tracking-wider uppercase flex items-center gap-1.5">
                                 {partner.resultsTitle || "Verified Results Delivered"}
                               </h4>
-                              {partner.name === "Acharya Ganesh" ? (
+                              {partner.name === "Acharya Ganesh" || partner.name === "Hanish Bagga" ? (
                                 <ul className="grid grid-cols-2 gap-1.5 sm:gap-2">
                                   {partner.results.map((bullet, bIdx) => (
                                     <li 
                                       key={bIdx} 
-                                      className="flex items-center gap-1.5 text-[10px] sm:text-xs text-zinc-650 dark:text-zinc-300 bg-zinc-50/20 dark:bg-zinc-950/10 hover:bg-zinc-100/30 dark:hover:bg-zinc-900/30 px-2.5 py-1 rounded-full border border-zinc-200/20 dark:border-zinc-800/20 hover:border-emerald-500/15 dark:hover:border-emerald-400/15 hover:shadow-[0_2px_6px_rgba(16,185,129,0.03)] hover:-translate-y-0.5 transition-all duration-300 cursor-default"
+                                      className="flex items-center gap-1.5 text-[11px] sm:text-[13px] text-zinc-650 dark:text-zinc-300 bg-zinc-50/20 dark:bg-zinc-950/10 hover:bg-zinc-100/30 dark:hover:bg-zinc-900/30 px-2.5 py-1 rounded-full border border-zinc-200/20 dark:border-zinc-800/20 hover:border-emerald-500/15 dark:hover:border-emerald-400/15 hover:shadow-[0_2px_6px_rgba(16,185,129,0.03)] hover:-translate-y-0.5 transition-all duration-300 cursor-default"
                                     >
                                       <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 shrink-0" />
                                       <span className="font-semibold text-zinc-850 dark:text-zinc-200 tracking-tight leading-tight">{bullet}</span>
