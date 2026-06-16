@@ -653,14 +653,14 @@ export default function Hero() {
                                 {partner.resultsTitle || "Verified Results Delivered"}
                               </h4>
                               {partner.name === "Acharya Ganesh" ? (
-                                <ul className="grid grid-cols-1 sm:grid-cols-2 gap-2">
+                                <ul className="grid grid-cols-2 gap-1.5 sm:gap-2">
                                   {partner.results.map((bullet, bIdx) => (
                                     <li 
                                       key={bIdx} 
-                                      className="flex items-center gap-2 text-[11px] sm:text-xs text-zinc-700 dark:text-zinc-300 bg-zinc-50/40 dark:bg-zinc-900/40 hover:bg-zinc-100/60 dark:hover:bg-zinc-900/95 px-3 py-1.5 rounded-full border border-zinc-150/70 dark:border-zinc-800/80 shadow-sm hover:shadow-[0_4px_12px_rgba(16,185,129,0.08)] hover:border-emerald-500/20 dark:hover:border-emerald-500/20 hover:-translate-y-0.5 transition-all duration-300 cursor-default"
+                                      className="flex items-center gap-1.5 text-[10px] sm:text-xs text-zinc-650 dark:text-zinc-300 bg-zinc-50/20 dark:bg-zinc-950/10 hover:bg-zinc-100/30 dark:hover:bg-zinc-900/30 px-2.5 py-1 rounded-full border border-zinc-200/20 dark:border-zinc-800/20 hover:border-emerald-500/15 dark:hover:border-emerald-400/15 hover:shadow-[0_2px_6px_rgba(16,185,129,0.03)] hover:-translate-y-0.5 transition-all duration-300 cursor-default"
                                     >
-                                      <CheckCircle className="w-3.5 h-3.5 text-emerald-500 shrink-0" />
-                                      <span className="font-medium text-zinc-850 dark:text-zinc-200 leading-none">{bullet}</span>
+                                      <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 shrink-0" />
+                                      <span className="font-semibold text-zinc-850 dark:text-zinc-200 tracking-tight leading-tight">{bullet}</span>
                                     </li>
                                   ))}
                                 </ul>
