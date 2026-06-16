@@ -544,7 +544,7 @@ export default function Hero() {
                       logo: hanishBaggaLogo,
                       fallback: <HanishBaggaSvg />,
                       category: "",
-                      role: "SEO Consultant",
+                      role: "SEO Executive",
                       duration: "August 2025 to Present",
                       resultsTitle: "✅ Key Responsibilities",
                       results: [
@@ -633,12 +633,14 @@ export default function Hero() {
                               <h3 className="font-sans font-black text-xl sm:text-2xl text-zinc-900 dark:text-white leading-tight">
                                 {partner.name}
                               </h3>
-                              <p className="text-[11px] text-zinc-400 dark:text-zinc-500 font-mono">
-                                Role: {partner.role || "SEO Consultant"}
+                              <p className="text-[11px] text-zinc-500 dark:text-zinc-400 font-mono">
+                                <span className="font-bold text-zinc-650 dark:text-zinc-300">Designation:</span>{" "}
+                                <span className="font-black text-zinc-800 dark:text-zinc-100">{partner.role || "SEO Consultant"}</span>
                               </p>
                               {partner.duration && (
-                                <p className="text-[11px] text-zinc-400 dark:text-zinc-500 font-mono mt-0.5">
-                                  Duration: {partner.duration}
+                                <p className="text-[11px] text-zinc-500 dark:text-zinc-400 font-mono mt-0.5">
+                                  <span className="font-bold text-zinc-650 dark:text-zinc-300">Duration:</span>{" "}
+                                  <span className="font-black text-zinc-800 dark:text-zinc-100">{partner.duration}</span>
                                 </p>
                               )}
                             </div>
