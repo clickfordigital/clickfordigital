@@ -158,7 +158,7 @@ export default function ContactSection() {
             Let's Connect
           </h2>
           <p className="mt-4 text-zinc-500 dark:text-zinc-400 text-sm sm:text-base font-sans font-medium">
-            Thank you for visiting my portfolio. Whether you're a recruiter, hiring manager, business owner, or fellow digital marketing professional, I'd be happy to connect. Feel free to reach out regarding career opportunities, collaborations, SEO discussions, or any professional inquiries. I look forward to hearing from you.
+            Thank you for visiting my portfolio. Whether you're a recruiter, hiring manager, business owner, or fellow digital marketing professional, I'd be happy to connect.
           </p>
         </div>
 
