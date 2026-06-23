@@ -79,6 +79,8 @@ export default function Testimonials() {
                   src={testimonialsList[currentIndex].avatar}
                   alt={testimonialsList[currentIndex].name}
                   referrerPolicy="no-referrer"
+                  loading="lazy"
+                  decoding="async"
                   className="w-16 h-16 rounded-full object-cover ring-4 ring-teal-500/10 shadow-sm"
                 />
                 <div className="absolute -bottom-1 -right-1 w-6 h-6 rounded-full bg-teal-500 flex items-center justify-center text-white border-2 border-white dark:border-zinc-900">

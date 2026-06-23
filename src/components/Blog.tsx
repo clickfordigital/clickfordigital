@@ -131,6 +131,7 @@ export default function Blog() {
                     alt={post.title}
                     referrerPolicy="no-referrer"
                     loading="lazy"
+                    decoding="async"
                     className="w-full h-full object-cover group-hover:scale-103 transition-transform duration-500"
                   />
                   

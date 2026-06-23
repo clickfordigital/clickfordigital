@@ -8,11 +8,25 @@ import { RouterProvider, useRouter } from "./components/Router";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 
-// Import Page Wrappers
-import HomePage from "./pages/HomePage";
-import AboutPage from "./pages/AboutPage";
-import ServicesPage from "./pages/ServicesPage";
-import ContactPage from "./pages/ContactPage";
+// Import Page Wrappers (Lazy-loaded for optimal TTI and initial bundle performance)
+const HomePage = React.lazy(() => import("./pages/HomePage"));
+const AboutPage = React.lazy(() => import("./pages/AboutPage"));
+const ServicesPage = React.lazy(() => import("./pages/ServicesPage"));
+const ContactPage = React.lazy(() => import("./pages/ContactPage"));
+
+function PageLoading() {
+  return (
+    <div className="pt-36 pb-24 text-center min-h-[55vh] flex flex-col items-center justify-center bg-transparent select-none animate-pulse">
+      <div className="w-12 h-12 rounded-2xl bg-teal-500/10 text-teal-500 flex items-center justify-center mb-4 relative overflow-hidden">
+        <span className="absolute inset-0 bg-teal-500/20 animate-ping rounded-2xl duration-1000" />
+        <span className="w-4 h-4 rounded-full bg-teal-500 animate-pulse" />
+      </div>
+      <p className="text-[10px] sm:text-xs font-mono text-zinc-450 dark:text-zinc-500 tracking-wider uppercase font-semibold">
+        Optimizing core web vitals...
+      </p>
+    </div>
+  );
+}
 
 function MainAppContent() {
   const [darkMode, setDarkMode] = useState<boolean>(() => {
@@ -102,7 +116,9 @@ function MainAppContent() {
 
       {/* Main Page Layout modules */}
       <main className="flex-grow w-full relative">
-        {renderPage()}
+        <React.Suspense fallback={<PageLoading />}>
+          {renderPage()}
+        </React.Suspense>
       </main>
 
       {/* DETAILED ROOT FOOTER */}

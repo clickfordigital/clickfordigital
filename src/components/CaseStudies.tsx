@@ -465,6 +465,8 @@ export default function CaseStudies() {
                               transition={{ duration: 0.25 }}
                               className="object-cover w-full h-full"
                               referrerPolicy="no-referrer"
+                              loading="lazy"
+                              decoding="async"
                             />
                           </AnimatePresence>
                           
@@ -668,6 +670,8 @@ export default function CaseStudies() {
                 alt="Full-Screen Performance Proof"
                 className="w-full h-full object-contain"
                 referrerPolicy="no-referrer"
+                loading="lazy"
+                decoding="async"
               />
             </motion.div>
           </motion.div>
