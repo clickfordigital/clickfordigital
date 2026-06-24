@@ -251,20 +251,14 @@ export default function AboutPage() {
                     PROFESSIONAL STATEMENT
                   </span>
                   <h1 className="font-sans font-extrabold text-3xl sm:text-4xl text-zinc-900 dark:text-white tracking-tight leading-tight">
-                    Hi, I am Mohan, professional <span className="text-transparent bg-clip-text bg-gradient-to-r from-teal-500 to-indigo-600">SEO & SMO Specialist</span> & Founder of ClickForDigital
+                    Hi, I'm Mohan — <span className="text-transparent bg-clip-text bg-gradient-to-r from-teal-500 to-indigo-600">SEO & SMO Specialist</span>
                   </h1>
                 </div>
               </div>
               
-              <div className="text-zinc-650 dark:text-zinc-400 text-sm sm:text-base space-y-4 leading-relaxed font-sans font-medium">
+              <div className="text-zinc-700 dark:text-zinc-250 text-base sm:text-lg space-y-4 leading-relaxed font-sans font-medium">
                 <p>
-                  With a relentless focus on white-hat organic rankings and search engine mechanics, I help companies expand their customer pipeline. At <strong className="text-zinc-950 dark:text-white font-bold">ClickForDigital</strong>, our focus is on building solid data-driven frameworks rather than relying on vanity metrics.
-                </p>
-                <p>
-                  My practical experiences with industry leaders like <strong className="text-teal-600 dark:text-teal-400 font-bold">Acharya Ganesh</strong> and <strong className="text-indigo-650 dark:text-indigo-400 font-bold">Hanish Bagga</strong> have given me an intimate understanding of complex indexing problems, crawl-budget optimizations, and intent-driven content structures.
-                </p>
-                <p>
-                  By marrying strict technical site hygiene (schema, Core Web Vitals, site architecture logic) with continuous Social Media Optimization (SMO), I build compounding digital authority nodes that generate steady inbound leads.
+                  Helping businesses grow through SEO, SMO, and data-driven digital strategies. I focus on improving search visibility, building online authority, and creating sustainable organic growth.
                 </p>
               </div>
 
