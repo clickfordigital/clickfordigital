@@ -508,17 +508,14 @@ export default function AboutPage() {
                           1-Year Diploma
                         </span>
                         <span className="font-mono text-[9px] font-bold text-zinc-400">
-                          Completed 2021
+                          Completed 2024
                         </span>
                       </div>
                       <h4 className="font-sans font-black text-base text-zinc-900 dark:text-white group-hover:text-teal-600 dark:group-hover:text-teal-400 transition-colors duration-300 leading-snug">
-                        Advanced Professional Diploma in Digital Marketing
+                        Diploma in Digital Marketing
                       </h4>
                       <p className="text-[11px] text-zinc-500 dark:text-zinc-500 font-semibold font-mono uppercase tracking-wide">
-                        Delhi Institute of Technology
-                      </p>
-                      <p className="text-xs sm:text-sm text-zinc-650 dark:text-zinc-400 leading-relaxed font-medium">
-                        Specialized coursework in Google Algorithms, Technical Content Outlining, Core Web Vitals profiling, and Search Console Diagnostics. Approved GAIQ and Advanced HubSpot certifications with distinction.
+                        Indian Institution Of Computer Science
                       </p>
                     </div>
                   </div>
@@ -542,13 +539,10 @@ export default function AboutPage() {
                         </span>
                       </div>
                       <h4 className="font-sans font-black text-base text-zinc-900 dark:text-white group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition-colors duration-300 leading-snug">
-                        Bachelor of Computer Applications (BCA)
+                        Bachelor of Arts (BA)
                       </h4>
                       <p className="text-[11px] text-zinc-500 dark:text-zinc-500 font-semibold font-mono uppercase tracking-wide">
                         Delhi University (DU)
-                      </p>
-                      <p className="text-xs sm:text-sm text-zinc-650 dark:text-zinc-400 leading-relaxed font-medium">
-                        Focus on Web Programming, Database Systems, Software Engineering, and Organic Communication. Enabled deep understanding of crawl technologies, DNS setups, and index-friendly frontends.
                       </p>
                     </div>
                   </div>
@@ -568,7 +562,7 @@ export default function AboutPage() {
                           School Education
                         </span>
                         <span className="font-mono text-[9px] font-bold text-zinc-400">
-                          Completed 2018
+                          Completed 2022
                         </span>
                       </div>
                       <h4 className="font-sans font-black text-base text-zinc-900 dark:text-white group-hover:text-amber-600 dark:group-hover:text-amber-400 transition-colors duration-300 leading-snug">
@@ -576,9 +570,6 @@ export default function AboutPage() {
                       </h4>
                       <p className="text-[11px] text-zinc-500 dark:text-zinc-500 font-semibold font-mono uppercase tracking-wide">
                         Central Board of Secondary Education (CBSE)
-                      </p>
-                      <p className="text-xs sm:text-sm text-zinc-655 dark:text-zinc-400 leading-relaxed font-medium">
-                        Formative high school education with a focus on Computer Science, Mathematics, and Analytical Science. Established early foundations in data logical models, quantitative metrics, and computer hardware/software workflows.
                       </p>
                     </div>
                   </div>
