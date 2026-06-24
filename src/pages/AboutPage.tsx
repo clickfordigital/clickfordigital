@@ -368,8 +368,8 @@ export default function AboutPage() {
             <h2 className="font-sans font-extrabold text-3xl sm:text-4xl text-zinc-900 dark:text-white tracking-tight">
               Education & Professional Experience
             </h2>
-            <p className="mt-3 text-xs sm:text-sm text-zinc-500 dark:text-zinc-400 font-sans font-medium max-w-2xl">
-              A meticulously curated timeline of my professional consulting milestones, academic background, and specialized search certifications.
+            <p className="mt-3 text-sm sm:text-base text-zinc-600 dark:text-zinc-300 font-sans font-medium max-w-2xl leading-relaxed">
+              A journey of learning, growth, and hands-on experience in SEO, SMO, and Digital Marketing.
             </p>
           </div>
 
@@ -395,20 +395,17 @@ export default function AboutPage() {
                   <div className="p-5 rounded-2xl bg-white dark:bg-zinc-900/50 border border-zinc-150/80 dark:border-zinc-850 hover:border-teal-500/20 hover:shadow-[0_4px_25px_rgba(20,184,166,0.05)] dark:hover:shadow-[0_4px_25px_rgba(20,184,166,0.03)] transition-all duration-300">
                     <div className="flex flex-wrap items-center justify-between gap-2 mb-2">
                       <span className="font-mono text-[9px] font-black text-teal-600 dark:text-teal-400 bg-teal-500/10 px-2.5 py-0.5 rounded-full uppercase tracking-wider">
-                        2024 - Present
+                        August 2025 - Present
                       </span>
                       <span className="font-mono text-[10px] text-zinc-400 dark:text-zinc-500 font-bold">
-                        Full-Time
+                        Executive
                       </span>
                     </div>
                     <h4 className="font-sans font-black text-base sm:text-lg text-zinc-900 dark:text-white group-hover:text-teal-600 dark:group-hover:text-teal-400 transition-colors duration-300">
-                      Founder & Lead SEO Consultant
+                      SEO & SMO Executive
                     </h4>
                     <p className="text-xs text-zinc-500 dark:text-zinc-400 font-semibold font-sans mt-0.5">
-                      ClickForDigital
-                    </p>
-                    <p className="mt-3 text-xs sm:text-sm text-zinc-600 dark:text-zinc-400 leading-relaxed font-sans font-medium">
-                      Established an elite, results-focused SEO consultancy managing search engine optimization campaigns. Audited, structured, and deployed technical optimizations for high-authority brands like Acharya Ganesh and Hanish Bagga. Multiplied aggregate client search click volume by over 600%.
+                      Divine Astro Vastu Science LLP
                     </p>
                     <div className="flex flex-wrap gap-1.5 mt-4">
                       {['Technical SEO', 'Analytics Diagnostics', 'Crawl Optimization', 'B2B Growth'].map((tag) => (
@@ -426,20 +423,17 @@ export default function AboutPage() {
                   <div className="p-5 rounded-2xl bg-white dark:bg-zinc-900/50 border border-zinc-150/80 dark:border-zinc-850 hover:border-indigo-500/20 hover:shadow-[0_4px_25px_rgba(99,102,241,0.05)] dark:hover:shadow-[0_4px_25px_rgba(99,102,241,0.03)] transition-all duration-300">
                     <div className="flex flex-wrap items-center justify-between gap-2 mb-2">
                       <span className="font-mono text-[9px] font-black text-indigo-600 dark:text-indigo-400 bg-indigo-500/10 px-2.5 py-0.5 rounded-full uppercase tracking-wider">
-                        2022 - 2024
+                        March 2025 to June 2025
                       </span>
                       <span className="font-mono text-[10px] text-zinc-400 dark:text-zinc-500 font-bold">
-                        Freelance
+                        Executive
                       </span>
                     </div>
                     <h4 className="font-sans font-black text-base sm:text-lg text-zinc-900 dark:text-white group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition-colors duration-300">
-                      Senior SEO & SMO Specialist
+                      SEO & SMO Executive
                     </h4>
                     <p className="text-xs text-zinc-500 dark:text-zinc-400 font-semibold font-sans mt-0.5">
-                      Independent Search Consultancy
-                    </p>
-                    <p className="mt-3 text-xs sm:text-sm text-zinc-650 dark:text-zinc-405 leading-relaxed font-sans font-medium">
-                      Partnered directly with growing brands to build comprehensive On-Page, Off-Page, and Social Media Optimization (SMO) systems. Handled complex WordPress, Webflow, and custom code site architectures to ensure flawless crawl eligibility and zero script-blocking.
+                      Thinkbizz Hightech
                     </p>
                     <div className="flex flex-wrap gap-1.5 mt-4">
                       {['On-Page SEO', 'SMO Systems', 'Webflow/WP Architecture', 'Zero Script-Blocking'].map((tag) => (
@@ -457,20 +451,17 @@ export default function AboutPage() {
                   <div className="p-5 rounded-2xl bg-white dark:bg-zinc-900/50 border border-zinc-150/80 dark:border-zinc-850 hover:border-zinc-400/20 hover:shadow-[0_4px_25px_rgba(0,0,0,0.02)] transition-all duration-300">
                     <div className="flex flex-wrap items-center justify-between gap-2 mb-2">
                       <span className="font-mono text-[9px] font-black text-zinc-650 dark:text-zinc-450 bg-zinc-200/60 dark:bg-zinc-800 px-2.5 py-0.5 rounded-full uppercase tracking-wider">
-                        2021 - 2022
+                        Dec 2024 to Feb 2025
                       </span>
                       <span className="font-mono text-[10px] text-zinc-400 dark:text-zinc-500 font-bold">
-                        Associate
+                        Intern
                       </span>
                     </div>
                     <h4 className="font-sans font-black text-base sm:text-lg text-zinc-900 dark:text-white transition-colors duration-300">
-                      Associate SEO & Content Strategist
+                      SEO AND SMO INTERN
                     </h4>
                     <p className="text-xs text-zinc-500 dark:text-zinc-400 font-semibold font-sans mt-0.5">
-                      Digital Growth Agency
-                    </p>
-                    <p className="mt-3 text-xs sm:text-sm text-zinc-650 dark:text-zinc-405 leading-relaxed font-sans font-medium">
-                      Executed client keyword research with Ahrefs and SEMrush, repaired schema errors, and streamlined copywriting layouts for semantic density. Managed reporting metrics within Google Search Console and Google Analytics 4.
+                      Thinkbizz Hightech
                     </p>
                     <div className="flex flex-wrap gap-1.5 mt-4">
                       {['Keyword Research', 'Schema Validation', 'GSC & GA4', 'Content Engineering'].map((tag) => (
@@ -535,7 +526,7 @@ export default function AboutPage() {
                           College Degree
                         </span>
                         <span className="font-mono text-[9px] font-bold text-zinc-400">
-                          Graduated 2021
+                          Graduated 2025
                         </span>
                       </div>
                       <h4 className="font-sans font-black text-base text-zinc-900 dark:text-white group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition-colors duration-300 leading-snug">
