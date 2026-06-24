@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import Breadcrumbs from "../components/Breadcrumbs";
 import { 
   ArrowRight, 
@@ -22,7 +22,7 @@ import {
   Briefcase,
   GraduationCap
 } from "lucide-react";
-import { motion, AnimatePresence } from "motion/react";
+import { motion, AnimatePresence, useScroll, useSpring } from "motion/react";
 import { ResponsiveContainer, AreaChart, Area, XAxis, YAxis, Tooltip, CartesianGrid } from "recharts";
 import { Link } from "../components/Router";
 import founderImg from "../assets/images/mohan.png";
@@ -43,6 +43,16 @@ interface WebsitePerformanceData {
 
 export default function AboutPage() {
   const [activeSiteTab, setActiveSiteTab] = useState<number>(0);
+  const timelineRef = useRef<HTMLDivElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: timelineRef,
+    offset: ["start 80%", "end 40%"]
+  });
+  const scaleY = useSpring(scrollYProgress, {
+    stiffness: 100,
+    damping: 30,
+    restDelta: 0.001
+  });
 
   useEffect(() => {
     document.title = "About Mohan — Technical SEO & SMO Specialist | Founder";
@@ -383,16 +393,37 @@ export default function AboutPage() {
                 Experience & Milestones
               </h3>
 
-              <div className="relative border-l-2 border-zinc-200/80 dark:border-zinc-800/80 pl-8 ml-4 space-y-10">
-                {/* Timeline connector visual effect */}
-                <div className="absolute top-0 bottom-0 left-[-2px] w-0.5 bg-gradient-to-b from-teal-500 via-indigo-500 to-zinc-200 dark:to-zinc-800"></div>
+              <div ref={timelineRef} className="relative border-l-2 border-zinc-200/80 dark:border-zinc-800/80 pl-8 ml-4 space-y-10">
+                {/* Timeline background guide line */}
+                <div className="absolute top-0 bottom-0 left-[-2px] w-0.5 bg-zinc-200/50 dark:bg-zinc-800/50 z-0"></div>
+
+                {/* Dynamic scroll progress timeline line */}
+                <motion.div 
+                  className="absolute top-0 bottom-0 left-[-2px] w-0.5 bg-gradient-to-b from-teal-500 via-indigo-500 to-violet-600 origin-top z-0"
+                  style={{ scaleY }}
+                />
 
                 {/* Milestone 1 */}
                 <div className="relative group">
-                  <div className="absolute -left-[41px] top-1.5 w-6 h-6 rounded-full bg-white dark:bg-zinc-950 border-4 border-teal-500 shadow-md group-hover:scale-110 transition-transform duration-300 z-10 flex items-center justify-center">
+                  {/* Animated Dot */}
+                  <motion.div 
+                    initial={{ scale: 0.5, opacity: 0 }}
+                    whileInView={{ scale: 1, opacity: 1 }}
+                    whileHover={{ scale: 1.15 }}
+                    viewport={{ once: false, margin: "-10%" }}
+                    transition={{ type: "spring", stiffness: 300, damping: 15 }}
+                    className="absolute -left-[41px] top-1.5 w-6 h-6 rounded-full bg-white dark:bg-zinc-950 border-4 border-teal-500 shadow-md z-10 flex items-center justify-center cursor-pointer"
+                  >
                     <span className="w-1.5 h-1.5 rounded-full bg-teal-500 animate-ping" />
-                  </div>
-                  <div className="p-5 rounded-2xl bg-white dark:bg-zinc-900/50 border border-zinc-150/80 dark:border-zinc-850 hover:border-teal-500/20 hover:shadow-[0_4px_25px_rgba(20,184,166,0.05)] dark:hover:shadow-[0_4px_25px_rgba(20,184,166,0.03)] transition-all duration-300">
+                  </motion.div>
+                  {/* Animated Card */}
+                  <motion.div 
+                    initial={{ opacity: 0, x: -20 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    viewport={{ once: true, margin: "-10%" }}
+                    transition={{ duration: 0.5, delay: 0.1 }}
+                    className="p-5 rounded-2xl bg-white dark:bg-zinc-900/50 border border-zinc-150/80 dark:border-zinc-850 hover:border-teal-500/20 hover:shadow-[0_4px_25px_rgba(20,184,166,0.05)] dark:hover:shadow-[0_4px_25px_rgba(20,184,166,0.03)] transition-all duration-300 relative z-0"
+                  >
                     <div className="flex flex-wrap items-center justify-between gap-2 mb-2">
                       <span className="font-mono text-[9px] font-black text-teal-600 dark:text-teal-400 bg-teal-500/10 px-2.5 py-0.5 rounded-full uppercase tracking-wider">
                         August 2025 - Present
@@ -414,13 +445,28 @@ export default function AboutPage() {
                         </span>
                       ))}
                     </div>
-                  </div>
+                  </motion.div>
                 </div>
 
                 {/* Milestone 2 */}
                 <div className="relative group">
-                  <div className="absolute -left-[41px] top-1.5 w-6 h-6 rounded-full bg-white dark:bg-zinc-950 border-4 border-indigo-500 shadow-md group-hover:scale-110 transition-transform duration-300 z-10"></div>
-                  <div className="p-5 rounded-2xl bg-white dark:bg-zinc-900/50 border border-zinc-150/80 dark:border-zinc-850 hover:border-indigo-500/20 hover:shadow-[0_4px_25px_rgba(99,102,241,0.05)] dark:hover:shadow-[0_4px_25px_rgba(99,102,241,0.03)] transition-all duration-300">
+                  {/* Animated Dot */}
+                  <motion.div 
+                    initial={{ scale: 0.5, opacity: 0 }}
+                    whileInView={{ scale: 1, opacity: 1 }}
+                    whileHover={{ scale: 1.15 }}
+                    viewport={{ once: false, margin: "-10%" }}
+                    transition={{ type: "spring", stiffness: 300, damping: 15 }}
+                    className="absolute -left-[41px] top-1.5 w-6 h-6 rounded-full bg-white dark:bg-zinc-950 border-4 border-indigo-500 shadow-md z-10 cursor-pointer"
+                  />
+                  {/* Animated Card */}
+                  <motion.div 
+                    initial={{ opacity: 0, x: -20 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    viewport={{ once: true, margin: "-10%" }}
+                    transition={{ duration: 0.5, delay: 0.1 }}
+                    className="p-5 rounded-2xl bg-white dark:bg-zinc-900/50 border border-zinc-150/80 dark:border-zinc-850 hover:border-indigo-500/20 hover:shadow-[0_4px_25px_rgba(99,102,241,0.05)] dark:hover:shadow-[0_4px_25px_rgba(99,102,241,0.03)] transition-all duration-300 relative z-0"
+                  >
                     <div className="flex flex-wrap items-center justify-between gap-2 mb-2">
                       <span className="font-mono text-[9px] font-black text-indigo-600 dark:text-indigo-400 bg-indigo-500/10 px-2.5 py-0.5 rounded-full uppercase tracking-wider">
                         March 2025 to June 2025
@@ -442,13 +488,28 @@ export default function AboutPage() {
                         </span>
                       ))}
                     </div>
-                  </div>
+                  </motion.div>
                 </div>
 
                 {/* Milestone 3 */}
                 <div className="relative group">
-                  <div className="absolute -left-[41px] top-1.5 w-6 h-6 rounded-full bg-white dark:bg-zinc-950 border-4 border-zinc-300 dark:border-zinc-750 shadow-md group-hover:scale-110 transition-transform duration-300 z-10"></div>
-                  <div className="p-5 rounded-2xl bg-white dark:bg-zinc-900/50 border border-zinc-150/80 dark:border-zinc-850 hover:border-zinc-400/20 hover:shadow-[0_4px_25px_rgba(0,0,0,0.02)] transition-all duration-300">
+                  {/* Animated Dot */}
+                  <motion.div 
+                    initial={{ scale: 0.5, opacity: 0 }}
+                    whileInView={{ scale: 1, opacity: 1 }}
+                    whileHover={{ scale: 1.15 }}
+                    viewport={{ once: false, margin: "-10%" }}
+                    transition={{ type: "spring", stiffness: 300, damping: 15 }}
+                    className="absolute -left-[41px] top-1.5 w-6 h-6 rounded-full bg-white dark:bg-zinc-950 border-4 border-zinc-300 dark:border-zinc-750 shadow-md z-10 cursor-pointer"
+                  />
+                  {/* Animated Card */}
+                  <motion.div 
+                    initial={{ opacity: 0, x: -20 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    viewport={{ once: true, margin: "-10%" }}
+                    transition={{ duration: 0.5, delay: 0.1 }}
+                    className="p-5 rounded-2xl bg-white dark:bg-zinc-900/50 border border-zinc-150/80 dark:border-zinc-850 hover:border-zinc-400/20 hover:shadow-[0_4px_25px_rgba(0,0,0,0.02)] transition-all duration-300 relative z-0"
+                  >
                     <div className="flex flex-wrap items-center justify-between gap-2 mb-2">
                       <span className="font-mono text-[9px] font-black text-zinc-650 dark:text-zinc-450 bg-zinc-200/60 dark:bg-zinc-800 px-2.5 py-0.5 rounded-full uppercase tracking-wider">
                         Dec 2024 to Feb 2025
@@ -470,7 +531,7 @@ export default function AboutPage() {
                         </span>
                       ))}
                     </div>
-                  </div>
+                  </motion.div>
                 </div>
               </div>
             </div>
@@ -486,7 +547,13 @@ export default function AboutPage() {
 
               <div className="space-y-6">
                 {/* 1-Year Diploma Entry */}
-                <div className="p-6 bg-white dark:bg-zinc-900 border border-zinc-150/85 dark:border-zinc-850 rounded-2xl relative overflow-hidden group hover:border-teal-500/20 hover:shadow-[0_4px_25px_rgba(20,184,166,0.04)] transition-all duration-300">
+                <motion.div 
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, margin: "-10%" }}
+                  transition={{ duration: 0.5, delay: 0.1 }}
+                  className="p-6 bg-white dark:bg-zinc-900 border border-zinc-150/85 dark:border-zinc-850 rounded-2xl relative overflow-hidden group hover:border-teal-500/20 hover:shadow-[0_4px_25px_rgba(20,184,166,0.04)] transition-all duration-300"
+                >
                   <div className="absolute top-0 right-0 w-24 h-24 bg-teal-500/5 rounded-full blur-xl group-hover:scale-150 transition-transform duration-500"></div>
                   
                   <div className="flex gap-4 items-start relative z-10">
@@ -510,10 +577,16 @@ export default function AboutPage() {
                       </p>
                     </div>
                   </div>
-                </div>
+                </motion.div>
 
                 {/* College Entry */}
-                <div className="p-6 bg-white dark:bg-zinc-900 border border-zinc-150/85 dark:border-zinc-850 rounded-2xl relative overflow-hidden group hover:border-indigo-500/20 hover:shadow-[0_4px_25px_rgba(99,102,241,0.04)] transition-all duration-300">
+                <motion.div 
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, margin: "-10%" }}
+                  transition={{ duration: 0.5, delay: 0.2 }}
+                  className="p-6 bg-white dark:bg-zinc-900 border border-zinc-150/85 dark:border-zinc-850 rounded-2xl relative overflow-hidden group hover:border-indigo-500/20 hover:shadow-[0_4px_25px_rgba(99,102,241,0.04)] transition-all duration-300"
+                >
                   <div className="absolute top-0 right-0 w-24 h-24 bg-indigo-500/5 rounded-full blur-xl group-hover:scale-150 transition-transform duration-500"></div>
                   
                   <div className="flex gap-4 items-start relative z-10">
@@ -522,7 +595,7 @@ export default function AboutPage() {
                     </div>
                     <div className="space-y-2">
                       <div className="flex flex-wrap items-center gap-2">
-                        <span className="font-mono text-[9px] font-extrabold text-indigo-650 dark:text-indigo-400 uppercase tracking-widest bg-indigo-500/10 px-2 py-0.5 rounded">
+                        <span className="font-mono text-[9px] font-extrabold text-indigo-655 dark:text-indigo-400 uppercase tracking-widest bg-indigo-500/10 px-2 py-0.5 rounded">
                           College Degree
                         </span>
                         <span className="font-mono text-[9px] font-bold text-zinc-400">
@@ -537,10 +610,16 @@ export default function AboutPage() {
                       </p>
                     </div>
                   </div>
-                </div>
+                </motion.div>
 
                 {/* School Entry */}
-                <div className="p-6 bg-white dark:bg-zinc-900 border border-zinc-150/85 dark:border-zinc-850 rounded-2xl relative overflow-hidden group hover:border-amber-500/20 hover:shadow-[0_4px_25px_rgba(245,158,11,0.04)] transition-all duration-300">
+                <motion.div 
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, margin: "-10%" }}
+                  transition={{ duration: 0.5, delay: 0.3 }}
+                  className="p-6 bg-white dark:bg-zinc-900 border border-zinc-150/85 dark:border-zinc-850 rounded-2xl relative overflow-hidden group hover:border-amber-500/20 hover:shadow-[0_4px_25px_rgba(245,158,11,0.04)] transition-all duration-300"
+                >
                   <div className="absolute top-0 right-0 w-24 h-24 bg-amber-500/5 rounded-full blur-xl group-hover:scale-150 transition-transform duration-500"></div>
                   
                   <div className="flex gap-4 items-start relative z-10">
@@ -564,7 +643,7 @@ export default function AboutPage() {
                       </p>
                     </div>
                   </div>
-                </div>
+                </motion.div>
               </div>
             </div>
           </div>
