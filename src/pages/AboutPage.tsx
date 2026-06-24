@@ -18,7 +18,9 @@ import {
   ShieldCheck,
   Sparkles,
   Search,
-  BookOpen
+  BookOpen,
+  Briefcase,
+  GraduationCap
 } from "lucide-react";
 import { motion, AnimatePresence } from "motion/react";
 import { ResponsiveContainer, AreaChart, Area, XAxis, YAxis, Tooltip, CartesianGrid } from "recharts";
@@ -357,135 +359,228 @@ export default function AboutPage() {
               </div>
             ))}
           </div>
-        </section>
-
-        {/* SECTION E: EDUCATION & CAREER JOURNEY */}
+        </section>        {/* SECTION E: EDUCATION & CAREER JOURNEY */}
         <section id="education-experience" className="mb-20 pt-10 border-t border-zinc-200/60 dark:border-zinc-900/60">
-          <div className="mb-10 text-center lg:text-left">
-            <span className="text-[10px] font-mono font-bold tracking-widest text-teal-600 dark:text-teal-400 uppercase bg-teal-505/10 px-3 py-1 rounded-md inline-block mb-2">
+          <div className="mb-12 text-center lg:text-left">
+            <span className="text-[10px] font-mono font-bold tracking-widest text-teal-600 dark:text-teal-400 uppercase bg-teal-500/10 px-3 py-1 rounded-md inline-block mb-2 select-none">
               MY STORY & JOURNEY
             </span>
-            <h2 className="font-sans font-extrabold text-2xl text-zinc-900 dark:text-white tracking-tight">
-              Education, College & Experience
+            <h2 className="font-sans font-extrabold text-3xl sm:text-4xl text-zinc-900 dark:text-white tracking-tight">
+              Education & Professional Experience
             </h2>
-            <p className="mt-2 text-xs sm:text-sm text-zinc-500 dark:text-zinc-400 font-sans font-medium">
-              A timeline of my professional experience, academic background, and milestones scaling organic revenue models.
+            <p className="mt-3 text-xs sm:text-sm text-zinc-500 dark:text-zinc-400 font-sans font-medium max-w-2xl">
+              A meticulously curated timeline of my professional consulting milestones, academic background, and specialized search certifications.
             </p>
           </div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
             {/* Left Column: Career Experience Timeline */}
-            <div className="lg:col-span-7 space-y-6">
-              <h3 className="font-sans font-extrabold text-lg text-zinc-950 dark:text-white flex items-center gap-2 mb-4">
-                <span className="w-1.5 h-6 bg-teal-500 rounded-full inline-block"></span>
+            <div className="lg:col-span-7 space-y-8">
+              <h3 className="font-sans font-black text-xl text-zinc-950 dark:text-white flex items-center gap-3 mb-6">
+                <span className="flex items-center justify-center w-8 h-8 rounded-lg bg-teal-500/10 text-teal-500">
+                  <Briefcase className="w-4 h-4" />
+                </span>
                 Experience & Milestones
               </h3>
 
-              <div className="relative border-l border-zinc-200 dark:border-zinc-800 pl-6 ml-3 space-y-8">
+              <div className="relative border-l-2 border-zinc-200/80 dark:border-zinc-800/80 pl-8 ml-4 space-y-10">
+                {/* Timeline connector visual effect */}
+                <div className="absolute top-0 bottom-0 left-[-2px] w-0.5 bg-gradient-to-b from-teal-500 via-indigo-500 to-zinc-200 dark:to-zinc-800"></div>
+
                 {/* Milestone 1 */}
-                <div className="relative">
-                  <div className="absolute -left-[31px] top-1.5 w-4 h-4 rounded-full bg-white dark:bg-zinc-950 border-4 border-teal-500 z-10"></div>
-                  <div>
-                    <span className="font-mono text-[10px] font-black text-teal-600 dark:text-teal-400 bg-teal-500/10 px-2.5 py-0.5 rounded-full uppercase">
-                      2024 - Present
-                    </span>
-                    <h4 className="font-sans font-bold text-sm sm:text-base text-zinc-900 dark:text-white mt-2">
+                <div className="relative group">
+                  <div className="absolute -left-[41px] top-1.5 w-6 h-6 rounded-full bg-white dark:bg-zinc-950 border-4 border-teal-500 shadow-md group-hover:scale-110 transition-transform duration-300 z-10 flex items-center justify-center">
+                    <span className="w-1.5 h-1.5 rounded-full bg-teal-500 animate-ping" />
+                  </div>
+                  <div className="p-5 rounded-2xl bg-white dark:bg-zinc-900/50 border border-zinc-150/80 dark:border-zinc-850 hover:border-teal-500/20 hover:shadow-[0_4px_25px_rgba(20,184,166,0.05)] dark:hover:shadow-[0_4px_25px_rgba(20,184,166,0.03)] transition-all duration-300">
+                    <div className="flex flex-wrap items-center justify-between gap-2 mb-2">
+                      <span className="font-mono text-[9px] font-black text-teal-600 dark:text-teal-400 bg-teal-500/10 px-2.5 py-0.5 rounded-full uppercase tracking-wider">
+                        2024 - Present
+                      </span>
+                      <span className="font-mono text-[10px] text-zinc-400 dark:text-zinc-500 font-bold">
+                        Full-Time
+                      </span>
+                    </div>
+                    <h4 className="font-sans font-black text-base sm:text-lg text-zinc-900 dark:text-white group-hover:text-teal-600 dark:group-hover:text-teal-400 transition-colors duration-300">
                       Founder & Lead SEO Consultant
                     </h4>
-                    <p className="text-xs text-zinc-500 dark:text-zinc-400 font-medium font-mono">
+                    <p className="text-xs text-zinc-500 dark:text-zinc-400 font-semibold font-sans mt-0.5">
                       ClickForDigital
                     </p>
-                    <p className="mt-2 text-xs sm:text-sm text-zinc-650 dark:text-zinc-400 leading-relaxed font-sans">
+                    <p className="mt-3 text-xs sm:text-sm text-zinc-600 dark:text-zinc-400 leading-relaxed font-sans font-medium">
                       Established an elite, results-focused SEO consultancy managing search engine optimization campaigns. Audited, structured, and deployed technical optimizations for high-authority brands like Acharya Ganesh and Hanish Bagga. Multiplied aggregate client search click volume by over 600%.
                     </p>
+                    <div className="flex flex-wrap gap-1.5 mt-4">
+                      {['Technical SEO', 'Analytics Diagnostics', 'Crawl Optimization', 'B2B Growth'].map((tag) => (
+                        <span key={tag} className="text-[9px] font-mono font-bold px-2 py-0.5 rounded bg-zinc-50 dark:bg-zinc-950 text-zinc-500 border border-zinc-150 dark:border-zinc-850">
+                          {tag}
+                        </span>
+                      ))}
+                    </div>
                   </div>
                 </div>
 
                 {/* Milestone 2 */}
-                <div className="relative">
-                  <div className="absolute -left-[31px] top-1.5 w-4 h-4 rounded-full bg-white dark:bg-zinc-950 border-4 border-zinc-300 dark:border-zinc-700 z-10"></div>
-                  <div>
-                    <span className="font-mono text-[10px] bg-zinc-200 dark:bg-zinc-800 text-zinc-650 dark:text-zinc-350 px-2.5 py-0.5 rounded-full uppercase">
-                      2022 - 2024
-                    </span>
-                    <h4 className="font-sans font-bold text-sm sm:text-base text-zinc-900 dark:text-white mt-2">
-                      Senior SEO & SMO Specialist (Freelance)
+                <div className="relative group">
+                  <div className="absolute -left-[41px] top-1.5 w-6 h-6 rounded-full bg-white dark:bg-zinc-950 border-4 border-indigo-500 shadow-md group-hover:scale-110 transition-transform duration-300 z-10"></div>
+                  <div className="p-5 rounded-2xl bg-white dark:bg-zinc-900/50 border border-zinc-150/80 dark:border-zinc-850 hover:border-indigo-500/20 hover:shadow-[0_4px_25px_rgba(99,102,241,0.05)] dark:hover:shadow-[0_4px_25px_rgba(99,102,241,0.03)] transition-all duration-300">
+                    <div className="flex flex-wrap items-center justify-between gap-2 mb-2">
+                      <span className="font-mono text-[9px] font-black text-indigo-600 dark:text-indigo-400 bg-indigo-500/10 px-2.5 py-0.5 rounded-full uppercase tracking-wider">
+                        2022 - 2024
+                      </span>
+                      <span className="font-mono text-[10px] text-zinc-400 dark:text-zinc-500 font-bold">
+                        Freelance
+                      </span>
+                    </div>
+                    <h4 className="font-sans font-black text-base sm:text-lg text-zinc-900 dark:text-white group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition-colors duration-300">
+                      Senior SEO & SMO Specialist
                     </h4>
-                    <p className="text-xs text-zinc-500 dark:text-zinc-400 font-medium font-mono">
+                    <p className="text-xs text-zinc-500 dark:text-zinc-400 font-semibold font-sans mt-0.5">
                       Independent Search Consultancy
                     </p>
-                    <p className="mt-2 text-xs sm:text-sm text-zinc-650 dark:text-zinc-400 leading-relaxed font-sans">
+                    <p className="mt-3 text-xs sm:text-sm text-zinc-650 dark:text-zinc-405 leading-relaxed font-sans font-medium">
                       Partnered directly with growing brands to build comprehensive On-Page, Off-Page, and Social Media Optimization (SMO) systems. Handled complex WordPress, Webflow, and custom code site architectures to ensure flawless crawl eligibility and zero script-blocking.
                     </p>
+                    <div className="flex flex-wrap gap-1.5 mt-4">
+                      {['On-Page SEO', 'SMO Systems', 'Webflow/WP Architecture', 'Zero Script-Blocking'].map((tag) => (
+                        <span key={tag} className="text-[9px] font-mono font-bold px-2 py-0.5 rounded bg-zinc-50 dark:bg-zinc-950 text-zinc-500 border border-zinc-150 dark:border-zinc-850">
+                          {tag}
+                        </span>
+                      ))}
+                    </div>
                   </div>
                 </div>
 
                 {/* Milestone 3 */}
-                <div className="relative">
-                  <div className="absolute -left-[31px] top-1.5 w-4 h-4 rounded-full bg-white dark:bg-zinc-950 border-4 border-zinc-300 dark:border-zinc-700 z-10"></div>
-                  <div>
-                    <span className="font-mono text-[10px] bg-zinc-200 dark:bg-zinc-800 text-zinc-650 dark:text-zinc-350 px-2.5 py-0.5 rounded-full uppercase">
-                      2021 - 2022
-                    </span>
-                    <h4 className="font-sans font-bold text-sm sm:text-base text-zinc-900 dark:text-white mt-2">
+                <div className="relative group">
+                  <div className="absolute -left-[41px] top-1.5 w-6 h-6 rounded-full bg-white dark:bg-zinc-950 border-4 border-zinc-300 dark:border-zinc-750 shadow-md group-hover:scale-110 transition-transform duration-300 z-10"></div>
+                  <div className="p-5 rounded-2xl bg-white dark:bg-zinc-900/50 border border-zinc-150/80 dark:border-zinc-850 hover:border-zinc-400/20 hover:shadow-[0_4px_25px_rgba(0,0,0,0.02)] transition-all duration-300">
+                    <div className="flex flex-wrap items-center justify-between gap-2 mb-2">
+                      <span className="font-mono text-[9px] font-black text-zinc-650 dark:text-zinc-450 bg-zinc-200/60 dark:bg-zinc-800 px-2.5 py-0.5 rounded-full uppercase tracking-wider">
+                        2021 - 2022
+                      </span>
+                      <span className="font-mono text-[10px] text-zinc-400 dark:text-zinc-500 font-bold">
+                        Associate
+                      </span>
+                    </div>
+                    <h4 className="font-sans font-black text-base sm:text-lg text-zinc-900 dark:text-white transition-colors duration-300">
                       Associate SEO & Content Strategist
                     </h4>
-                    <p className="text-xs text-zinc-500 dark:text-zinc-400 font-medium font-mono">
+                    <p className="text-xs text-zinc-500 dark:text-zinc-400 font-semibold font-sans mt-0.5">
                       Digital Growth Agency
                     </p>
-                    <p className="mt-2 text-xs sm:text-sm text-zinc-650 dark:text-zinc-400 leading-relaxed font-sans">
+                    <p className="mt-3 text-xs sm:text-sm text-zinc-650 dark:text-zinc-405 leading-relaxed font-sans font-medium">
                       Executed client keyword research with Ahrefs and SEMrush, repaired schema errors, and streamlined copywriting layouts for semantic density. Managed reporting metrics within Google Search Console and Google Analytics 4.
                     </p>
+                    <div className="flex flex-wrap gap-1.5 mt-4">
+                      {['Keyword Research', 'Schema Validation', 'GSC & GA4', 'Content Engineering'].map((tag) => (
+                        <span key={tag} className="text-[9px] font-mono font-bold px-2 py-0.5 rounded bg-zinc-50 dark:bg-zinc-950 text-zinc-500 border border-zinc-150 dark:border-zinc-850">
+                          {tag}
+                        </span>
+                      ))}
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
 
-            {/* Right Column: Academic & College Education */}
-            <div className="lg:col-span-10 xl:col-span-5 space-y-6">
-              <h3 className="font-sans font-extrabold text-lg text-zinc-950 dark:text-white flex items-center gap-2 mb-4">
-                <span className="w-1.5 h-6 bg-indigo-500 rounded-full inline-block"></span>
-                Academic & College Education
+            {/* Right Column: Academic Background (School, College, 1-Year Diploma) */}
+            <div className="lg:col-span-5 space-y-8">
+              <h3 className="font-sans font-black text-xl text-zinc-950 dark:text-white flex items-center gap-3 mb-6">
+                <span className="flex items-center justify-center w-8 h-8 rounded-lg bg-indigo-500/10 text-indigo-500">
+                  <GraduationCap className="w-4 h-4" />
+                </span>
+                Academic Foundations
               </h3>
 
-              <div className="bg-white dark:bg-zinc-900 border border-zinc-150 dark:border-zinc-850 rounded-2xl p-6 sm:p-8 space-y-6 relative overflow-hidden shadow-xs">
-                <div className="absolute top-0 right-0 w-24 h-24 bg-indigo-500/5 rounded-full blur-xl"></div>
-                
-                {/* Education Entry 1 */}
-                <div className="flex gap-4 items-start pb-5 border-b border-zinc-100 dark:border-zinc-850">
-                  <div className="p-2 bg-indigo-500/10 text-indigo-505 rounded-xl">
-                    <BookOpen className="w-5 h-5" />
-                  </div>
-                  <div>
-                    <span className="text-[9px] font-mono text-zinc-400 uppercase block font-bold">Delhi University (DU)</span>
-                    <h4 className="font-sans font-bold text-sm sm:text-base text-zinc-900 dark:text-white mt-0.5">
-                      Bachelor of Computer Applications (BCA)
-                    </h4>
-                    <p className="text-xs text-zinc-500 dark:text-zinc-400 font-sans mt-1">
-                      Focus on Web Programming, Database Systems, Software Engineering, and Organic Communication. Enabled deep understanding of crawl technologies, DNS setups, and index-friendly frontends.
-                    </p>
-                    <span className="inline-block mt-2 font-mono text-[10px] text-zinc-500 font-bold bg-zinc-100 dark:bg-zinc-800 px-2 py-0.5 rounded-sm">
-                      Graduated 2021
-                    </span>
+              <div className="space-y-6">
+                {/* 1-Year Diploma Entry */}
+                <div className="p-6 bg-white dark:bg-zinc-900 border border-zinc-150/85 dark:border-zinc-850 rounded-2xl relative overflow-hidden group hover:border-teal-500/20 hover:shadow-[0_4px_25px_rgba(20,184,166,0.04)] transition-all duration-300">
+                  <div className="absolute top-0 right-0 w-24 h-24 bg-teal-500/5 rounded-full blur-xl group-hover:scale-150 transition-transform duration-500"></div>
+                  
+                  <div className="flex gap-4 items-start relative z-10">
+                    <div className="p-2.5 bg-teal-500/10 text-teal-500 rounded-xl shrink-0">
+                      <Award className="w-5 h-5" />
+                    </div>
+                    <div className="space-y-2">
+                      <div className="flex flex-wrap items-center gap-2">
+                        <span className="font-mono text-[9px] font-extrabold text-teal-600 dark:text-teal-400 uppercase tracking-widest bg-teal-500/10 px-2 py-0.5 rounded">
+                          1-Year Diploma
+                        </span>
+                        <span className="font-mono text-[9px] font-bold text-zinc-400">
+                          Completed 2021
+                        </span>
+                      </div>
+                      <h4 className="font-sans font-black text-base text-zinc-900 dark:text-white group-hover:text-teal-600 dark:group-hover:text-teal-400 transition-colors duration-300 leading-snug">
+                        Advanced Professional Diploma in Digital Marketing
+                      </h4>
+                      <p className="text-[11px] text-zinc-500 dark:text-zinc-500 font-semibold font-mono uppercase tracking-wide">
+                        Delhi Institute of Technology
+                      </p>
+                      <p className="text-xs sm:text-sm text-zinc-650 dark:text-zinc-400 leading-relaxed font-medium">
+                        Specialized coursework in Google Algorithms, Technical Content Outlining, Core Web Vitals profiling, and Search Console Diagnostics. Approved GAIQ and Advanced HubSpot certifications with distinction.
+                      </p>
+                    </div>
                   </div>
                 </div>
 
-                {/* Education Entry 2 */}
-                <div className="flex gap-4 items-start">
-                  <div className="p-2 bg-teal-500/10 text-teal-500 rounded-xl">
-                    <Award className="w-5 h-5" />
+                {/* College Entry */}
+                <div className="p-6 bg-white dark:bg-zinc-900 border border-zinc-150/85 dark:border-zinc-850 rounded-2xl relative overflow-hidden group hover:border-indigo-500/20 hover:shadow-[0_4px_25px_rgba(99,102,241,0.04)] transition-all duration-300">
+                  <div className="absolute top-0 right-0 w-24 h-24 bg-indigo-500/5 rounded-full blur-xl group-hover:scale-150 transition-transform duration-500"></div>
+                  
+                  <div className="flex gap-4 items-start relative z-10">
+                    <div className="p-2.5 bg-indigo-500/10 text-indigo-500 rounded-xl shrink-0">
+                      <BookOpen className="w-5 h-5" />
+                    </div>
+                    <div className="space-y-2">
+                      <div className="flex flex-wrap items-center gap-2">
+                        <span className="font-mono text-[9px] font-extrabold text-indigo-650 dark:text-indigo-400 uppercase tracking-widest bg-indigo-500/10 px-2 py-0.5 rounded">
+                          College Degree
+                        </span>
+                        <span className="font-mono text-[9px] font-bold text-zinc-400">
+                          Graduated 2021
+                        </span>
+                      </div>
+                      <h4 className="font-sans font-black text-base text-zinc-900 dark:text-white group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition-colors duration-300 leading-snug">
+                        Bachelor of Computer Applications (BCA)
+                      </h4>
+                      <p className="text-[11px] text-zinc-500 dark:text-zinc-500 font-semibold font-mono uppercase tracking-wide">
+                        Delhi University (DU)
+                      </p>
+                      <p className="text-xs sm:text-sm text-zinc-650 dark:text-zinc-400 leading-relaxed font-medium">
+                        Focus on Web Programming, Database Systems, Software Engineering, and Organic Communication. Enabled deep understanding of crawl technologies, DNS setups, and index-friendly frontends.
+                      </p>
+                    </div>
                   </div>
-                  <div>
-                    <span className="text-[9px] font-mono text-zinc-400 uppercase block font-bold">Delhi Institute of Technology</span>
-                    <h4 className="font-sans font-bold text-sm sm:text-base text-zinc-900 dark:text-white mt-0.5">
-                      Advanced Professional Diploma in Digital Marketing
-                    </h4>
-                    <p className="text-xs text-zinc-500 dark:text-zinc-400 font-sans mt-1">
-                      Specialized coursework in Google Algorithms, Technical Content Outlining, Core Web Vitals profiling, and Search Console Diagnostics. Approved GAIQ and Advanced HubSpot certifications with distinction.
-                    </p>
-                    <span className="inline-block mt-2 font-mono text-[10px] text-zinc-500 font-bold bg-zinc-100 dark:bg-zinc-800 px-2 py-0.5 rounded-sm">
-                      Completed 2021
-                    </span>
+                </div>
+
+                {/* School Entry */}
+                <div className="p-6 bg-white dark:bg-zinc-900 border border-zinc-150/85 dark:border-zinc-850 rounded-2xl relative overflow-hidden group hover:border-amber-500/20 hover:shadow-[0_4px_25px_rgba(245,158,11,0.04)] transition-all duration-300">
+                  <div className="absolute top-0 right-0 w-24 h-24 bg-amber-500/5 rounded-full blur-xl group-hover:scale-150 transition-transform duration-500"></div>
+                  
+                  <div className="flex gap-4 items-start relative z-10">
+                    <div className="p-2.5 bg-amber-500/10 text-amber-500 rounded-xl shrink-0">
+                      <TrendingUp className="w-5 h-5" />
+                    </div>
+                    <div className="space-y-2">
+                      <div className="flex flex-wrap items-center gap-2">
+                        <span className="font-mono text-[9px] font-extrabold text-amber-655 dark:text-amber-400 uppercase tracking-widest bg-amber-500/10 px-2 py-0.5 rounded">
+                          School Education
+                        </span>
+                        <span className="font-mono text-[9px] font-bold text-zinc-400">
+                          Completed 2018
+                        </span>
+                      </div>
+                      <h4 className="font-sans font-black text-base text-zinc-900 dark:text-white group-hover:text-amber-600 dark:group-hover:text-amber-400 transition-colors duration-300 leading-snug">
+                        Senior Secondary High School
+                      </h4>
+                      <p className="text-[11px] text-zinc-500 dark:text-zinc-500 font-semibold font-mono uppercase tracking-wide">
+                        Central Board of Secondary Education (CBSE)
+                      </p>
+                      <p className="text-xs sm:text-sm text-zinc-655 dark:text-zinc-400 leading-relaxed font-medium">
+                        Formative high school education with a focus on Computer Science, Mathematics, and Analytical Science. Established early foundations in data logical models, quantitative metrics, and computer hardware/software workflows.
+                      </p>
+                    </div>
                   </div>
                 </div>
               </div>
