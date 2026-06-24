@@ -343,7 +343,6 @@ export default function Hero() {
                       className="w-full h-full object-cover object-top transition-transform duration-700 ease-out group-hover:scale-[1.03]"
                       referrerPolicy="no-referrer"
                       loading="eager"
-                      fetchPriority="high"
                       decoding="sync"
                       onError={(e) => {
                         e.currentTarget.src = "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=600&auto=format&fit=crop";

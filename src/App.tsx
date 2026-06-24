@@ -8,11 +8,11 @@ import { RouterProvider, useRouter } from "./components/Router";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 
-// Import Page Wrappers (Lazy-loaded for optimal TTI and initial bundle performance)
-const HomePage = React.lazy(() => import("./pages/HomePage"));
-const AboutPage = React.lazy(() => import("./pages/AboutPage"));
-const ServicesPage = React.lazy(() => import("./pages/ServicesPage"));
-const ContactPage = React.lazy(() => import("./pages/ContactPage"));
+// Import Page Wrappers
+import HomePage from "./pages/HomePage";
+import AboutPage from "./pages/AboutPage";
+import ServicesPage from "./pages/ServicesPage";
+import ContactPage from "./pages/ContactPage";
 
 function PageLoading() {
   return (
@@ -116,9 +116,7 @@ function MainAppContent() {
 
       {/* Main Page Layout modules */}
       <main className="flex-grow w-full relative">
-        <React.Suspense fallback={<PageLoading />}>
-          {renderPage()}
-        </React.Suspense>
+        {renderPage()}
       </main>
 
       {/* DETAILED ROOT FOOTER */}
